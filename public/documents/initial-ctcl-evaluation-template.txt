@@ -1,0 +1,184 @@
+Division of Cutaneous Oncology 
+Initial Visit  
+ 
+History of Present Illness: @NAME@ is a @AGE@ @SEX@ who presents for initial 
+consultation for suspected ***(CTCL type suspected), referred by ***.  
+ 
+Narrative HPI: *** 
+ 
+Registry: 
+Date of initial visit with CTCL specialist  
+Date of onset of skin lesions  
+(month/year) 
+ 
+Initial symptoms at presentation  
+(itching 1-10, flaking/scaling, color change) 
+ 
+Initial lesion type  
+(patch, plaque, tumor, erythroderma) 
+ 
+Initial quantity of lesions  
+(single, multiple, unknown) 
+ 
+Initial location of lesions 
+(where anatomically located) 
+ 
+Prior diagnosis for CTCL lesions  
+(psoriasis, eczema, etc.) 
+ 
+Prior treatments for CTCL lesions 
+(name, date started/stopped, reason for 
+stopping, dose, response) 
+ 
+Prior skin biopsies  
+(dates / result) 
+ 
+Disease course since lesion onset 
+(clearance, progression, relapse) 
+ 
+Medication changes prior to lesion onset  
+(If yes, specify) 
+ 
+Exposures from travel, recreation, occupation, 
+or environment prior to lesions 
+(industrial, pesticides, pollution, etc.) 
+ 
+Current symptoms 
+(itching 1-10, flaking/scaling, color change) 
+ 
+Current treatments 
+(date started, dose, response) 
+ 
+Current location of lesions 
+(where anatomically located) 
+ 
+ 
+Patient History 
+@ALLERGIES@  
+@PASTMEDICAL@ 
+@PASTSURGICAL@  
+@FAMILYHISTORY@  
+@SOCIALHISTORY@ 
+ 
+@ROS@ 
+
+As noted in the HPI. 
+ 
+Physical Exam  
+@VITALSALL@  
+General: the patient is overall well appearing 
+Neuro: the patient is alert and oriented 
+Mood: appropriate 
+ 
+TBSE including mucosal surfaces was performed. Notable findings:  
+ 
+Scalp/Hair: No lesions suspicious for malignancy. 
+Head/Face: No lesions suspicious for malignancy. 
+Conjunctiva/Lids: No lesions suspicious for malignancy. 
+Lips: No lesions suspicious for malignancy. 
+Oral mucosa: No lesions suspicious for malignancy. 
+Teeth: No lesions suspicious for malignancy. 
+Neck: No lesions suspicious for malignancy. 
+Chest: No lesions suspicious for malignancy. 
+Breasts/Axillae: No lesions suspicious for malignancy. 
+Abdomen: No lesions suspicious for malignancy. 
+Genitalia: No lesions suspicious for malignancy. 
+Back: No lesions suspicious for malignancy. 
+Buttocks: No lesions suspicious for malignancy. 
+RUE: No lesions suspicious for malignancy. 
+LUE: No lesions suspicious for malignancy. 
+RLE: No lesions suspicious for malignancy. 
+LLE: No lesions suspicious for malignancy. 
+Digits/Nails: No lesions suspicious for malignancy. 
+ 
+General Exam 
+Lymph: no palpable lymph nodes*** 
+Peripheral vascular: warm and well perfused 
+Edema/Varicosities: no peripheral edema  
+Eccrine, apocrine glands: unremarkable 
+ 
+TBSA  ***,  mSWAT *** 
+Body Region  % BSA for 
+this 
+Region 
+% BSA as Patch % BSA as 
+Plaque 
+% BSA as 
+Tumor 
+Head 7%    
+Neck 2%    
+Anterior trunk 13%    
+Arms 8%    
+Forearms 6%    
+Hands 5%    
+Posterior trunk 13%    
+Buttocks 5%    
+Thighs 19%    
+Legs 14%    
+Feet 7%    
+Groin 1%    
+% BSA by 
+category 
+100%    
+Severity 
+Weighting 
+Factor 
+ x1 x2 x4 
+Skin Score 
+Total 
+    
+mSWAT   
+ 
+PATHOLOGY, IMAGING AND LABORATORY DATA: 
+All internal, external data were directly reviewed and summarized below. 
+ 
+LABORATORY: 
+ 
+FLOW CYTOMETRY:  
+ 
+PATHOLOGY:  
+ 
+IMAGING:  
+ 
+ASSESSMENT: 
+ 
+PLAN: 
+@NAME@ is a @AGE@ @SEX@ with stage ***. Today patient with *** TBSA involvement, 
+mSWAT *** with *** 
+@CTCLEXPLANATION@ 
+@TREATMENTPLAN@ 
+ 
+Prognostic index (Choose Early versus Late) 
+ 
+Early CLIPI Prognostic Index  
+  Points (1 each) 
+Male  
+Age > 60  
+Plaques  
+Folliculotropic  
+N1/Nx  
+Total Points ***/5 
+Risk Group: *** 
+Group 1 (1 risk factor); Group 2 (2 risk factors); Group 3 (3+ risk factors) 
+Reference: Benton EC, Crichton S, Talpur R, et al. A cutaneous lymphoma international 
+prognostic index (CLIPi) for mycosis fungoides and Sezary syndrome. Eur J Cancer. 
+2013;49(13):2859-2868. doi:10.1016/j.ejca.2013.04.018 
+ 
+ 
+Late CLIPI Prognostic Index  
+  Points (1 each) 
+Male  
+Age > 60  
+B1/B2  
+N2/3  
+Visceral involvement  
+Total Points ***/5 
+Risk Group: *** 
+Group 1 (1 risk factor); Group 2 (2 risk factors); Group 3 (3+ risk factors) 
+Reference: Benton EC, Crichton S, Talpur R, et al. A cutaneous lymphoma international 
+prognostic index (CLIPi) for mycosis fungoides and Sezary syndrome. Eur J Cancer. 
+2013;49(13):2859-2868. doi:10.1016/j.ejca.2013.04.018 
+ 
+ 
+ 
+@FOLLOWUP@
