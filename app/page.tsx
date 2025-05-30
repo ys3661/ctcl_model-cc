@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { Calculator, BookOpen, Pill, InfoIcon, ClipboardList, HelpCircle } from "lucide-react"
+import { Calculator, BookOpen, Pill, InfoIcon, HelpCircle, User } from "lucide-react"
 
 export default function Home() {
   return (
@@ -52,15 +52,15 @@ export default function Home() {
             </Button>
           </Link>
 
-          <Link href="/documentation" className="w-full">
+          <Link href="/treatments" className="w-full">
             <Button
               variant="outline"
               className="w-full h-full p-6 flex flex-col items-center justify-center gap-4 hover:bg-slate-100 hover:border-slate-300 transition-colors"
             >
-              <ClipboardList className="h-8 w-8" />
+              <Pill className="h-8 w-8" />
               <div>
-                <h2 className="text-lg font-medium">Documentation</h2>
-                <p className="text-sm text-muted-foreground">Templates and clinical note examples</p>
+                <h2 className="text-lg font-medium">Treatments</h2>
+                <p className="text-sm text-muted-foreground">Overview of CTCL treatment approaches</p>
               </div>
             </Button>
           </Link>
@@ -78,15 +78,15 @@ export default function Home() {
             </Button>
           </Link>
 
-          <Link href="/treatments" className="w-full">
+          <Link href="/about" className="w-full">
             <Button
               variant="outline"
               className="w-full h-full p-6 flex flex-col items-center justify-center gap-4 hover:bg-slate-100 hover:border-slate-300 transition-colors"
             >
-              <Pill className="h-8 w-8" />
+              <User className="h-8 w-8" />
               <div>
-                <h2 className="text-lg font-medium">Treatments</h2>
-                <p className="text-sm text-muted-foreground">Overview of CTCL treatment approaches</p>
+                <h2 className="text-lg font-medium">About</h2>
+                <p className="text-sm text-muted-foreground">Learn about this tool and its development</p>
               </div>
             </Button>
           </Link>

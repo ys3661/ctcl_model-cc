@@ -264,6 +264,11 @@ ${customFields.followUp}`
                 <FileText className="mr-2 h-4 w-4" /> Download Original
               </a>
             </Button>
+            <Button variant="outline" size="sm" asChild>
+              <a href="/documents/initial-ctcl-evaluation-fillable.pdf" download="CTCL_Initial_Evaluation_Fillable.pdf">
+                <FileText className="mr-2 h-4 w-4" /> Download Fillable PDF
+              </a>
+            </Button>
             <Button variant="default" size="sm" onClick={downloadCustomizedText}>
               <FileDown className="mr-2 h-4 w-4" /> Download Customized
             </Button>

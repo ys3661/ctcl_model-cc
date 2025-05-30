@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { Home, Calculator, BookOpen, Pill, FileText, InfoIcon, ClipboardList, HelpCircle } from "lucide-react"
+import { Home, Calculator, BookOpen, Pill, FileText, InfoIcon, HelpCircle } from "lucide-react"
 import { SearchInput } from "@/components/search/search-input"
 
 export function Navbar() {
@@ -50,15 +50,6 @@ export function Navbar() {
             >
               <InfoIcon className="mr-1 h-4 w-4" />
               <span>Information</span>
-            </Link>
-            <Link
-              href="/documentation"
-              className={`flex items-center text-sm font-medium transition-colors hover:text-primary ${
-                pathname.includes("/documentation") ? "text-primary" : "text-muted-foreground"
-              }`}
-            >
-              <ClipboardList className="mr-1 h-4 w-4" />
-              <span>Documentation</span>
             </Link>
             <Link
               href="/resources"

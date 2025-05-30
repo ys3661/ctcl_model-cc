@@ -4,25 +4,10 @@ import { useState, useRef, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Input } from "@/components/ui/input"
 import Link from "next/link"
-import {
-  ArrowLeft,
-  ExternalLink,
-  BookOpen,
-  MapPin,
-  Printer,
-  FileDown,
-  Search,
-  ArrowUp,
-  Building,
-  Bookmark,
-  HelpCircle,
-  Heart,
-} from "lucide-react"
+import { ArrowLeft, ExternalLink, BookOpen, MapPin, FileDown, ArrowUp, Building, Bookmark, Printer } from "lucide-react"
 
 export default function ResourcesPage() {
-  const [searchTerm, setSearchTerm] = useState("")
   const [activeCategory, setActiveCategory] = useState("all")
   const [showScrollTop, setShowScrollTop] = useState(false)
   const topRef = useRef<HTMLDivElement>(null)
@@ -32,7 +17,6 @@ export default function ResourcesPage() {
     { id: "all", name: "All Resources", icon: <Bookmark className="h-4 w-4" /> },
     { id: "organizations", name: "Organizations", icon: <Building className="h-4 w-4" /> },
     { id: "education", name: "Educational", icon: <BookOpen className="h-4 w-4" /> },
-    { id: "support", name: "Support", icon: <Heart className="h-4 w-4" /> },
     { id: "specialists", name: "Specialists", icon: <MapPin className="h-4 w-4" /> },
     { id: "handouts", name: "Patient Handouts", icon: <Printer className="h-4 w-4" /> },
   ]
@@ -59,8 +43,7 @@ export default function ResourcesPage() {
 
   // Search functionality
   const matchesSearch = (text: string) => {
-    if (!searchTerm) return true
-    return text.toLowerCase().includes(searchTerm.toLowerCase())
+    return true
   }
 
   return (
@@ -72,19 +55,6 @@ export default function ResourcesPage() {
               <ArrowLeft className="mr-2 h-4 w-4" /> Back to Home
             </Button>
           </Link>
-
-          <div className="flex items-center gap-2">
-            <Button variant="outline" size="sm" onClick={() => window.print()} className="hidden md:flex print:hidden">
-              <Printer className="mr-2 h-4 w-4" />
-              Print Resources
-            </Button>
-            <Button variant="outline" size="sm" asChild className="hidden md:flex">
-              <Link href="/documentation">
-                <HelpCircle className="mr-2 h-4 w-4" />
-                Documentation
-              </Link>
-            </Button>
-          </div>
         </div>
 
         <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-lg mb-8 border border-blue-100">
@@ -93,26 +63,6 @@ export default function ResourcesPage() {
             Comprehensive resources for patients and healthcare providers dealing with Cutaneous T-Cell Lymphoma. Find
             organizations, educational materials, support groups, and more.
           </p>
-
-          <div className="flex flex-col md:flex-row gap-4">
-            <div className="relative flex-grow">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-              <Input
-                placeholder="Search resources..."
-                className="pl-10"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
-            </div>
-            <Button
-              variant="secondary"
-              onClick={() => setSearchTerm("")}
-              className="md:w-auto w-full"
-              disabled={!searchTerm}
-            >
-              Clear Search
-            </Button>
-          </div>
         </div>
 
         {/* Category Navigation */}
@@ -133,14 +83,12 @@ export default function ResourcesPage() {
                     {category.id === "organizations"
                       ? "4"
                       : category.id === "education"
-                        ? "3"
-                        : category.id === "support"
-                          ? "3"
-                          : category.id === "specialists"
-                            ? "1"
-                            : category.id === "handouts"
-                              ? "6"
-                              : ""}
+                        ? "2"
+                        : category.id === "specialists"
+                          ? "1"
+                          : category.id === "handouts"
+                            ? "6"
+                            : ""}
                   </Badge>
                 )}
               </Button>
@@ -190,11 +138,6 @@ export default function ResourcesPage() {
                       <CardContent className="p-4">
                         <div className="flex justify-between items-start mb-2">
                           <h3 className="font-medium">{org.title}</h3>
-                          {org.badge && (
-                            <Badge variant="secondary" className="ml-2">
-                              {org.badge}
-                            </Badge>
-                          )}
                         </div>
                         <p className="text-sm text-muted-foreground mb-3">{org.description}</p>
                         <Button variant="outline" size="sm" asChild>
@@ -223,19 +166,13 @@ export default function ResourcesPage() {
                   {
                     title: "NCCN Guidelines for Patients: T-Cell Lymphomas",
                     description: "Patient-friendly version of the NCCN Clinical Practice Guidelines",
-                    url: "https://www.nccn.org/patients/guidelines/content/PDF/t-cell-patient.pdf",
+                    url: "https://www.nccn.org/patients/guidelines/content/PDF/ctcl-patient.pdf",
                     type: "PDF",
-                  },
-                  {
-                    title: "EORTC Consensus Recommendations",
-                    description: "European consensus recommendations on diagnosis and treatment",
-                    url: "https://www.eortc.org/guidelines/",
-                    type: "Website",
                   },
                   {
                     title: "Cutaneous Lymphoma Foundation Educational Videos",
                     description: "Video presentations from experts on various aspects of CTCL",
-                    url: "https://www.clfoundation.org/educational-videos",
+                    url: "https://www.youtube.com/watch?v=NdMDwX48Mjg",
                     type: "Videos",
                   },
                 ]
@@ -259,57 +196,6 @@ export default function ResourcesPage() {
                                 : resource.type === "Videos"
                                   ? "Watch Videos"
                                   : "View Guidelines"}
-                            </span>
-                          </a>
-                        </Button>
-                      </CardContent>
-                    </Card>
-                  ))}
-              </div>
-            </section>
-          )}
-
-          {/* Support Resources Section */}
-          {filterResources("support") && (
-            <section className="space-y-4" id="support">
-              <div className="flex items-center gap-2 border-b pb-2">
-                <Heart className="h-5 w-5 text-rose-600" />
-                <h2 className="text-2xl font-bold">Support Resources</h2>
-              </div>
-
-              <div className="grid gap-4 md:grid-cols-2">
-                {[
-                  {
-                    title: "CLF Patient Support Groups",
-                    description: "In-person and online support groups for patients with cutaneous lymphomas",
-                    url: "https://www.clfoundation.org/online-support-groups",
-                  },
-                  {
-                    title: "CLF Patient Educational Forums",
-                    description: "Educational events for patients and caregivers",
-                    url: "https://www.clfoundation.org/educational-forums",
-                  },
-                  {
-                    title: "Financial Assistance Resources",
-                    description: "Information on financial assistance programs for treatment and medications",
-                    url: "https://www.clfoundation.org/financial-assistance",
-                  },
-                ]
-                  .filter((item) => matchesSearch(item.title) || matchesSearch(item.description))
-                  .map((support, index) => (
-                    <Card key={index} className="transition-all hover:shadow-md">
-                      <CardContent className="p-4">
-                        <h3 className="font-medium mb-2">{support.title}</h3>
-                        <p className="text-sm text-muted-foreground mb-3">{support.description}</p>
-                        <Button variant="outline" size="sm" asChild>
-                          <a href={support.url} target="_blank" rel="noopener noreferrer">
-                            <ExternalLink className="mr-1 h-4 w-4" />
-                            <span>
-                              {support.title.includes("Support")
-                                ? "Find Support Groups"
-                                : support.title.includes("Forums")
-                                  ? "View Events"
-                                  : "Learn More"}
                             </span>
                           </a>
                         </Button>
@@ -386,7 +272,7 @@ export default function ResourcesPage() {
                     category: "Symptom Management",
                   },
                   {
-                    title: "Daily Skin Care Routine",
+                    title: "GeSkin Care Routine for Xerosis",
                     description: "Recommended skin care practices for CTCL patients",
                     category: "Self-Care",
                   },
@@ -429,16 +315,6 @@ export default function ResourcesPage() {
                 </Button>
               </div>
             </section>
-          )}
-
-          {/* No results message */}
-          {searchTerm && document.querySelectorAll("section").length === 0 && (
-            <div className="text-center py-12">
-              <HelpCircle className="mx-auto h-12 w-12 text-gray-300 mb-4" />
-              <h3 className="text-xl font-medium mb-2">No resources found</h3>
-              <p className="text-muted-foreground mb-4">No resources match your search for "{searchTerm}"</p>
-              <Button onClick={() => setSearchTerm("")}>Clear Search</Button>
-            </div>
           )}
         </div>
       </div>
