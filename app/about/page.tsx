@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import Link from "next/link"
-import { ArrowLeft } from "lucide-react"
+import { ArrowLeft, MessageSquarePlus } from "lucide-react"
 
 export default function AboutPage() {
   return (
@@ -49,22 +49,14 @@ export default function AboutPage() {
           </CardHeader>
           <CardContent className="space-y-4">
             <p>
-              The risk assessment is calculated based on the presence of seven clinical features that have been
-              associated with CTCL in the literature:
-            </p>
-            <ul className="list-disc pl-6 space-y-1 text-muted-foreground">
-              <li>History of multiple biopsies</li>
-              <li>Failed response to steroids</li>
-              <li>Presence of other rash</li>
-              <li>Scaly patch or plaque</li>
-              <li>Erythema</li>
-              <li>Xerosis (dry skin)</li>
-              <li>Pruritus (itching)</li>
-            </ul>
-            <p className="mt-4">
-              The current version uses a simple scoring system where each positive response contributes to the overall
-              risk score. Future versions may incorporate weighted scoring based on the relative importance of each
-              factor, as determined by ongoing research.
+              The risk assessment is calculated based on a study in the Geskin lab which created a supervised machine
+              learning classifier based on a Random Forest algorithm, trained on structured clinical data extracted from
+              electronic health records prior to diagnosis. This model used key binary historical variables—including
+              history of multiple biopsies, failed topical steroids, other failed therapies, scaly patches or plaques,
+              erythema, xerosis, pruritus, and presence of other rashes—to distinguish patients with cutaneous T-cell
+              lymphoma (CTCL) from those with benign inflammatory skin conditions. Prioritizing sensitivity to minimize
+              false negatives, the final model achieved an accuracy of 72%, with a sensitivity of 87% and a specificity
+              of 55%.
             </p>
             <p>
               It's important to note that this tool provides a risk assessment, not a diagnosis. A high-risk result
@@ -102,23 +94,22 @@ export default function AboutPage() {
 
         <Card>
           <CardHeader>
-            <CardTitle>Development Team</CardTitle>
-            <CardDescription>The experts behind the CTCL Risk Assessment Tool</CardDescription>
+            <CardTitle>Suggestions for Improvement</CardTitle>
+            <CardDescription>Help us enhance the CTCL Risk Assessment Tool</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <p>
-              This tool was developed by a multidisciplinary team of dermatologists, dermatopathologists,
-              hematologist-oncologists, and data scientists with expertise in cutaneous lymphomas.
+              We are continuously working to improve the accuracy and usability of this application. Your feedback and
+              suggestions are valuable in helping us enhance the tool's performance and clinical utility.
             </p>
-            <p>
-              The team continues to refine the tool based on user feedback and emerging research. Future versions will
-              incorporate additional clinical features and may include integration with electronic health records and
-              decision support systems.
-            </p>
-            <p>
-              We welcome feedback from healthcare professionals using this tool. Please contact us at
-              ctcl.support@example.com with any questions, suggestions, or concerns.
-            </p>
+            <div className="flex justify-center mt-6">
+              <Link href="/feedback">
+                <Button className="flex items-center gap-2">
+                  <MessageSquarePlus className="h-5 w-5" />
+                  Submit Feedback Form
+                </Button>
+              </Link>
+            </div>
           </CardContent>
         </Card>
       </div>
