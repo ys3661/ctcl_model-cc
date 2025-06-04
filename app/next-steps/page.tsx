@@ -24,7 +24,7 @@ export default function NextSteps() {
                 <FileText className="mr-2 h-5 w-5" /> Recommended Diagnostic Procedures
               </CardTitle>
               <CardDescription>
-                These procedures are commonly recommended for patients with high CTCL risk.
+                For questions about biopsy procedures and dermatopathology, please reach out to Dr. Gru's office.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -49,16 +49,25 @@ export default function NextSteps() {
               <CardDescription>Important contacts for immediate assistance.</CardDescription>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-muted-foreground mb-4">
-                For immediate medical concerns, please contact your primary care physician or visit the nearest
-                emergency room.
-              </p>
               <p className="text-sm text-muted-foreground">
                 For questions about this assessment tool, please contact:
                 <br />
-                <span className="font-medium">Email:</span> ctcl.support@example.com
+                <span className="font-medium">Dr. Alejandro Gru's Office</span>
                 <br />
-                <span className="font-medium">Phone:</span> (555) 123-4567
+                <span className="font-medium">Phone:</span> (212) 305-5293
+                <br />
+                <span className="font-medium">Address:</span> Columbia University Irving Medical Center, Department of
+                Dermatology
+                <br />
+                <span className="font-medium">Website:</span>{" "}
+                <a
+                  href="https://www.dermatology.columbia.edu/profile/alejandro-gru-md"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline"
+                >
+                  View Profile
+                </a>
               </p>
             </CardContent>
           </Card>

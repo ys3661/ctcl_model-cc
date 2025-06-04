@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
-import { Calculator, Info, Loader2 } from 'lucide-react'
+import { Calculator, Info, Loader2 } from "lucide-react"
 
 interface MLFeatures {
   multiple_biopsies: boolean
@@ -26,46 +26,46 @@ interface Question {
 }
 
 const questions: Question[] = [
-  { 
-    id: "multiple_biopsies", 
-    text: "Multiple Biopsies", 
-    description: "Patient has undergone multiple skin biopsies"
+  {
+    id: "multiple_biopsies",
+    text: "Multiple Biopsies",
+    description: "Patient has undergone multiple skin biopsies",
   },
-  { 
-    id: "failed_steroids", 
-    text: "Failed Steroids", 
-    description: "Topical or systemic steroids have been ineffective"
+  {
+    id: "failed_steroids",
+    text: "Failed Steroids",
+    description: "Topical or systemic steroids have been ineffective",
   },
-  { 
-    id: "otherrash", 
-    text: "Other Rash", 
-    description: "Presence of other concurrent skin rashes or lesions"
+  {
+    id: "otherrash",
+    text: "Other Rash",
+    description: "Presence of other concurrent skin rashes or lesions",
   },
-  { 
-    id: "scaly_patch_plaque", 
-    text: "Scaly Patch/Plaque", 
-    description: "Presence of scaly patches or raised plaques on skin"
+  {
+    id: "scaly_patch_plaque",
+    text: "Scaly Patch/Plaque",
+    description: "Presence of scaly patches or raised plaques on skin",
   },
-  { 
-    id: "erythema", 
-    text: "Erythema", 
-    description: "Areas of skin redness or erythematous lesions"
+  {
+    id: "erythema",
+    text: "Erythema",
+    description: "Areas of skin redness or erythematous lesions",
   },
-  { 
-    id: "xerosis", 
-    text: "Xerosis", 
-    description: "Abnormal skin dryness or xerotic changes"
+  {
+    id: "xerosis",
+    text: "Xerosis",
+    description: "Abnormal skin dryness or xerotic changes",
   },
-  { 
-    id: "pruritus", 
-    text: "Pruritus", 
-    description: "Significant itching or pruritic symptoms"
+  {
+    id: "pruritus",
+    text: "Pruritus",
+    description: "Significant itching or pruritic symptoms",
   },
-  { 
-    id: "other_failed_therapies", 
-    text: "Other Failed Therapies", 
-    description: "Other medical treatments have been tried and failed"
-  }
+  {
+    id: "other_failed_therapies",
+    text: "Other Failed Therapies",
+    description: "Other medical treatments have been tried and failed",
+  },
 ]
 
 function getRiskInterpretation(riskScore: number) {
@@ -74,35 +74,35 @@ function getRiskInterpretation(riskScore: number) {
       risk: "Very Low",
       color: "text-green-600 border-green-600",
       description: "Very low probability of CTCL. Continue routine monitoring.",
-      recommendation: "Standard dermatological follow-up as needed."
+      recommendation: "Standard dermatological follow-up as needed.",
     }
   } else if (riskScore < 0.4) {
     return {
-      risk: "Low", 
+      risk: "Low",
       color: "text-green-600 border-green-600",
       description: "Low probability of CTCL. Monitor for changes.",
-      recommendation: "Regular follow-up and monitoring recommended."
+      recommendation: "Regular follow-up and monitoring recommended.",
     }
   } else if (riskScore < 0.6) {
     return {
       risk: "Moderate",
-      color: "text-yellow-600 border-yellow-600", 
+      color: "text-yellow-600 border-yellow-600",
       description: "Moderate risk warrants closer evaluation.",
-      recommendation: "Consider additional testing and specialist consultation."
+      recommendation: "Consider additional testing and specialist consultation.",
     }
   } else if (riskScore < 0.8) {
     return {
       risk: "High",
       color: "text-orange-600 border-orange-600",
       description: "High risk requires immediate attention.",
-      recommendation: "Urgent dermatology/oncology consultation recommended."
+      recommendation: "Urgent dermatology/oncology consultation recommended.",
     }
   } else {
     return {
       risk: "Very High",
-      color: "text-red-600 border-red-600", 
+      color: "text-red-600 border-red-600",
       description: "Very high risk of CTCL.",
-      recommendation: "Immediate specialist evaluation and comprehensive workup needed."
+      recommendation: "Immediate specialist evaluation and comprehensive workup needed.",
     }
   }
 }
@@ -126,8 +126,8 @@ export default function RiskCalculator() {
   // Calculate risk score when features change
   useEffect(() => {
     // Only calculate if at least one feature is set to true
-    const hasSelectedFeatures = Object.values(features).some(value => value === true)
-    
+    const hasSelectedFeatures = Object.values(features).some((value) => value === true)
+
     if (hasSelectedFeatures) {
       calculateRisk()
     } else {
@@ -139,30 +139,30 @@ export default function RiskCalculator() {
   const calculateRisk = async () => {
     setLoading(true)
     setError(null)
-    
+
     try {
-      const response = await fetch('/api/predict', {
-        method: 'POST',
+      const response = await fetch("/api/predict", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(features),
       })
-      
+
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
       }
-      
+
       const data = await response.json()
-      
+
       if (data.error) {
         throw new Error(data.error)
       }
-      
+
       setRiskScore(data.risk_score)
     } catch (err) {
-      console.error('Error calculating risk:', err)
-      setError(err instanceof Error ? err.message : 'Failed to calculate risk score')
+      console.error("Error calculating risk:", err)
+      setError(err instanceof Error ? err.message : "Failed to calculate risk score")
       setRiskScore(null)
     } finally {
       setLoading(false)
@@ -170,9 +170,9 @@ export default function RiskCalculator() {
   }
 
   const handleFeatureToggle = (featureId: keyof MLFeatures, value: boolean) => {
-    setFeatures(prev => ({
+    setFeatures((prev) => ({
       ...prev,
-      [featureId]: value
+      [featureId]: value,
     }))
   }
 
@@ -191,7 +191,7 @@ export default function RiskCalculator() {
     setError(null)
   }
 
-  const selectedCount = Object.values(features).filter(value => value === true).length
+  const selectedCount = Object.values(features).filter((value) => value === true).length
   const riskInterpretation = riskScore !== null ? getRiskInterpretation(riskScore) : null
 
   return (
@@ -216,24 +216,18 @@ export default function RiskCalculator() {
             <CardHeader className="pb-3">
               <CardTitle className="text-lg">Clinical Features Assessment</CardTitle>
               <p className="text-sm text-muted-foreground">
-                Check all clinical features that apply to this patient. The ML model will analyze these features to provide a risk assessment.
+                Check all clinical features that apply to this patient. The ML model will analyze these features to
+                provide a risk assessment.
               </p>
             </CardHeader>
             <CardContent className="space-y-4">
               {questions.map((question) => (
-                <div
-                  key={question.id}
-                  className="p-4 rounded-lg border border-border space-y-3"
-                >
+                <div key={question.id} className="p-4 rounded-lg border border-border space-y-3">
                   <div className="space-y-2">
-                    <Label className="text-sm font-medium block">
-                      {question.text}
-                    </Label>
-                    <p className="text-xs text-muted-foreground">
-                      {question.description}
-                    </p>
+                    <Label className="text-sm font-medium block">{question.text}</Label>
+                    <p className="text-xs text-muted-foreground">{question.description}</p>
                   </div>
-                  
+
                   <div className="flex space-x-6">
                     <label className="flex items-center space-x-2 cursor-pointer">
                       <input
@@ -245,7 +239,7 @@ export default function RiskCalculator() {
                       />
                       <span className="text-sm font-medium text-green-600">Yes</span>
                     </label>
-                    
+
                     <label className="flex items-center space-x-2 cursor-pointer">
                       <input
                         type="radio"
@@ -287,9 +281,7 @@ export default function RiskCalculator() {
                 </div>
               ) : riskScore !== null ? (
                 <>
-                  <div className="text-6xl font-bold text-primary">
-                    {(riskScore * 100).toFixed(1)}%
-                  </div>
+                  <div className="text-6xl font-bold text-primary">{(riskScore * 100).toFixed(1)}%</div>
                   <div className="text-sm text-muted-foreground">Risk Probability</div>
 
                   <Separator />
@@ -308,6 +300,16 @@ export default function RiskCalculator() {
                       <div className="text-sm space-y-2">
                         <p className="font-medium">Recommendation:</p>
                         <p className="text-muted-foreground">{riskInterpretation.recommendation}</p>
+                      </div>
+
+                      {/* Next Steps Box */}
+                      <div className="mt-4">
+                        <Button
+                          onClick={() => (window.location.href = "/next-steps")}
+                          className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                        >
+                          Next Steps
+                        </Button>
                       </div>
                     </div>
                   )}
