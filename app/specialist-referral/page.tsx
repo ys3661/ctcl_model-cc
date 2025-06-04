@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import Link from "next/link"
-import { ArrowLeft, ExternalLink } from "lucide-react"
+import { ArrowLeft } from "lucide-react"
 
 export default function SpecialistReferralPage() {
   return (
@@ -21,103 +20,14 @@ export default function SpecialistReferralPage() {
           recommended.
         </p>
 
-        <div className="grid gap-6 md:grid-cols-2 mb-8">
-          <Card>
-            <CardHeader>
-              <CardTitle>Why Refer to a Specialist?</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-2">
-              <p className="text-sm text-muted-foreground">
-                CTCL is a rare condition that requires specialized expertise for accurate diagnosis and optimal
-                management. Early referral to a specialist can lead to:
-              </p>
-              <ul className="list-disc pl-5 text-sm text-muted-foreground">
-                <li>More accurate diagnosis through specialized testing</li>
-                <li>Appropriate staging and risk assessment</li>
-                <li>Access to the latest treatment options</li>
-                <li>Opportunity to participate in clinical trials</li>
-                <li>Multidisciplinary care approach</li>
-              </ul>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>When to Refer</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-2">
-              <p className="text-sm text-muted-foreground">
-                Consider referral to a CTCL specialist in the following situations:
-              </p>
-              <ul className="list-disc pl-5 text-sm text-muted-foreground">
-                <li>Biopsy suspicious for or diagnostic of CTCL</li>
-                <li>Persistent, unexplained patches or plaques</li>
-                <li>Recalcitrant dermatitis unresponsive to standard treatments</li>
-                <li>Erythroderma of unknown cause</li>
-                <li>Suspected disease progression in known CTCL</li>
-              </ul>
-            </CardContent>
-          </Card>
-        </div>
-
         <h2 className="text-2xl font-semibold mb-4">Find a CTCL Specialist</h2>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-8">
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-lg">Cutaneous Lymphoma Foundation</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <p className="text-sm text-muted-foreground">
-                The CLF maintains a directory of specialists experienced in treating cutaneous lymphomas.
-              </p>
-              <a
-                href="https://www.clfoundation.org/find-a-physician"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center text-sm font-medium text-blue-600 hover:text-blue-800"
-              >
-                Find a Physician <ExternalLink className="ml-1 h-3 w-3" />
-              </a>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-lg">Academic Medical Centers</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <p className="text-sm text-muted-foreground">
-                Many academic medical centers have specialized clinics for cutaneous lymphomas.
-              </p>
-              <a
-                href="https://www.aamc.org/about-aamc/aamc-member-medical-schools"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center text-sm font-medium text-blue-600 hover:text-blue-800"
-              >
-                Find Academic Medical Centers <ExternalLink className="ml-1 h-3 w-3" />
-              </a>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-lg">NCCN Cancer Centers</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <p className="text-sm text-muted-foreground">
-                NCCN-designated cancer centers often have dermatologic oncology programs.
-              </p>
-              <a
-                href="https://www.nccn.org/home/member-institutions"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center text-sm font-medium text-blue-600 hover:text-blue-800"
-              >
-                Find NCCN Cancer Centers <ExternalLink className="ml-1 h-3 w-3" />
-              </a>
-            </CardContent>
-          </Card>
+        <div className="text-center mb-8">
+          <p className="text-muted-foreground mb-4">
+            Find comprehensive specialist directories and resources on our resources page.
+          </p>
+          <Link href="/resources">
+            <Button size="lg">View Specialist Resources</Button>
+          </Link>
         </div>
 
         <div className="flex justify-center mt-8">

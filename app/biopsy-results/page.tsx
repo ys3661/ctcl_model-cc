@@ -29,17 +29,6 @@ export default function BiopsyResults() {
                 <p className="text-sm text-muted-foreground mb-3">
                   Biopsy shows no evidence of atypical lymphocytes or other features consistent with CTCL.
                 </p>
-                <ul className="text-xs text-left text-muted-foreground space-y-2">
-                  <li>
-                    <span className="font-medium">Histology:</span> Normal or inflammatory dermatosis
-                  </li>
-                  <li>
-                    <span className="font-medium">Immunohistochemistry:</span> No aberrant T-cell populations
-                  </li>
-                  <li>
-                    <span className="font-medium">Next steps:</span> Consider alternative diagnoses if symptoms persist
-                  </li>
-                </ul>
               </CardContent>
             </Card>
           </Link>
@@ -50,22 +39,10 @@ export default function BiopsyResults() {
                 <div className="mb-4 text-amber-500">
                   <HelpCircle className="h-12 w-12" />
                 </div>
-                <h2 className="text-xl font-semibold mb-4">Unequivocal</h2>
+                <h2 className="text-xl font-semibold mb-4">Equivocal</h2>
                 <p className="text-sm text-muted-foreground mb-3">
                   Biopsy shows concerning features but lacks definitive criteria for CTCL diagnosis.
                 </p>
-                <ul className="text-xs text-left text-muted-foreground space-y-2">
-                  <li>
-                    <span className="font-medium">Histology:</span> Atypical lymphocytic infiltrate
-                  </li>
-                  <li>
-                    <span className="font-medium">Immunohistochemistry:</span> Possible T-cell predominance
-                  </li>
-                  <li>
-                    <span className="font-medium">Next steps:</span> Specialist referral, possible rebiopsy or clonality
-                    studies
-                  </li>
-                </ul>
               </CardContent>
             </Card>
           </Link>
@@ -80,20 +57,6 @@ export default function BiopsyResults() {
                 <p className="text-sm text-muted-foreground mb-3">
                   Biopsy shows definitive histopathological and immunophenotypic features of CTCL.
                 </p>
-                <ul className="text-xs text-left text-muted-foreground space-y-2">
-                  <li>
-                    <span className="font-medium">Histology:</span> Epidermotropic atypical lymphocytes, Pautrier
-                    microabscesses
-                  </li>
-                  <li>
-                    <span className="font-medium">Immunohistochemistry:</span> Aberrant T-cell phenotype, possible
-                    clonality
-                  </li>
-                  <li>
-                    <span className="font-medium">Next steps:</span> Urgent specialist referral, staging workup,
-                    treatment planning
-                  </li>
-                </ul>
               </CardContent>
             </Card>
           </Link>

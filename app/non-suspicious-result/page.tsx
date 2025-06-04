@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import Link from "next/link"
-import { ArrowLeft, AlertCircle, CheckCircle, Calendar } from "lucide-react"
+import { ArrowLeft, AlertCircle, CheckCircle } from "lucide-react"
 
 export default function NonSuspiciousResult() {
   return (
@@ -27,7 +27,7 @@ export default function NonSuspiciousResult() {
 
         <h1 className="text-3xl font-bold mb-6">Recommended Next Steps</h1>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-6">
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center">
@@ -48,30 +48,11 @@ export default function NonSuspiciousResult() {
               </ul>
             </CardContent>
           </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center">
-                <Calendar className="mr-2 h-5 w-5" /> Follow-up Recommendations
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <p className="text-sm">
-                Even with a non-suspicious biopsy, clinical follow-up may be warranted in certain situations:
-              </p>
-              <ul className="list-disc pl-5 text-sm space-y-1">
-                <li>Schedule follow-up in 3-6 months if symptoms persist</li>
-                <li>Consider repeat biopsy if clinical suspicion remains high despite negative results</li>
-                <li>Document and photograph any persistent or changing lesions</li>
-                <li>Consider patch testing if contact dermatitis is suspected</li>
-              </ul>
-              <div className="pt-4">
-                <Link href="/calculator">
-                  <Button variant="outline">Return to Risk Calculator</Button>
-                </Link>
-              </div>
-            </CardContent>
-          </Card>
+        </div>
+        <div className="mt-6">
+          <Link href="/calculator">
+            <Button variant="outline">Return to Risk Calculator</Button>
+          </Link>
         </div>
       </div>
     </main>

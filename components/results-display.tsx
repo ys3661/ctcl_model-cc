@@ -5,10 +5,11 @@ import { Progress } from "@/components/ui/progress"
 import { Badge } from "@/components/ui/badge"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { ChevronDown, BarChart3, FileText, AlertTriangle } from "lucide-react"
+import { ChevronDown, BarChart3, FileText, AlertTriangle, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useState } from "react"
 import FeatureImportanceChart from "./feature-importance-chart"
+import Link from "next/link"
 
 interface FeatureImportance {
   id: string
@@ -174,6 +175,21 @@ export default function ResultsDisplay({ results }: ResultsDisplayProps) {
                 <p className="text-sm text-muted-foreground">{recommendation}</p>
               </div>
             )}
+
+            {risk === "High" || risk === "Very High" || score >= 8.0 ? (
+              <div className="mt-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                <h3 className="text-lg font-medium text-red-800 mb-2">High Risk Alert</h3>
+                <p className="text-sm text-red-700 mb-4">
+                  This assessment indicates a high risk for CTCL. Immediate medical consultation is strongly
+                  recommended.
+                </p>
+                <Link href="/next-steps">
+                  <Button className="w-full bg-red-600 hover:bg-red-700 text-white">
+                    View Recommended Next Steps <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+              </div>
+            ) : null}
           </TabsContent>
 
           <TabsContent value="explanation" className="space-y-6 pt-4">
