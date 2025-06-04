@@ -21,91 +21,33 @@ interface PredictionResponse {
   status: string
 }
 
-// Simplified ML model weights (replace with your actual model logic)
-// These weights are approximated based on typical CTCL risk factors
+// Model weights based on provided relative weightings
 const MODEL_WEIGHTS = {
-  multiple_biopsies: 0.18,
-  failed_steroids: 0.22,
-  otherrash: 0.12,
-  scaly_patch_plaque: 0.16,
-  erythema: 0.10,
-  xerosis: 0.08,
-  pruritus: 0.14,
-  other_failed_therapies: 0.15
+  multiple_biopsies: 0.230368,
+  failed_steroids: 0.210547,
+  otherrash: 0.130172,
+  scaly_patch_plaque: 0.112930,
+  erythema: 0.083891,
+  xerosis: 0.082167,
+  pruritus: 0.079507,
+  other_failed_therapies: 0.070418
 } as const
-
-// Feature importance for risk calculation
-const BASE_RISK = 0.05 // 5% baseline risk
 
 /**
  * Calculate risk score based on selected features
- * This mimics your ML model's predict_proba functionality
+ * Logic: sum (feature_weight * 10) for each present feature
  */
 function calculateRiskScore(features: PredictionRequest): number {
-  let riskScore = BASE_RISK
-  
-  // Add weighted contributions from each feature
+  let riskScore = 0
+
   Object.entries(features).forEach(([feature, isPresent]) => {
     if (isPresent && feature in MODEL_WEIGHTS) {
       const weight = MODEL_WEIGHTS[feature as keyof typeof MODEL_WEIGHTS]
-      riskScore += weight
+      riskScore += weight * 10
     }
   })
-  
-  // Apply interaction effects (some combinations increase risk more)
-  const interactions = calculateInteractionEffects(features)
-  riskScore += interactions
-  
-  // Apply sigmoid-like transformation for realistic probabilities
-  riskScore = applySigmoidTransform(riskScore)
-  
-  // Ensure score is between 0 and 1
-  return Math.max(0, Math.min(1, riskScore))
-}
 
-/**
- * Calculate interaction effects between features
- * Some combinations of symptoms increase risk more than individual features
- */
-function calculateInteractionEffects(features: PredictionRequest): number {
-  let interactionBonus = 0
-  
-  // High-risk combinations
-  if (features.multiple_biopsies && features.failed_steroids) {
-    interactionBonus += 0.08 // Treatment-resistant cases
-  }
-  
-  if (features.scaly_patch_plaque && features.pruritus) {
-    interactionBonus += 0.06 // Classic presentation
-  }
-  
-  if (features.failed_steroids && features.other_failed_therapies) {
-    interactionBonus += 0.07 // Multiple treatment failures
-  }
-  
-  if (features.erythema && features.xerosis && features.pruritus) {
-    interactionBonus += 0.05 // Skin barrier dysfunction triad
-  }
-  
-  // Count total positive features for complexity bonus
-  const positiveFeatures = Object.values(features).filter(Boolean).length
-  if (positiveFeatures >= 5) {
-    interactionBonus += 0.04 // Multiple symptom complexity
-  }
-  
-  return interactionBonus
-}
-
-/**
- * Apply sigmoid-like transformation to make risk scores more realistic
- * This mimics the non-linear decision boundaries of ML models
- */
-function applySigmoidTransform(x: number): number {
-  // Modified sigmoid to map linear combination to probability
-  const k = 4 // Steepness parameter
-  const x0 = 0.5 // Midpoint
-  
-  return 1 / (1 + Math.exp(-k * (x - x0)))
+  return riskScore
 }
 
 /**
@@ -113,26 +55,26 @@ function applySigmoidTransform(x: number): number {
  */
 function validateRequest(body: any): { isValid: boolean; errors: string[] } {
   const errors: string[] = []
-  
+
   const requiredFeatures = [
     'multiple_biopsies', 'failed_steroids', 'otherrash',
     'scaly_patch_plaque', 'erythema', 'xerosis', 
     'pruritus', 'other_failed_therapies'
   ]
-  
+
   // Check for missing features
   const missingFeatures = requiredFeatures.filter(feature => !(feature in body))
   if (missingFeatures.length > 0) {
     errors.push(`Missing required features: ${missingFeatures.join(', ')}`)
   }
-  
+
   // Check for invalid types
   requiredFeatures.forEach(feature => {
     if (feature in body && typeof body[feature] !== 'boolean') {
       errors.push(`Feature '${feature}' must be a boolean value`)
     }
   })
-  
+
   return {
     isValid: errors.length === 0,
     errors
@@ -174,7 +116,7 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       )
     }
-    
+
     // Validate request
     const validation = validateRequest(body)
     if (!validation.isValid) {
@@ -187,17 +129,17 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       )
     }
-    
+
     // Calculate risk score
     const features = body as PredictionRequest
     const riskScore = calculateRiskScore(features)
-    
+
     // Count selected features
     const featuresSelected = Object.values(features).filter(Boolean).length
-    
+
     // Log prediction for monitoring
     console.log(`Prediction: ${riskScore.toFixed(3)} (${featuresSelected}/8 features selected)`)
-    
+
     // Return successful prediction
     const response: PredictionResponse = {
       risk_score: riskScore,
@@ -205,12 +147,12 @@ export async function POST(request: NextRequest) {
       features_selected: featuresSelected,
       status: "success"
     }
-    
+
     return NextResponse.json(response)
-    
+
   } catch (error) {
     console.error('Prediction error:', error)
-    
+
     return NextResponse.json(
       {
         error: "Internal server error",
@@ -236,11 +178,9 @@ export async function OPTIONS() {
   })
 }
 
-// Export additional utility functions for testing
+// Export utility for testing
 export const utils = {
   calculateRiskScore,
-  calculateInteractionEffects,
-  applySigmoidTransform,
   validateRequest,
   MODEL_WEIGHTS
 }
