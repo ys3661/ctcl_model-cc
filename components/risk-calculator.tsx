@@ -227,28 +227,18 @@ export default function RiskCalculator() {
                     <Label className="text-sm font-medium block">{question.text}</Label>
                     <p className="text-xs text-muted-foreground">{question.description}</p>
                   </div>
-
-                  <div className="flex space-x-6">
+                  <div className="flex items-center space-x-3">
                     <label className="flex items-center space-x-2 cursor-pointer">
                       <input
-                        type="radio"
+                        type="checkbox"
                         name={question.id}
-                        checked={features[question.id] === true}
-                        onChange={() => handleFeatureToggle(question.id, true)}
-                        className="text-green-600 focus:ring-green-500"
+                        checked={features[question.id]}
+                        onChange={() => handleFeatureToggle(question.id, !features[question.id])}
+                        className="accent-green-600 h-5 w-5"
                       />
-                      <span className="text-sm font-medium text-green-600">Yes</span>
-                    </label>
-
-                    <label className="flex items-center space-x-2 cursor-pointer">
-                      <input
-                        type="radio"
-                        name={question.id}
-                        checked={features[question.id] === false}
-                        onChange={() => handleFeatureToggle(question.id, false)}
-                        className="text-red-600 focus:ring-red-500"
-                      />
-                      <span className="text-sm font-medium text-red-600">No</span>
+                      <span className="text-sm font-medium">
+                        {question.text}
+                      </span>
                     </label>
                   </div>
                 </div>
