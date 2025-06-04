@@ -69,40 +69,29 @@ const questions: Question[] = [
 ]
 
 function getRiskInterpretation(riskScore: number) {
-  if (riskScore < 0.2) {
-    return {
-      risk: "Very Low",
-      color: "text-green-600 border-green-600",
-      description: "Very low probability of CTCL. Continue routine monitoring.",
-      recommendation: "Standard dermatological follow-up as needed.",
-    }
-  } else if (riskScore < 0.4) {
+  if (riskScore < 0.5) {
     return {
       risk: "Low",
       color: "text-green-600 border-green-600",
-      description: "Low probability of CTCL. Monitor for changes.",
-      recommendation: "Regular follow-up and monitoring recommended.",
+      description: "Low probability of CTCL. Continue routine monitoring.",
+      recommendation: "Standard dermatological follow-up as needed.",
+      showNextSteps: false,
     }
-  } else if (riskScore < 0.6) {
+  } else if (riskScore < 0.8) {
     return {
       risk: "Moderate",
       color: "text-yellow-600 border-yellow-600",
       description: "Moderate risk warrants closer evaluation.",
       recommendation: "Consider additional testing and specialist consultation.",
-    }
-  } else if (riskScore < 0.8) {
-    return {
-      risk: "High",
-      color: "text-orange-600 border-orange-600",
-      description: "High risk requires immediate attention.",
-      recommendation: "Urgent dermatology/oncology consultation recommended.",
+      showNextSteps: false,
     }
   } else {
     return {
-      risk: "Very High",
+      risk: "High",
       color: "text-red-600 border-red-600",
-      description: "Very high risk of CTCL.",
+      description: "High risk of CTCL.",
       recommendation: "Immediate specialist evaluation and comprehensive workup needed.",
+      showNextSteps: true,
     }
   }
 }
@@ -281,26 +270,25 @@ export default function RiskCalculator() {
                       <Badge className={`${riskInterpretation.color} px-3 py-1 text-sm font-medium`} variant="outline">
                         {riskInterpretation.risk} Risk
                       </Badge>
-
                       <div className="text-sm space-y-2">
                         <p className="font-medium">Interpretation:</p>
                         <p className="text-muted-foreground">{riskInterpretation.description}</p>
                       </div>
-
                       <div className="text-sm space-y-2">
                         <p className="font-medium">Recommendation:</p>
                         <p className="text-muted-foreground">{riskInterpretation.recommendation}</p>
                       </div>
-
-                      {/* Next Steps Box */}
-                      <div className="mt-4">
-                        <Button
-                          onClick={() => (window.location.href = "/next-steps")}
-                          className="w-full bg-blue-600 hover:bg-blue-700 text-white"
-                        >
-                          Next Steps
-                        </Button>
-                      </div>
+                      {/* Next Steps Box - only for High risk */}
+                      {riskInterpretation.showNextSteps && (
+                        <div className="mt-4">
+                          <Button
+                            onClick={() => (window.location.href = "/next-steps")}
+                            className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                          >
+                            Next Steps
+                          </Button>
+                        </div>
+                      )}
                     </div>
                   )}
                 </>
@@ -328,24 +316,16 @@ export default function RiskCalculator() {
             </CardHeader>
             <CardContent className="space-y-2 text-sm">
               <div className="flex justify-between">
-                <span>0-20%:</span>
-                <span className="font-medium text-green-600">Very Low Risk</span>
-              </div>
-              <div className="flex justify-between">
-                <span>20-40%:</span>
+                <span>0-50%:</span>
                 <span className="font-medium text-green-600">Low Risk</span>
               </div>
               <div className="flex justify-between">
-                <span>40-60%:</span>
+                <span>50-80%:</span>
                 <span className="font-medium text-yellow-600">Moderate Risk</span>
               </div>
               <div className="flex justify-between">
-                <span>60-80%:</span>
-                <span className="font-medium text-orange-600">High Risk</span>
-              </div>
-              <div className="flex justify-between">
                 <span>80-100%:</span>
-                <span className="font-medium text-red-600">Very High Risk</span>
+                <span className="font-medium text-red-600">High Risk</span>
               </div>
             </CardContent>
           </Card>
