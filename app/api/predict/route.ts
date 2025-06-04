@@ -43,7 +43,7 @@ function calculateRiskScore(features: PredictionRequest): number {
   Object.entries(features).forEach(([feature, isPresent]) => {
     if (isPresent && feature in MODEL_WEIGHTS) {
       const weight = MODEL_WEIGHTS[feature as keyof typeof MODEL_WEIGHTS]
-      riskScore += weight * 10
+      riskScore += weight
     }
   })
 
