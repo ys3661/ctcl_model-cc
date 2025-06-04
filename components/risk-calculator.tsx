@@ -211,25 +211,18 @@ export default function RiskCalculator() {
             </CardHeader>
             <CardContent className="space-y-4">
               {questions.map((question) => (
-                <div key={question.id} className="p-4 rounded-lg border border-border space-y-3">
-                  <div className="space-y-2">
-                    <Label className="text-sm font-medium block">{question.text}</Label>
-                    <p className="text-xs text-muted-foreground">{question.description}</p>
+                <div key={question.id} className="p-4 rounded-lg border border-border space-y-2">
+                  <div className="flex items-center space-x-2">
+                    <input
+                      type="checkbox"
+                      name={question.id}
+                      checked={features[question.id]}
+                      onChange={() => handleFeatureToggle(question.id, !features[question.id])}
+                      className="accent-green-600 h-5 w-5"
+                    />
+                    <Label className="text-sm font-medium block mb-0">{question.text}</Label>
                   </div>
-                  <div className="flex items-center space-x-3">
-                    <label className="flex items-center space-x-2 cursor-pointer">
-                      <input
-                        type="checkbox"
-                        name={question.id}
-                        checked={features[question.id]}
-                        onChange={() => handleFeatureToggle(question.id, !features[question.id])}
-                        className="accent-green-600 h-5 w-5"
-                      />
-                      <span className="text-sm font-medium">
-                        {question.text}
-                      </span>
-                    </label>
-                  </div>
+                  <p className="text-xs text-muted-foreground ml-7">{question.description}</p>
                 </div>
               ))}
             </CardContent>
