@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import MobileRiskCalculator from "@/components/mobile/mobile-risk-calculator"
 import { useMediaQuery } from "@/hooks/use-media-query"
 import RiskCalculator from "@/components/risk-calculator"
 
@@ -42,7 +41,7 @@ export default function MobileCalculatorPage() {
           </p>
         </div>
 
-        {isMobile ? <MobileRiskCalculator /> : <RiskCalculator />}
+        <RiskCalculator />
       </div>
     </div>
   )
