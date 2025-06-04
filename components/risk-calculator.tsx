@@ -305,32 +305,32 @@ export default function RiskCalculator() {
               </Button>
             </CardContent>
           </Card>
-
-          {/* Risk Guide */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center text-lg">
-                <Info className="mr-2 h-4 w-4" />
-                Risk Guide
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-2 text-sm">
-              <div className="flex justify-between">
-                <span>0-50%:</span>
-                <span className="font-medium text-green-600">Low Risk</span>
-              </div>
-              <div className="flex justify-between">
-                <span>50-80%:</span>
-                <span className="font-medium text-yellow-600">Moderate Risk</span>
-              </div>
-              <div className="flex justify-between">
-                <span>80-100%:</span>
-                <span className="font-medium text-red-600">High Risk</span>
-              </div>
-            </CardContent>
-          </Card>
         </div>
       </div>
+
+      {/* Risk Guide - always visible below the grid */}
+      <Card className="mt-6">
+        <CardHeader>
+          <CardTitle className="flex items-center text-lg">
+            <Info className="mr-2 h-4 w-4" />
+            Risk Guide
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm">
+          <div className="flex justify-between">
+            <span>0-50%:</span>
+            <span className="font-medium text-green-600">Low Risk</span>
+          </div>
+          <div className="flex justify-between">
+            <span>50-80%:</span>
+            <span className="font-medium text-yellow-600">Moderate Risk</span>
+          </div>
+          <div className="flex justify-between">
+            <span>80-100%:</span>
+            <span className="font-medium text-red-600">High Risk</span>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   )
 }
