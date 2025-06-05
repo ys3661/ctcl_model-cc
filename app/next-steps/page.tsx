@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import Link from "next/link"
-import { ArrowLeft, FileText } from "lucide-react"
+import { ArrowLeft, FileText, Phone } from "lucide-react"
 
 export default function NextSteps() {
   return (
@@ -38,6 +38,37 @@ export default function NextSteps() {
                   </Link>
                 </div>
               </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center">
+                <Phone className="mr-2 h-5 w-5" /> Contact Information
+              </CardTitle>
+              <CardDescription>Important contacts for immediate assistance.</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                For questions about this assessment tool, please contact:
+                <br />
+                <span className="font-medium">Dr. Alejandro Gru's Office</span>
+                <br />
+                <span className="font-medium">Phone:</span> (212) 305-5293
+                <br />
+                <span className="font-medium">Address:</span> Columbia University Irving Medical Center, Department of
+                Dermatology
+                <br />
+                <span className="font-medium">Website:</span>{" "}
+                <a
+                  href="https://www.dermatology.columbia.edu/profile/alejandro-gru-md"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline"
+                >
+                  View Profile
+                </a>
+              </p>
             </CardContent>
           </Card>
         </div>

@@ -13,88 +13,70 @@ export function Navbar() {
   if (pathname === "/") return null
 
   return (
-    <div className="border-b border-gray-200/50 bg-white/80 backdrop-blur-md sticky top-0 z-50">
-      <div className="container flex h-16 items-center">
+    <div className="border-b">
+      <div className="container flex h-14 items-center">
         <div className="mr-4 hidden md:flex">
-          <Link href="/" className="mr-8 flex items-center space-x-3 group">
-            <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-2 rounded-lg group-hover:scale-105 transition-transform">
-              <Calculator className="h-5 w-5 text-white" />
-            </div>
-            <span className="font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
-              CTCL Risk Assessment
-            </span>
+          <Link href="/" className="mr-6 flex items-center space-x-2">
+            <span className="font-bold">CTCL Risk Assessment Tool</span>
           </Link>
-          <nav className="flex items-center space-x-1">
-            <Link
-              href="/"
-              className="flex items-center px-3 py-2 text-sm font-medium transition-all hover:text-blue-600 hover:bg-blue-50 rounded-lg"
-            >
-              <Home className="mr-2 h-4 w-4" />
+          <nav className="flex items-center space-x-4 lg:space-x-6">
+            <Link href="/" className="flex items-center text-sm font-medium transition-colors hover:text-primary">
+              <Home className="mr-1 h-4 w-4" />
               <span>Home</span>
             </Link>
             <Link
               href="/calculator"
-              className={`flex items-center px-3 py-2 text-sm font-medium transition-all hover:bg-blue-50 rounded-lg ${
-                pathname.includes("/calculator")
-                  ? "text-blue-600 bg-blue-50 font-semibold"
-                  : "text-gray-700 hover:text-blue-600"
+              className={`flex items-center text-sm font-medium transition-colors hover:text-primary ${
+                pathname.includes("/calculator") ? "text-primary" : "text-muted-foreground"
               }`}
             >
-              <Calculator className="mr-2 h-4 w-4" />
+              <Calculator className="mr-1 h-4 w-4" />
               <span>Calculator</span>
             </Link>
             <Link
               href="/information"
-              className={`flex items-center px-3 py-2 text-sm font-medium transition-all hover:bg-purple-50 rounded-lg ${
-                pathname.includes("/information")
-                  ? "text-purple-600 bg-purple-50 font-semibold"
-                  : "text-gray-700 hover:text-purple-600"
+              className={`flex items-center text-sm font-medium transition-colors hover:text-primary ${
+                pathname.includes("/information") ? "text-primary" : "text-muted-foreground"
               }`}
             >
-              <InfoIcon className="mr-2 h-4 w-4" />
-              <span>Information</span>
+              <InfoIcon className="mr-1 h-4 w-4" />
+              <span>Information & Staging</span>
             </Link>
             <Link
               href="/resources"
-              className={`flex items-center px-3 py-2 text-sm font-medium transition-all hover:bg-teal-50 rounded-lg ${
-                pathname.includes("/resources")
-                  ? "text-teal-600 bg-teal-50 font-semibold"
-                  : "text-gray-700 hover:text-teal-600"
+              className={`flex items-center text-sm font-medium transition-colors hover:text-primary ${
+                pathname.includes("/resources") ? "text-primary" : "text-muted-foreground"
               }`}
             >
-              <BookOpen className="mr-2 h-4 w-4" />
+              <BookOpen className="mr-1 h-4 w-4" />
               <span>Resources</span>
             </Link>
             <Link
               href="/treatments"
-              className={`flex items-center px-3 py-2 text-sm font-medium transition-all hover:bg-orange-50 rounded-lg ${
-                pathname.includes("/treatments")
-                  ? "text-orange-600 bg-orange-50 font-semibold"
-                  : "text-gray-700 hover:text-orange-600"
+              className={`flex items-center text-sm font-medium transition-colors hover:text-primary ${
+                pathname.includes("/treatments") ? "text-primary" : "text-muted-foreground"
               }`}
             >
-              <Pill className="mr-2 h-4 w-4" />
+              <Pill className="mr-1 h-4 w-4" />
               <span>Treatments</span>
             </Link>
             <Link
               href="/about"
-              className={`flex items-center px-3 py-2 text-sm font-medium transition-all hover:bg-gray-50 rounded-lg ${
-                pathname.includes("/about")
-                  ? "text-gray-900 bg-gray-100 font-semibold"
-                  : "text-gray-700 hover:text-gray-900"
+              className={`flex items-center text-sm font-medium transition-colors hover:text-primary ${
+                pathname.includes("/about") ? "text-primary" : "text-muted-foreground"
               }`}
             >
-              <FileText className="mr-2 h-4 w-4" />
+              <FileText className="mr-1 h-4 w-4" />
               <span>About</span>
             </Link>
           </nav>
         </div>
         <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
           <div className="w-full md:w-auto md:flex-none">
-            <SearchInput className="w-full md:w-[250px] lg:w-[350px]" />
+            <SearchInput className="w-full md:w-[200px] lg:w-[300px]" />
           </div>
           <div className="flex md:hidden">
-            <Button variant="outline" asChild className="ml-2 hover:bg-blue-50 hover:text-blue-600 transition-colors">
+            <Button variant="outline" asChild className="ml-2">
               <Link href="/">
                 <Home className="h-4 w-4" />
                 <span className="sr-only">Home</span>
