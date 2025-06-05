@@ -188,7 +188,7 @@ export default function RiskCalculator() {
       {/* Header */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center text-2xl">
+          <CardTitle className="flex items-center text-xl sm:text-2xl">
             <Calculator className="mr-3 h-6 w-6" />
             CTCL Risk Assessment Calculator
           </CardTitle>
@@ -198,9 +198,9 @@ export default function RiskCalculator() {
         </CardHeader>
       </Card>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
         {/* Clinical Features - ML Model Input */}
-        <div className="lg:col-span-2 space-y-4">
+        <div className="xl:col-span-2 space-y-4">
           <Card>
             <CardHeader className="pb-3">
               <CardTitle className="text-lg">Clinical Features Assessment</CardTitle>
@@ -211,18 +211,20 @@ export default function RiskCalculator() {
             </CardHeader>
             <CardContent className="space-y-4">
               {questions.map((question) => (
-                <div key={question.id} className="p-4 rounded-lg border border-border space-y-2">
-                  <div className="flex items-center space-x-2">
+                <div key={question.id} className="p-3 sm:p-4 rounded-lg border border-border space-y-2">
+                  <div className="flex items-start space-x-2">
                     <input
                       type="checkbox"
                       name={question.id}
                       checked={features[question.id]}
                       onChange={() => handleFeatureToggle(question.id, !features[question.id])}
-                      className="accent-green-600 h-5 w-5"
+                      className="accent-green-600 h-5 w-5 mt-0.5 flex-shrink-0"
                     />
-                    <Label className="text-sm font-medium block mb-0">{question.text}</Label>
+                    <div className="flex-1 min-w-0">
+                      <Label className="text-sm font-medium block mb-1 leading-tight">{question.text}</Label>
+                      <p className="text-xs text-muted-foreground leading-relaxed">{question.description}</p>
+                    </div>
                   </div>
-                  <p className="text-xs text-muted-foreground ml-7">{question.description}</p>
                 </div>
               ))}
             </CardContent>
@@ -232,7 +234,7 @@ export default function RiskCalculator() {
         {/* Results Panel */}
         <div className="space-y-4">
           {/* Score Display */}
-          <Card className="sticky top-4">
+          <Card className="xl:sticky xl:top-4">
             <CardHeader className="text-center">
               <CardTitle>ML Risk Score</CardTitle>
             </CardHeader>
@@ -253,7 +255,7 @@ export default function RiskCalculator() {
                 </div>
               ) : riskScore !== null ? (
                 <>
-                  <div className="text-6xl font-bold text-primary">{(riskScore * 100).toFixed(1)}%</div>
+                  <div className="text-4xl sm:text-6xl font-bold text-primary">{(riskScore * 100).toFixed(1)}%</div>
                   <div className="text-sm text-muted-foreground">Risk Probability</div>
 
                   <Separator />

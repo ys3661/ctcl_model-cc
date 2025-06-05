@@ -151,14 +151,14 @@ export function MobileLayout({ children }: MobileLayoutProps) {
             Support
           </Link>
           <Link
-            href="/patients"
+            href="/information"
             className={cn(
               "flex flex-col items-center justify-center text-xs",
-              pathname === "/patients" ? "text-primary" : "text-muted-foreground",
+              pathname === "/information" ? "text-primary" : "text-muted-foreground",
             )}
           >
-            <User className="h-5 w-5 mb-1" />
-            Patients
+            <Info className="h-5 w-5 mb-1" />
+            Info
           </Link>
         </div>
       </div>

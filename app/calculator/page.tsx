@@ -1,5 +1,5 @@
-import MobileCalculatorPage from "./mobile-page"
+import CalculatorPage from "./mobile-page"
 
-export default function CalculatorPage() {
-  return <MobileCalculatorPage />
+export default function Calculator() {
+  return <CalculatorPage />
 }
