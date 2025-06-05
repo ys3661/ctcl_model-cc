@@ -55,7 +55,6 @@ export function MobileLayout({ children }: MobileLayoutProps) {
     { href: "/resources", icon: BookOpen, label: "Resources" },
     { href: "/treatments", icon: Pill, label: "Treatments" },
     { href: "/about", icon: FileText, label: "About" },
-    { href: "/patients", icon: User, label: "Patients" },
   ]
 
   return (
