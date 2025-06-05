@@ -220,6 +220,133 @@ export default function InformationPage() {
             </div>
           </CardContent>
         </Card>
+
+        <Card className="mt-6">
+          <CardHeader>
+            <CardTitle>CTCL Staging Chart</CardTitle>
+            <CardDescription>Visual guide to CTCL staging system</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-6">
+              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-lg border">
+                <h4 className="font-semibold text-lg mb-4 text-center">TNMB Staging System</h4>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* T Stage */}
+                  <div className="bg-white p-4 rounded-lg shadow-sm">
+                    <h5 className="font-medium text-blue-700 mb-3">T (Tumor/Skin)</h5>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex justify-between">
+                        <span className="font-medium">T1:</span>
+                        <span>&lt;10% body surface</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="font-medium">T2:</span>
+                        <span>≥10% body surface</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="font-medium">T3:</span>
+                        <span>Tumors present</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="font-medium">T4:</span>
+                        <span>Erythroderma</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* N Stage */}
+                  <div className="bg-white p-4 rounded-lg shadow-sm">
+                    <h5 className="font-medium text-green-700 mb-3">N (Lymph Nodes)</h5>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex justify-between">
+                        <span className="font-medium">N0:</span>
+                        <span>No involvement</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="font-medium">N1:</span>
+                        <span>Palpable, uninvolved</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="font-medium">N2:</span>
+                        <span>Non-palpable, uninvolved</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="font-medium">N3:</span>
+                        <span>Histologically involved</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* M Stage */}
+                  <div className="bg-white p-4 rounded-lg shadow-sm">
+                    <h5 className="font-medium text-purple-700 mb-3">M (Metastasis)</h5>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex justify-between">
+                        <span className="font-medium">M0:</span>
+                        <span>No visceral involvement</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="font-medium">M1:</span>
+                        <span>Visceral involvement</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* B Stage */}
+                  <div className="bg-white p-4 rounded-lg shadow-sm">
+                    <h5 className="font-medium text-red-700 mb-3">B (Blood)</h5>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex justify-between">
+                        <span className="font-medium">B0:</span>
+                        <span>&lt;5% Sézary cells</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="font-medium">B1:</span>
+                        <span>5-19% Sézary cells</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="font-medium">B2:</span>
+                        <span>≥20% Sézary cells</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Stage Summary */}
+                <div className="mt-6 bg-gray-50 p-4 rounded-lg">
+                  <h5 className="font-medium mb-3">Overall Stages</h5>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                    <div>
+                      <strong>Stage IA:</strong> T1N0M0B0
+                    </div>
+                    <div>
+                      <strong>Stage IB:</strong> T2N0M0B0
+                    </div>
+                    <div>
+                      <strong>Stage IIA:</strong> T1-2N1M0B0
+                    </div>
+                    <div>
+                      <strong>Stage IIB:</strong> T3N0-1M0B0
+                    </div>
+                    <div>
+                      <strong>Stage IIIA:</strong> T4N0M0B0
+                    </div>
+                    <div>
+                      <strong>Stage IIIB:</strong> T4N0M0B1
+                    </div>
+                    <div>
+                      <strong>Stage IVA:</strong> T1-4N2-3M0B0-1
+                    </div>
+                    <div>
+                      <strong>Stage IVB:</strong> T1-4N0-3M1B0-2
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </main>
   )
