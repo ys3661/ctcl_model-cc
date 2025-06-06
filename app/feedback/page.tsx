@@ -1,6 +1,6 @@
 "use client"
 
-import { useActionState } from "react"
+import { useActionState, useState } from "react"
 import Link from "next/link"
 import { ArrowLeft, Send } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Checkbox } from "@/components/ui/checkbox"
 import { submitFeedback } from "./actions"
 
 // Initial state for the form
@@ -19,6 +20,7 @@ const initialState = {
 
 export default function FeedbackPage() {
   const [state, formAction, isPending] = useActionState(submitFeedback, initialState)
+  const [isResearchParticipant, setIsResearchParticipant] = useState(false)
 
   if (state?.success) {
     return (
@@ -104,6 +106,30 @@ export default function FeedbackPage() {
                 </Select>
               </div>
 
+              {/* Research Study Participation */}
+              <div className="space-y-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                <div className="flex items-start space-x-2">
+                  <Checkbox
+                    id="researchParticipant"
+                    name="researchParticipant"
+                    disabled={isPending}
+                    checked={isResearchParticipant}
+                    onCheckedChange={(checked) => setIsResearchParticipant(checked === true)}
+                  />
+                  <div className="grid gap-1.5 leading-none">
+                    <Label
+                      htmlFor="researchParticipant"
+                      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    >
+                      I am participating in the qualitative research study
+                    </Label>
+                    <p className="text-xs text-muted-foreground">
+                      Check this box if you are part of our research study to access additional questions
+                    </p>
+                  </div>
+                </div>
+              </div>
+
               <div className="space-y-2">
                 <Label htmlFor="message">Your Feedback *</Label>
                 <Textarea
@@ -126,6 +152,104 @@ export default function FeedbackPage() {
                   disabled={isPending}
                 />
               </div>
+
+              {/* Research Study Questions - Conditionally Rendered */}
+              {isResearchParticipant && (
+                <div className="space-y-6 p-4 bg-green-50 rounded-lg border border-green-200">
+                  <h3 className="text-lg font-semibold text-green-800">Research Study Questions</h3>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="workflowFit">
+                      1. Workflow Fit: How did the CTCL tool fit into your typical clinical workflow?
+                    </Label>
+                    <Textarea
+                      id="workflowFit"
+                      name="workflowFit"
+                      placeholder="Please describe how the tool integrated with your clinical workflow..."
+                      className="min-h-[80px]"
+                      disabled={isPending}
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="clinicalImpact">
+                      2. Clinical Impact: Did the tool affect how often you considered CTCL as a diagnosis? If so, how?
+                    </Label>
+                    <Textarea
+                      id="clinicalImpact"
+                      name="clinicalImpact"
+                      placeholder="Please describe any changes in your diagnostic considerations..."
+                      className="min-h-[80px]"
+                      disabled={isPending}
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="usefulFeatures">
+                      3. Most Useful Features: Which feature(s) did you find most helpful?
+                    </Label>
+                    <Textarea
+                      id="usefulFeatures"
+                      name="usefulFeatures"
+                      placeholder="Please describe the most helpful features..."
+                      className="min-h-[80px]"
+                      disabled={isPending}
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="leastUsefulFeatures">
+                      4. Least Useful Features: Were there any features that were not useful or could be improved?
+                    </Label>
+                    <Textarea
+                      id="leastUsefulFeatures"
+                      name="leastUsefulFeatures"
+                      placeholder="Please describe any features that could be improved..."
+                      className="min-h-[80px]"
+                      disabled={isPending}
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="barriers">
+                      5. Barriers: Did you encounter any challenges or barriers while using the tool?
+                    </Label>
+                    <Textarea
+                      id="barriers"
+                      name="barriers"
+                      placeholder="Please describe any challenges you encountered..."
+                      className="min-h-[80px]"
+                      disabled={isPending}
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="improvementSuggestions">
+                      6. Suggestions: What one improvement would most increase the tool's value for you?
+                    </Label>
+                    <Textarea
+                      id="improvementSuggestions"
+                      name="improvementSuggestions"
+                      placeholder="Please describe the most important improvement..."
+                      className="min-h-[80px]"
+                      disabled={isPending}
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="overallImpression">
+                      7. Overall Impression: What is your overall impression of the CTCL app?
+                    </Label>
+                    <Textarea
+                      id="overallImpression"
+                      name="overallImpression"
+                      placeholder="Please share your overall thoughts about the application..."
+                      className="min-h-[80px]"
+                      disabled={isPending}
+                    />
+                  </div>
+                </div>
+              )}
 
               {state && !state.success && state.message && (
                 <div className="p-3 rounded-md bg-red-50 text-red-600 text-sm">{state.message}</div>
