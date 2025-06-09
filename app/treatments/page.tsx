@@ -8,8 +8,8 @@ import { ArrowLeft } from "lucide-react"
 export default function TreatmentsPage() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
-      <div className="container mx-auto py-6 px-4 md:px-6 lg:py-12">
-        <div className="mb-6">
+      <div className="container mx-auto py-4 px-3 md:px-6 lg:py-12">
+        <div className="mb-4 md:mb-6">
           <Link href="/">
             <Button variant="outline" size="sm">
               <ArrowLeft className="mr-2 h-4 w-4" /> Back to Home
@@ -17,17 +17,17 @@ export default function TreatmentsPage() {
           </Link>
         </div>
 
-        <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
+        <h1 className="text-2xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
           CTCL Treatment Options
         </h1>
-        <p className="text-muted-foreground mb-8">
+        <p className="text-sm md:text-base text-muted-foreground mb-6 md:mb-8">
           Cutaneous T-Cell Lymphoma (CTCL) has various treatment approaches depending on the stage, type, and individual
           patient factors. Treatment is typically managed by a multidisciplinary team of specialists.
           <sup className="text-xs ml-0.5">[1-2]</sup>
         </p>
 
         <Tabs defaultValue="overview" className="w-full">
-          <TabsList className="grid grid-cols-2 md:grid-cols-6 mb-8">
+          <TabsList className="grid grid-cols-2 md:grid-cols-6 mb-8 w-full overflow-x-auto">
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="topical">Topical</TabsTrigger>
             <TabsTrigger value="light">Light Therapy</TabsTrigger>
@@ -43,7 +43,7 @@ export default function TreatmentsPage() {
                 <CardTitle>Treatment Approach Overview</CardTitle>
                 <CardDescription>Understanding the general approach to CTCL treatment and management</CardDescription>
               </CardHeader>
-              <CardContent className="space-y-6">
+              <CardContent className="space-y-4 md:space-y-6 p-4 md:p-6">
                 <div>
                   <h3 className="text-lg font-medium mb-2">Treatment Philosophy</h3>
                   <p className="text-muted-foreground">
@@ -56,7 +56,7 @@ export default function TreatmentsPage() {
 
                 <div>
                   <h3 className="text-lg font-medium mb-2">Treatment Goals</h3>
-                  <ul className="list-disc pl-6 space-y-1 text-muted-foreground">
+                  <ul className="list-disc pl-4 md:pl-6 space-y-1 text-sm md:text-base text-muted-foreground">
                     <li>Reduce or eliminate skin lesions</li>
                     <li>Relieve symptoms such as itching, pain, and redness</li>
                     <li>Maintain or improve quality of life</li>
@@ -67,7 +67,7 @@ export default function TreatmentsPage() {
 
                 <div>
                   <h3 className="text-lg font-medium mb-2">Treatment Selection Factors</h3>
-                  <ul className="list-disc pl-6 space-y-1 text-muted-foreground">
+                  <ul className="list-disc pl-4 md:pl-6 space-y-1 text-sm md:text-base text-muted-foreground">
                     <li>
                       Disease stage (IA, IB, IIA, IIB, III, IVA, IVB)
                       <sup className="text-xs ml-0.5">[4]</sup>
@@ -85,7 +85,7 @@ export default function TreatmentsPage() {
                   <p className="text-muted-foreground mb-2">
                     CTCL treatments can be broadly categorized into the following approaches:
                   </p>
-                  <ul className="list-disc pl-6 space-y-1 text-muted-foreground">
+                  <ul className="list-disc pl-4 md:pl-6 space-y-1 text-sm md:text-base text-muted-foreground">
                     <li>
                       <strong>Skin-directed therapies:</strong> Topical medications, phototherapy, and radiation therapy
                       that target the skin lesions directly
@@ -131,14 +131,14 @@ export default function TreatmentsPage() {
                 <CardTitle>Topical Treatments</CardTitle>
                 <CardDescription>Medications applied directly to the skin</CardDescription>
               </CardHeader>
-              <CardContent className="space-y-6">
+              <CardContent className="space-y-4 md:space-y-6 p-4 md:p-6">
                 <div>
                   <h3 className="text-lg font-medium mb-2">Corticosteroids</h3>
                   <p className="text-muted-foreground mb-2">
                     Topical corticosteroids are often the first-line treatment for limited patch or plaque stage CTCL.
                     <sup className="text-xs ml-0.5">[2,5,10]</sup>
                   </p>
-                  <ul className="list-disc pl-6 space-y-1 text-muted-foreground">
+                  <ul className="list-disc pl-4 md:pl-6 space-y-1 text-sm md:text-base text-muted-foreground">
                     <li>
                       <strong>Examples:</strong> Clobetasol, betamethasone, triamcinolone
                     </li>
@@ -161,7 +161,7 @@ export default function TreatmentsPage() {
                     A topical chemotherapy agent used for early-stage CTCL that doesn't respond to steroids.
                     <sup className="text-xs ml-0.5">[2,5,11-12]</sup>
                   </p>
-                  <ul className="list-disc pl-6 space-y-1 text-muted-foreground">
+                  <ul className="list-disc pl-4 md:pl-6 space-y-1 text-sm md:text-base text-muted-foreground">
                     <li>
                       <strong>Formulations:</strong> Valchlor® gel (FDA-approved) or compounded preparations
                     </li>
@@ -183,7 +183,7 @@ export default function TreatmentsPage() {
                     A vitamin A derivative that regulates cell growth and differentiation.
                     <sup className="text-xs ml-0.5">[2,5,13]</sup>
                   </p>
-                  <ul className="list-disc pl-6 space-y-1 text-muted-foreground">
+                  <ul className="list-disc pl-4 md:pl-6 space-y-1 text-sm md:text-base text-muted-foreground">
                     <li>
                       <strong>Brand name:</strong> Targretin® gel
                     </li>
@@ -205,7 +205,7 @@ export default function TreatmentsPage() {
                     An immune response modifier that stimulates the immune system to fight abnormal cells.
                     <sup className="text-xs ml-0.5">[14]</sup>
                   </p>
-                  <ul className="list-disc pl-6 space-y-1 text-muted-foreground">
+                  <ul className="list-disc pl-4 md:pl-6 space-y-1 text-sm md:text-base text-muted-foreground">
                     <li>
                       <strong>Brand name:</strong> Aldara®, Zyclara®
                     </li>
@@ -227,7 +227,7 @@ export default function TreatmentsPage() {
                     Calcineurin inhibitors that reduce inflammation without the side effects of steroids.
                     <sup className="text-xs ml-0.5">[15-19]</sup>
                   </p>
-                  <ul className="list-disc pl-6 space-y-1 text-muted-foreground">
+                  <ul className="list-disc pl-4 md:pl-6 space-y-1 text-sm md:text-base text-muted-foreground">
                     <li>
                       <strong>Brand names:</strong> Protopic® (tacrolimus), Elidel® (pimecrolimus)
                     </li>
@@ -257,13 +257,13 @@ export default function TreatmentsPage() {
                 </CardTitle>
                 <CardDescription>Treatment using ultraviolet light to target skin lesions</CardDescription>
               </CardHeader>
-              <CardContent className="space-y-6">
+              <CardContent className="space-y-4 md:space-y-6 p-4 md:p-6">
                 <div>
                   <h3 className="text-lg font-medium mb-2">Narrowband UVB (NB-UVB)</h3>
                   <p className="text-muted-foreground mb-2">
                     A type of phototherapy that uses a specific wavelength of ultraviolet B light.
                   </p>
-                  <ul className="list-disc pl-6 space-y-1 text-muted-foreground">
+                  <ul className="list-disc pl-4 md:pl-6 space-y-1 text-sm md:text-base text-muted-foreground">
                     <li>
                       <strong>Best for:</strong> Patch-stage or thin plaque disease
                     </li>
@@ -285,7 +285,7 @@ export default function TreatmentsPage() {
                   <p className="text-muted-foreground mb-2">
                     Combines a photosensitizing medication (psoralen) with ultraviolet A light exposure.
                   </p>
-                  <ul className="list-disc pl-6 space-y-1 text-muted-foreground">
+                  <ul className="list-disc pl-4 md:pl-6 space-y-1 text-sm md:text-base text-muted-foreground">
                     <li>
                       <strong>Best for:</strong> Thicker plaques and more advanced skin disease
                     </li>
@@ -309,7 +309,7 @@ export default function TreatmentsPage() {
                     A procedure where blood is removed, treated with a photosensitizing agent and UV light, then
                     returned to the body.
                   </p>
-                  <ul className="list-disc pl-6 space-y-1 text-muted-foreground">
+                  <ul className="list-disc pl-4 md:pl-6 space-y-1 text-sm md:text-base text-muted-foreground">
                     <li>
                       <strong>Best for:</strong> Erythrodermic CTCL and Sézary Syndrome
                     </li>
@@ -330,7 +330,7 @@ export default function TreatmentsPage() {
                   <p className="text-muted-foreground mb-2">
                     A targeted form of UVB light therapy that can be directed at specific lesions.
                   </p>
-                  <ul className="list-disc pl-6 space-y-1 text-muted-foreground">
+                  <ul className="list-disc pl-4 md:pl-6 space-y-1 text-sm md:text-base text-muted-foreground">
                     <li>
                       <strong>Best for:</strong> Limited, localized lesions
                     </li>
@@ -348,7 +348,7 @@ export default function TreatmentsPage() {
 
                 <div className="p-4 bg-amber-50 border border-amber-200 rounded-md">
                   <h3 className="text-lg font-medium mb-2 text-amber-800">Important Considerations</h3>
-                  <ul className="list-disc pl-6 space-y-1 text-amber-700">
+                  <ul className="list-disc pl-4 md:pl-6 space-y-1 text-sm md:text-base text-amber-700">
                     <li>
                       Phototherapy requires specialized equipment and is typically administered in a dermatology clinic
                       or hospital setting
@@ -372,13 +372,13 @@ export default function TreatmentsPage() {
                 </CardTitle>
                 <CardDescription>Using radiation to target cancer cells</CardDescription>
               </CardHeader>
-              <CardContent className="space-y-6">
+              <CardContent className="space-y-4 md:space-y-6 p-4 md:p-6">
                 <div>
                   <h3 className="text-lg font-medium mb-2">Localized Radiation Therapy</h3>
                   <p className="text-muted-foreground mb-2">
                     Targeted radiation to specific skin lesions or lymph nodes.
                   </p>
-                  <ul className="list-disc pl-6 space-y-1 text-muted-foreground">
+                  <ul className="list-disc pl-4 md:pl-6 space-y-1 text-sm md:text-base text-muted-foreground">
                     <li>
                       <strong>Best for:</strong> Thick, localized plaques or tumors that don't respond to other
                       treatments
@@ -400,7 +400,7 @@ export default function TreatmentsPage() {
                   <p className="text-muted-foreground mb-2">
                     A specialized form of radiation therapy that treats the entire skin surface.
                   </p>
-                  <ul className="list-disc pl-6 space-y-1 text-muted-foreground">
+                  <ul className="list-disc pl-4 md:pl-6 space-y-1 text-sm md:text-base text-muted-foreground">
                     <li>
                       <strong>Best for:</strong> Widespread skin involvement
                     </li>
@@ -423,7 +423,7 @@ export default function TreatmentsPage() {
                   <p className="text-muted-foreground mb-2">
                     A modified approach using lower radiation doses to reduce side effects while maintaining efficacy.
                   </p>
-                  <ul className="list-disc pl-6 space-y-1 text-muted-foreground">
+                  <ul className="list-disc pl-4 md:pl-6 space-y-1 text-sm md:text-base text-muted-foreground">
                     <li>
                       <strong>Advantage:</strong> Fewer side effects, can be repeated multiple times
                     </li>
@@ -441,7 +441,7 @@ export default function TreatmentsPage() {
                   <p className="text-muted-foreground mb-2">
                     Targeted radiation to relieve symptoms in specific areas.
                   </p>
-                  <ul className="list-disc pl-6 space-y-1 text-muted-foreground">
+                  <ul className="list-disc pl-4 md:pl-6 space-y-1 text-sm md:text-base text-muted-foreground">
                     <li>
                       <strong>Best for:</strong> Symptomatic lesions causing pain, bleeding, or cosmetic concerns
                     </li>
@@ -456,7 +456,7 @@ export default function TreatmentsPage() {
 
                 <div className="p-4 bg-amber-50 border border-amber-200 rounded-md">
                   <h3 className="text-lg font-medium mb-2 text-amber-800">Important Considerations</h3>
-                  <ul className="list-disc pl-6 space-y-1 text-amber-700">
+                  <ul className="list-disc pl-4 md:pl-6 space-y-1 text-sm md:text-base text-amber-700">
                     <li>
                       Radiation therapy requires specialized equipment and expertise, available only at certain centers
                     </li>
@@ -477,7 +477,7 @@ export default function TreatmentsPage() {
                 <CardTitle>Systemic Treatments</CardTitle>
                 <CardDescription>Medications that work throughout the entire body</CardDescription>
               </CardHeader>
-              <CardContent className="space-y-6">
+              <CardContent className="space-y-4 md:space-y-6 p-4 md:p-6">
                 <div>
                   <h3 className="text-lg font-medium mb-2">
                     Retinoids
@@ -486,7 +486,7 @@ export default function TreatmentsPage() {
                   <p className="text-muted-foreground mb-2">
                     Vitamin A derivatives that regulate cell growth and differentiation.
                   </p>
-                  <ul className="list-disc pl-6 space-y-1 text-muted-foreground">
+                  <ul className="list-disc pl-4 md:pl-6 space-y-1 text-sm md:text-base text-muted-foreground">
                     <li>
                       <strong>Examples:</strong> Bexarotene (Targretin®), Acitretin (Soriatane®)
                     </li>
@@ -511,7 +511,7 @@ export default function TreatmentsPage() {
                   <p className="text-muted-foreground mb-2">
                     Epigenetic modifiers that help restore normal gene expression in cancer cells.
                   </p>
-                  <ul className="list-disc pl-6 space-y-1 text-muted-foreground">
+                  <ul className="list-disc pl-4 md:pl-6 space-y-1 text-sm md:text-base text-muted-foreground">
                     <li>
                       <strong>Examples:</strong> Vorinostat (Zolinza®), Romidepsin (Istodax®)
                     </li>
@@ -532,7 +532,7 @@ export default function TreatmentsPage() {
                   <p className="text-muted-foreground mb-2">
                     Medications that modify the immune response to target cancer cells.
                   </p>
-                  <ul className="list-disc pl-6 space-y-1 text-muted-foreground">
+                  <ul className="list-disc pl-4 md:pl-6 space-y-1 text-sm md:text-base text-muted-foreground">
                     <li>
                       <strong>Examples:</strong> Interferon alfa, Mogamulizumab (Poteligeo®)
                     </li>
@@ -555,7 +555,7 @@ export default function TreatmentsPage() {
                   <p className="text-muted-foreground mb-2">
                     Targeted therapies that combine antibodies with cytotoxic drugs.
                   </p>
-                  <ul className="list-disc pl-6 space-y-1 text-muted-foreground">
+                  <ul className="list-disc pl-4 md:pl-6 space-y-1 text-sm md:text-base text-muted-foreground">
                     <li>
                       <strong>Example:</strong> Brentuximab vedotin (Adcetris®)
                     </li>
@@ -576,7 +576,7 @@ export default function TreatmentsPage() {
                   <p className="text-muted-foreground mb-2">
                     Cytotoxic drugs used primarily for advanced or refractory disease.
                   </p>
-                  <ul className="list-disc pl-6 space-y-1 text-muted-foreground">
+                  <ul className="list-disc pl-4 md:pl-6 space-y-1 text-sm md:text-base text-muted-foreground">
                     <li>
                       <strong>Single agents:</strong> Methotrexate, gemcitabine, liposomal doxorubicin, pralatrexate
                     </li>
@@ -598,7 +598,7 @@ export default function TreatmentsPage() {
                   <p className="text-muted-foreground mb-2">
                     A procedure to replace diseased bone marrow with healthy stem cells.
                   </p>
-                  <ul className="list-disc pl-6 space-y-1 text-muted-foreground">
+                  <ul className="list-disc pl-4 md:pl-6 space-y-1 text-sm md:text-base text-muted-foreground">
                     <li>
                       <strong>Types:</strong> Autologous (using patient's own cells) or allogeneic (using donor cells)
                     </li>
@@ -625,13 +625,13 @@ export default function TreatmentsPage() {
                 <CardTitle>Emerging & Experimental Treatments</CardTitle>
                 <CardDescription>New approaches being investigated for CTCL</CardDescription>
               </CardHeader>
-              <CardContent className="space-y-6">
+              <CardContent className="space-y-4 md:space-y-6 p-4 md:p-6">
                 <div>
                   <h3 className="text-lg font-medium mb-2">Checkpoint Inhibitors</h3>
                   <p className="text-muted-foreground mb-2">
                     Immunotherapy drugs that block proteins that prevent T-cells from attacking cancer.
                   </p>
-                  <ul className="list-disc pl-6 space-y-1 text-muted-foreground">
+                  <ul className="list-disc pl-4 md:pl-6 space-y-1 text-sm md:text-base text-muted-foreground">
                     <li>
                       <strong>Examples:</strong> Pembrolizumab, Nivolumab, Ipilimumab
                     </li>
@@ -653,7 +653,7 @@ export default function TreatmentsPage() {
                   <p className="text-muted-foreground mb-2">
                     A treatment that uses genetically modified T-cells to target cancer cells.
                   </p>
-                  <ul className="list-disc pl-6 space-y-1 text-muted-foreground">
+                  <ul className="list-disc pl-4 md:pl-6 space-y-1 text-sm md:text-base text-muted-foreground">
                     <li>
                       <strong>Targets:</strong> Various, including CD4, CD30, CCR4
                     </li>
@@ -674,7 +674,7 @@ export default function TreatmentsPage() {
                   <p className="text-muted-foreground mb-2">
                     Medications that block Janus kinase enzymes involved in signaling pathways that drive CTCL.
                   </p>
-                  <ul className="list-disc pl-6 space-y-1 text-muted-foreground">
+                  <ul className="list-disc pl-4 md:pl-6 space-y-1 text-sm md:text-base text-muted-foreground">
                     <li>
                       <strong>Examples:</strong> Ruxolitinib, Tofacitinib
                     </li>
@@ -695,7 +695,7 @@ export default function TreatmentsPage() {
                   <p className="text-muted-foreground mb-2">
                     Targeted therapies that block phosphoinositide 3-kinase, a key enzyme in cancer cell growth.
                   </p>
-                  <ul className="list-disc pl-6 space-y-1 text-muted-foreground">
+                  <ul className="list-disc pl-4 md:pl-6 space-y-1 text-sm md:text-base text-muted-foreground">
                     <li>
                       <strong>Examples:</strong> Duvelisib, Copanlisib
                     </li>
@@ -713,7 +713,7 @@ export default function TreatmentsPage() {
                   <p className="text-muted-foreground mb-2">
                     Compounds that activate TLRs to stimulate immune responses against cancer cells.
                   </p>
-                  <ul className="list-disc pl-6 space-y-1 text-muted-foreground">
+                  <ul className="list-disc pl-4 md:pl-6 space-y-1 text-sm md:text-base text-muted-foreground">
                     <li>
                       <strong>Examples:</strong> Resiquimod, SD-101
                     </li>
@@ -735,7 +735,7 @@ export default function TreatmentsPage() {
                   <p className="text-muted-foreground mb-2">
                     Targeted therapies that inhibit enhancer of zeste homolog 2, a protein involved in gene expression.
                   </p>
-                  <ul className="list-disc pl-6 space-y-1 text-muted-foreground">
+                  <ul className="list-disc pl-4 md:pl-6 space-y-1 text-sm md:text-base text-muted-foreground">
                     <li>
                       <strong>Examples:</strong> Tazemetostat
                     </li>
@@ -754,7 +754,7 @@ export default function TreatmentsPage() {
                     Many emerging treatments are only available through clinical trials. Patients interested in these
                     options should:
                   </p>
-                  <ul className="list-disc pl-6 space-y-1 text-amber-700">
+                  <ul className="list-disc pl-4 md:pl-6 space-y-1 text-sm md:text-base text-amber-700">
                     <li>Discuss clinical trial options with their healthcare team</li>
                     <li>Search for trials at clinical trial registries</li>
                     <li>Contact major cancer centers with CTCL expertise</li>
@@ -766,7 +766,7 @@ export default function TreatmentsPage() {
           </TabsContent>
         </Tabs>
 
-        <div className="mt-8 p-6 bg-gradient-to-br from-slate-50 to-blue-50 rounded-lg border border-blue-200 shadow-lg">
+        <div className="mt-6 md:mt-8 p-4 md:p-6 bg-gradient-to-br from-slate-50 to-blue-50 rounded-lg border border-blue-200 shadow-lg">
           <h2 className="text-xl font-bold mb-4">Treatment Decision Making</h2>
           <p className="text-muted-foreground mb-4">
             CTCL treatment decisions should be made in consultation with a multidisciplinary team experienced in
@@ -785,7 +785,7 @@ export default function TreatmentsPage() {
         </div>
 
         {/* References Section */}
-        <div className="mt-8 p-6 bg-slate-50 rounded-lg border border-slate-200" id="references">
+        <div className="mt-6 md:mt-8 p-4 md:p-6 bg-slate-50 rounded-lg border border-slate-200" id="references">
           <h2 className="text-xl font-bold mb-4">References</h2>
           <div className="text-sm text-muted-foreground space-y-2">
             <ol className="list-decimal pl-5 space-y-1">
