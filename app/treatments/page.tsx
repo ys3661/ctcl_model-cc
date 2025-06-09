@@ -7,8 +7,8 @@ import { ArrowLeft } from "lucide-react"
 
 export default function TreatmentsPage() {
   return (
-    <main className="container mx-auto py-6 px-4 md:px-6 lg:py-12">
-      <div className="max-w-4xl mx-auto">
+    <main className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+      <div className="container mx-auto py-6 px-4 md:px-6 lg:py-12">
         <div className="mb-6">
           <Link href="/">
             <Button variant="outline" size="sm">
@@ -17,7 +17,9 @@ export default function TreatmentsPage() {
           </Link>
         </div>
 
-        <h1 className="text-3xl font-bold mb-4">CTCL Treatment Options</h1>
+        <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
+          CTCL Treatment Options
+        </h1>
         <p className="text-muted-foreground mb-8">
           Cutaneous T-Cell Lymphoma (CTCL) has various treatment approaches depending on the stage, type, and individual
           patient factors. Treatment is typically managed by a multidisciplinary team of specialists.
@@ -36,7 +38,7 @@ export default function TreatmentsPage() {
 
           {/* OVERVIEW TAB */}
           <TabsContent value="overview">
-            <Card>
+            <Card className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-blue-50/50 border-blue-200">
               <CardHeader>
                 <CardTitle>Treatment Approach Overview</CardTitle>
                 <CardDescription>Understanding the general approach to CTCL treatment and management</CardDescription>
@@ -124,7 +126,7 @@ export default function TreatmentsPage() {
 
           {/* TOPICAL TAB */}
           <TabsContent value="topical">
-            <Card>
+            <Card className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-blue-50/50 border-blue-200">
               <CardHeader>
                 <CardTitle>Topical Treatments</CardTitle>
                 <CardDescription>Medications applied directly to the skin</CardDescription>
@@ -247,7 +249,7 @@ export default function TreatmentsPage() {
 
           {/* LIGHT THERAPY TAB */}
           <TabsContent value="light">
-            <Card>
+            <Card className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-blue-50/50 border-blue-200">
               <CardHeader>
                 <CardTitle>
                   Light Therapy (Phototherapy)
@@ -362,7 +364,7 @@ export default function TreatmentsPage() {
 
           {/* RADIATION TAB */}
           <TabsContent value="radiation">
-            <Card>
+            <Card className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-blue-50/50 border-blue-200">
               <CardHeader>
                 <CardTitle>
                   Radiation Therapy
@@ -470,7 +472,7 @@ export default function TreatmentsPage() {
 
           {/* SYSTEMIC TAB */}
           <TabsContent value="systemic">
-            <Card>
+            <Card className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-blue-50/50 border-blue-200">
               <CardHeader>
                 <CardTitle>Systemic Treatments</CardTitle>
                 <CardDescription>Medications that work throughout the entire body</CardDescription>
@@ -618,7 +620,7 @@ export default function TreatmentsPage() {
 
           {/* EMERGING TAB */}
           <TabsContent value="emerging">
-            <Card>
+            <Card className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-blue-50/50 border-blue-200">
               <CardHeader>
                 <CardTitle>Emerging & Experimental Treatments</CardTitle>
                 <CardDescription>New approaches being investigated for CTCL</CardDescription>
@@ -764,7 +766,7 @@ export default function TreatmentsPage() {
           </TabsContent>
         </Tabs>
 
-        <div className="mt-8 p-6 bg-slate-50 rounded-lg border border-slate-200">
+        <div className="mt-8 p-6 bg-gradient-to-br from-slate-50 to-blue-50 rounded-lg border border-blue-200 shadow-lg">
           <h2 className="text-xl font-bold mb-4">Treatment Decision Making</h2>
           <p className="text-muted-foreground mb-4">
             CTCL treatment decisions should be made in consultation with a multidisciplinary team experienced in

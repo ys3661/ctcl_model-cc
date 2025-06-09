@@ -10,7 +10,7 @@ import { Suspense } from "react"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
-  title: "CTCL Risk Assessment Tool",
+  title: "CTCL Insight",
   description: "A comprehensive tool for dermatologists to assess CTCL risk",
     generator: 'v0.dev'
 }

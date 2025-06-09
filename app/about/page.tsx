@@ -5,8 +5,8 @@ import { ArrowLeft, MessageSquarePlus } from "lucide-react"
 
 export default function AboutPage() {
   return (
-    <main className="container mx-auto py-6 px-4 md:px-6 lg:py-12">
-      <div className="max-w-4xl mx-auto">
+    <main className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+      <div className="container mx-auto py-6 px-4 md:px-6 lg:py-12">
         <div className="mb-6">
           <Link href="/">
             <Button variant="outline" size="sm">
@@ -15,9 +15,11 @@ export default function AboutPage() {
           </Link>
         </div>
 
-        <h1 className="text-3xl font-bold mb-8">About This Tool</h1>
+        <h1 className="text-4xl font-bold mb-8 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
+          About This Tool
+        </h1>
 
-        <Card className="mb-6">
+        <Card className="mb-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-blue-50/50 border-blue-200">
           <CardHeader>
             <CardTitle>Purpose and Development</CardTitle>
             <CardDescription>The story behind the CTCL Risk Assessment Tool</CardDescription>
@@ -42,7 +44,7 @@ export default function AboutPage() {
           </CardContent>
         </Card>
 
-        <Card className="mb-6">
+        <Card className="mb-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-blue-50/50 border-blue-200">
           <CardHeader>
             <CardTitle>Data and Methodology</CardTitle>
             <CardDescription>How the risk assessment is calculated</CardDescription>
@@ -66,7 +68,7 @@ export default function AboutPage() {
           </CardContent>
         </Card>
 
-        <Card className="mb-6">
+        <Card className="mb-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-blue-50/50 border-blue-200">
           <CardHeader>
             <CardTitle>Limitations</CardTitle>
             <CardDescription>Important considerations when using this tool</CardDescription>
@@ -92,7 +94,7 @@ export default function AboutPage() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-blue-50/50 border-blue-200">
           <CardHeader>
             <CardTitle>Suggestions for Improvement</CardTitle>
             <CardDescription>Help us enhance the CTCL Risk Assessment Tool</CardDescription>
@@ -104,7 +106,7 @@ export default function AboutPage() {
             </p>
             <div className="flex justify-center mt-6">
               <Link href="/feedback">
-                <Button className="flex items-center gap-2">
+                <Button className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-300">
                   <MessageSquarePlus className="h-5 w-5" />
                   Submit Feedback Form
                 </Button>

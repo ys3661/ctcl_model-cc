@@ -358,8 +358,8 @@ export default function DocumentationPage() {
   }
 
   return (
-    <main className="container mx-auto py-6 px-4 md:px-6 lg:py-12">
-      <div className="max-w-4xl mx-auto">
+    <main className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+      <div className="container mx-auto py-6 px-4 md:px-6 lg:py-12">
         <div className="mb-6">
           <Link href="/">
             <Button variant="outline" size="sm">
@@ -368,11 +368,13 @@ export default function DocumentationPage() {
           </Link>
         </div>
 
-        <h1 className="text-3xl font-bold mb-8">Documentation & Resources</h1>
+        <h1 className="text-4xl font-bold mb-8 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
+          Documentation & Resources
+        </h1>
 
         <div className="space-y-8">
           {/* CTCL Note Templates Section */}
-          <Card>
+          <Card className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-blue-50/50 border-blue-200">
             <CardHeader>
               <CardTitle className="flex items-center">
                 <FileText className="mr-2 h-5 w-5" /> CTCL Note Templates
@@ -381,7 +383,7 @@ export default function DocumentationPage() {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid gap-4 md:grid-cols-2">
-                <Card className="p-4 border border-muted">
+                <Card className="p-4 border border-muted hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-slate-50">
                   <div className="flex justify-between items-start">
                     <div>
                       <h3 className="font-medium mb-1">Initial CTCL Evaluation Note Template</h3>
@@ -398,7 +400,7 @@ export default function DocumentationPage() {
                   </div>
                 </Card>
 
-                <Card className="p-4 border border-muted">
+                <Card className="p-4 border border-muted hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-slate-50">
                   <div className="flex justify-between items-start">
                     <div>
                       <h3 className="font-medium mb-1">CTCL Follow-up Visit Template</h3>
