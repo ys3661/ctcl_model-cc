@@ -255,6 +255,7 @@ export default function ResourcesPage() {
                     title: "Understanding CTCL: A Patient's Guide",
                     description: "Comprehensive overview of CTCL for newly diagnosed patients",
                     category: "Overview",
+                    url: "https://www.clfoundation.org/sites/default/files/2017-08/2013_guide.pdf",
                   },
                   {
                     title: "CTCL vs. Other Skin Conditions",
