@@ -39,7 +39,7 @@ const questions: Question[] = [
   {
     id: "otherrash",
     text: "Other Rash",
-    description: "Presence of other concurrent skin rashes or lesions",
+    description: "Presence of or tendency to develop other skin rashes or lesions",
   },
   {
     id: "scaly_patch_plaque",
