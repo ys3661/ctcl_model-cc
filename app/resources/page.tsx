@@ -51,9 +51,11 @@ export default function ResourcesPage() {
       <div className="container mx-auto py-6 px-4 md:px-6 lg:py-12">
         <div ref={topRef} className="max-w-5xl mx-auto">
           <div className="mb-6 flex justify-between items-center">
+            <Link href="/">
             <Button variant="outline" size="sm">
               <ArrowLeft className="mr-2 h-4 w-4" /> Back to Home
             </Button>
+            </Link>
           </div>
 
           <div className="bg-gradient-to-r from-blue-100 to-purple-100 p-6 rounded-lg mb-8 border border-blue-200 shadow-lg">
