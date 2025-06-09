@@ -294,22 +294,4 @@ export default function RiskCalculator() {
           </Card>
         </div>
       </div>
-
-      {/* Risk Guide - simplified to two categories */}
-            Risk Categories
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-2 text-sm">
-          <div className="flex justify-between">
-            <span>Less than 30%:</span>
-            <span className="font-medium text-green-600">Low Risk</span>
-          </div>
-          <div className="flex justify-between">
-            <span>30% and above:</span>
-            <span className="font-medium text-red-600">High Risk</span>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
-  )
 }
