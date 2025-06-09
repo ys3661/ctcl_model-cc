@@ -296,10 +296,6 @@ export default function RiskCalculator() {
       </div>
 
       {/* Risk Guide - simplified to two categories */}
-      <Card className="mt-6">
-        <CardHeader>
-          <CardTitle className="flex items-center text-lg">
-            <Info className="mr-2 h-4 w-4" />
             Risk Categories
           </CardTitle>
         </CardHeader>
