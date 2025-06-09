@@ -29,12 +29,6 @@ export default function SpecialistReferralPage() {
             <Button size="lg">View Specialist Resources</Button>
           </Link>
         </div>
-
-        <div className="flex justify-center mt-8">
-          <Link href="/clinical-support">
-            <Button>Go to CTCL Staging Tool</Button>
-          </Link>
-        </div>
       </div>
     </main>
   )

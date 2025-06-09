@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
-import { Calculator, Info, Loader2 } from "lucide-react"
+import { Calculator, Loader2 } from "lucide-react"
 
 interface MLFeatures {
   multiple_biopsies: boolean
@@ -122,6 +122,9 @@ export default function RiskCalculator() {
     setError(null)
 
     try {
+      // Log the features being sent to the API for debugging
+      console.log("Sending features to API:", features)
+
       const response = await fetch("/api/predict", {
         method: "POST",
         headers: {
@@ -130,11 +133,22 @@ export default function RiskCalculator() {
         body: JSON.stringify(features),
       })
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
+      // Get response text for better error logging
+      const responseText = await response.text()
+
+      // Try to parse as JSON
+      let data
+      try {
+        data = JSON.parse(responseText)
+      } catch (parseError) {
+        console.error("Failed to parse response as JSON:", responseText)
+        throw new Error(`Invalid response format: ${responseText.substring(0, 100)}...`)
       }
 
-      const data = await response.json()
+      if (!response.ok) {
+        console.error("API error response:", data)
+        throw new Error(`Server error: ${response.status} - ${data.error || "Unknown error"}`)
+      }
 
       if (data.error) {
         throw new Error(data.error)
@@ -143,8 +157,12 @@ export default function RiskCalculator() {
       setRiskScore(data.risk_score)
     } catch (err) {
       console.error("Error calculating risk:", err)
-      setError(err instanceof Error ? err.message : "Failed to calculate risk score")
-      setRiskScore(null)
+
+      // Implement fallback calculation when API fails
+      const fallbackScore = calculateFallbackRiskScore(features)
+      setRiskScore(fallbackScore)
+
+      setError(`API unavailable. Using fallback calculation. (${err instanceof Error ? err.message : "Unknown error"})`)
     } finally {
       setLoading(false)
     }
@@ -170,6 +188,30 @@ export default function RiskCalculator() {
     })
     setRiskScore(null)
     setError(null)
+  }
+
+  // Fallback calculation when API is unavailable
+  const calculateFallbackRiskScore = (features: MLFeatures): number => {
+    // Simple weighted calculation based on feature importance
+    const weights = {
+      multiple_biopsies: 0.23,
+      failed_steroids: 0.21,
+      otherrash: 0.13,
+      scaly_patch_plaque: 0.11,
+      erythema: 0.08,
+      xerosis: 0.08,
+      pruritus: 0.08,
+      other_failed_therapies: 0.07,
+    }
+
+    let score = 0
+    for (const [feature, isPresent] of Object.entries(features)) {
+      if (isPresent && feature in weights) {
+        score += weights[feature as keyof typeof weights]
+      }
+    }
+
+    return score
   }
 
   const selectedCount = Object.values(features).filter((value) => value === true).length
@@ -248,10 +290,7 @@ export default function RiskCalculator() {
               ) : riskScore !== null ? (
                 <>
                   <div className="py-4">
-                    <Badge 
-                      className={`${riskInterpretation?.color} px-4 py-2 text-lg font-medium`} 
-                      variant="outline"
-                    >
+                    <Badge className={`${riskInterpretation?.color} px-4 py-2 text-lg font-medium`} variant="outline">
                       {riskInterpretation?.risk}
                     </Badge>
                   </div>
@@ -297,8 +336,6 @@ export default function RiskCalculator() {
           </Card>
         </div>
       </div>
-
-
-      </div>
-    )
+    </div>
+  )
 }
