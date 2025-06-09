@@ -7,6 +7,70 @@ import { Badge } from "@/components/ui/badge"
 import { ArrowLeft, ExternalLink, BookOpen, MapPin, FileDown, ArrowUp, Building, Bookmark, Printer } from "lucide-react"
 import Link from "next/link"
 
+// Embedded document data
+const embeddedDocuments = {
+  "geskin-regimen": {
+    title: "GeSkin Care Routine for Xerosis",
+    description: "Specialized skincare regimen involving nightly dilute vinegar soaks and emollient application to preserve skin barrier integrity",
+    category: "Self-Care",
+    content: `The GeSkin Regimen
+A specialized skincare regimen involving nightly dilute vinegar soaks
+and emollient application to preserve skin barrier integrity.
+
+STEP 01 - Prepare
+Fill a clean bathtub, with warm water (body temperature: 98-100°F) and 1-2 cups of 1% white table vinegar.
+
+STEP 02 - Soak
+Soak in bathtub, with water up to neck, for at least 20 minutes. Make sure to keep water warm.
+
+STEP 03 - Dry
+Gently pat skin dry with a clean towel. Keep skin damp and do not rub skin.
+
+STEP 04 - Apply
+Apply a bland emollient +/- steroid ointment to the skin. If applying a steroid, a staggered regimen is recommended: one week on, one week off. Apply emollient +/- steroid twice daily (once in the morning and once at night after vinegar soaks).
+
+STEP 05 - Cover
+Following application, cover skin with plastic wrap followed by cotton pajamas. If the skin feels cold, consider warming up the bed using a heated blanket.`
+  },
+  "ctcl-template": {
+    title: "CTCL Clinical Documentation Template",
+    description: "Comprehensive initial visit template for healthcare providers treating cutaneous T-cell lymphoma patients",
+    category: "Clinical Tools",
+    content: `Division of Cutaneous Oncology - Initial Visit Template
+
+This comprehensive template includes:
+
+• History of Present Illness documentation
+• Registry data collection including:
+  - Date of onset and initial symptoms
+  - Initial lesion types (patch, plaque, tumor, erythroderma)
+  - Initial quantity and location of lesions
+  - Prior diagnoses and treatments
+  - Disease course progression
+
+• Patient History sections:
+  - Allergies, Past Medical/Surgical History
+  - Family History, Social History
+  - Review of Systems
+
+• Physical Examination:
+  - Complete Total Body Skin Examination
+  - mSWAT scoring system for disease assessment
+  - Body surface area calculations by region
+
+• Diagnostic Data sections:
+  - Laboratory results
+  - Flow cytometry findings
+  - Pathology reports
+  - Imaging studies
+
+• Assessment and Treatment Planning
+• CLIPI Prognostic Index calculations for both early and late stage disease
+
+This template supports structured documentation for mycosis fungoides and Sezary syndrome patients with standardized staging and prognostic assessments.`
+  }
+}
+
 export default function ResourcesPage() {
   const [activeCategory, setActiveCategory] = useState("all")
   const [showScrollTop, setShowScrollTop] = useState(false)
@@ -44,6 +108,21 @@ export default function ResourcesPage() {
   // Search functionality
   const matchesSearch = (text: string) => {
     return true
+  }
+
+  // Download embedded document function
+  const downloadEmbeddedDocument = (docId: string) => {
+    const doc = embeddedDocuments[docId as keyof typeof embeddedDocuments]
+    if (doc) {
+      const element = document.createElement("a")
+      const file = new Blob([doc.content], { type: 'text/plain' })
+      element.href = URL.createObjectURL(file)
+      element.download = `${doc.title.replace(/\s+/g, '_')}.txt`
+      document.body.appendChild(element)
+      element.click()
+      document.body.removeChild(element)
+      URL.revokeObjectURL(element.href)
+    }
   }
 
   return (
@@ -90,7 +169,7 @@ export default function ResourcesPage() {
                           : category.id === "specialists"
                             ? "1"
                             : category.id === "handouts"
-                              ? "6"
+                              ? "8"
                               : ""}
                     </Badge>
                   )}
@@ -262,44 +341,55 @@ export default function ResourcesPage() {
                 </div>
 
                 <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                  {/* Regular handouts */}
                   {[
                     {
                       title: "Understanding CTCL: A Patient's Guide",
                       description: "Comprehensive overview of CTCL for newly diagnosed patients",
                       category: "Overview",
                       url: "https://www.clfoundation.org/sites/default/files/2017-08/2013_guide.pdf",
+                      isEmbedded: false,
                     },
                     {
                       title: "CTCL vs. Other Skin Conditions",
                       description: "How CTCL differs from eczema, psoriasis, and other common skin conditions",
                       category: "Diagnosis",
                       url: "#",
+                      isEmbedded: false,
                     },
                     {
                       title: "CTCL Treatment Options Overview",
                       description: "Comprehensive guide to available treatments for different stages of CTCL",
                       category: "Treatment",
                       url: "#",
+                      isEmbedded: false,
                     },
                     {
                       title: "Managing Itching and Discomfort",
                       description: "Strategies for relieving pruritus and other symptoms",
                       category: "Symptom Management",
                       url: "#",
-                    },
-                    {
-                      title: "GeSkin Care Routine for Xerosis",
-                      description: "Recommended skin care practices for CTCL patients",
-                      category: "Self-Care",
-                      url: "#",
+                      isEmbedded: false,
                     },
                     {
                       title: "Emotional Well-being with CTCL",
                       description: "Coping strategies and resources for emotional support",
                       category: "Support",
                       url: "#",
+                      isEmbedded: false,
                     },
                   ]
+                    .concat(
+                      // Add embedded documents
+                      Object.entries(embeddedDocuments).map(([id, doc]) => ({
+                        title: doc.title,
+                        description: doc.description,
+                        category: doc.category,
+                        url: "#",
+                        isEmbedded: true,
+                        embedId: id,
+                      }))
+                    )
                     .filter(
                       (item) =>
                         matchesSearch(item.title) || matchesSearch(item.description) || matchesSearch(item.category),
@@ -307,21 +397,42 @@ export default function ResourcesPage() {
                     .map((handout, index) => (
                       <Card
                         key={index}
-                        className="transition-all hover:shadow-xl duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-blue-50/50 border-blue-200"
+                        className={`transition-all hover:shadow-xl duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-blue-50/50 border-blue-200 ${
+                          handout.isEmbedded ? 'ring-2 ring-green-200 border-green-300' : ''
+                        }`}
                       >
                         <CardContent className="p-4">
                           <div className="flex justify-between items-start mb-2">
                             <h3 className="font-medium">{handout.title}</h3>
-                            <Badge variant="outline" className="ml-2">
-                              {handout.category}
-                            </Badge>
+                            <div className="flex gap-1">
+                              <Badge variant="outline" className="ml-2">
+                                {handout.category}
+                              </Badge>
+                              {handout.isEmbedded && (
+                                <Badge className="bg-green-100 text-green-800 hover:bg-green-200">
+                                  Available
+                                </Badge>
+                              )}
+                            </div>
                           </div>
                           <p className="text-sm text-muted-foreground mb-3">{handout.description}</p>
-                          <Button variant="outline" size="sm" asChild>
-                            <a href={handout.url} target="_blank" rel="noopener noreferrer">
-                              <FileDown className="mr-1 h-4 w-4" />
-                              <span>Download PDF</span>
-                            </a>
+                          <Button 
+                            variant="outline" 
+                            size="sm" 
+                            onClick={handout.isEmbedded ? () => downloadEmbeddedDocument(handout.embedId!) : undefined}
+                            asChild={!handout.isEmbedded}
+                          >
+                            {handout.isEmbedded ? (
+                              <>
+                                <FileDown className="mr-1 h-4 w-4" />
+                                <span>Download Document</span>
+                              </>
+                            ) : (
+                              <a href={handout.url} target="_blank" rel="noopener noreferrer">
+                                <FileDown className="mr-1 h-4 w-4" />
+                                <span>Download PDF</span>
+                              </a>
+                            )}
                           </Button>
                         </CardContent>
                       </Card>
