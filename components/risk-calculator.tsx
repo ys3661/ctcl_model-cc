@@ -81,6 +81,8 @@ function getRiskInterpretation(riskScore: number) {
     return {
       risk: "High Risk",
       color: "text-red-600 border-red-600",
+      description: "High risk of CTCL.",
+      recommendation: "Immediate specialist evaluation and comprehensive workup needed.",
       showNextSteps: true,
     }
   }
@@ -246,10 +248,7 @@ export default function RiskCalculator() {
               ) : riskScore !== null ? (
                 <>
                   <div className="py-4">
-                    <Badge 
-                      className={`${riskInterpretation?.color} px-4 py-2 text-lg font-medium`} 
-                      variant="outline"
-                    >
+                    <Badge className={`${riskInterpretation?.color} px-4 py-2 text-lg font-medium`} variant="outline">
                       {riskInterpretation?.risk}
                     </Badge>
                   </div>
@@ -295,3 +294,26 @@ export default function RiskCalculator() {
           </Card>
         </div>
       </div>
+
+      {/* Risk Guide - simplified to two categories */}
+      <Card className="mt-6">
+        <CardHeader>
+          <CardTitle className="flex items-center text-lg">
+            <Info className="mr-2 h-4 w-4" />
+            Risk Categories
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm">
+          <div className="flex justify-between">
+            <span>Less than 30%:</span>
+            <span className="font-medium text-green-600">Low Risk</span>
+          </div>
+          <div className="flex justify-between">
+            <span>30% and above:</span>
+            <span className="font-medium text-red-600">High Risk</span>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  )
+}
