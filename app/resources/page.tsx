@@ -329,6 +329,7 @@ export default function ResourcesPage() {
                   <h3 className="text-lg font-medium mb-2 text-amber-800">Additional Patient Resources</h3>
                   <p className="text-amber-700 mb-2">For more educational materials and resources:</p>
                   <Button className="bg-amber-600 hover:bg-amber-700">View Clinical Documentation Templates</Button>
+                   <Link href="/documentation">View Clinical Documentation Templates</Link>
                 </div>
               </section>
             )}
