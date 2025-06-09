@@ -1,119 +1,108 @@
 "use client"
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import { useEffect, useRef } from "react"
 import Link from "next/link"
-import { FileText, Calculator, Info, Pill, BookOpen } from "lucide-react"
+import { useSearchParams } from "next/navigation"
+import { Card, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { useSearch } from "@/context/search-context"
+import { Calculator, FileText, BookOpen, Pill, InfoIcon } from "lucide-react"
 
-interface SearchResult {
-  id: string
-  title: string
-  description: string
-  category: string
-  url: string
-  relevance: number
-}
+export function SearchResults() {
+  const { searchQuery, searchResults, setSearchQuery, performSearch } = useSearch()
+  const searchParams = useSearchParams()
+  const initialSearchDone = useRef(false)
 
-interface SearchResultsProps {
-  query: string
-  results: SearchResult[]
-  isLoading?: boolean
-}
+  useEffect(() => {
+    // Only run this effect once when the component mounts
+    if (!initialSearchDone.current) {
+      const query = searchParams.get("q")
+      if (query) {
+        setSearchQuery(query)
+        // Pass the query directly to performSearch to avoid dependency on searchQuery
+        performSearch(query)
+      }
+      initialSearchDone.current = true
+    }
+  }, [searchParams, setSearchQuery, performSearch])
 
-export function SearchResults({ query, results, isLoading = false }: SearchResultsProps) {
-  if (isLoading) {
+  if (!searchQuery) {
     return (
-      <div className="space-y-4">
-        {[...Array(3)].map((_, i) => (
-          <Card key={i} className="animate-pulse">
-            <CardHeader>
-              <div className="h-4 bg-gray-200 rounded w-3/4"></div>
-              <div className="h-3 bg-gray-200 rounded w-1/2"></div>
-            </CardHeader>
-            <CardContent>
-              <div className="h-3 bg-gray-200 rounded w-full mb-2"></div>
-              <div className="h-3 bg-gray-200 rounded w-2/3"></div>
-            </CardContent>
-          </Card>
-        ))}
+      <div className="text-center py-12">
+        <p className="text-muted-foreground">Enter a search term to find content across the application.</p>
       </div>
     )
   }
 
-  if (results.length === 0) {
+  if (searchResults.length === 0) {
     return (
-      <div className="text-center py-8">
-        <p className="text-muted-foreground">
-          No results found for "{query}". Try different keywords or browse our sections.
-        </p>
+      <div className="text-center py-12">
+        <p className="text-muted-foreground">No results found for "{searchQuery}".</p>
+        <p className="text-sm text-muted-foreground mt-2">Try using different keywords or check your spelling.</p>
       </div>
     )
   }
 
-  const getCategoryIcon = (category: string) => {
-    switch (category.toLowerCase()) {
+  // Group results by section
+  const groupedResults = searchResults.reduce(
+    (acc, result) => {
+      if (!acc[result.section]) {
+        acc[result.section] = []
+      }
+      acc[result.section].push(result)
+      return acc
+    },
+    {} as Record<string, typeof searchResults>,
+  )
+
+  const getSectionIcon = (section: string) => {
+    switch (section) {
       case "calculator":
         return <Calculator className="h-4 w-4" />
       case "information":
-        return <Info className="h-4 w-4" />
-      case "treatments":
-        return <Pill className="h-4 w-4" />
+        return <InfoIcon className="h-4 w-4" />
       case "resources":
         return <BookOpen className="h-4 w-4" />
-      default:
+      case "treatments":
+        return <Pill className="h-4 w-4" />
+      case "about":
         return <FileText className="h-4 w-4" />
+      default:
+        return null
     }
   }
 
-  const getCategoryColor = (category: string) => {
-    switch (category.toLowerCase()) {
-      case "calculator":
-        return "bg-blue-100 text-blue-800"
-      case "information":
-        return "bg-green-100 text-green-800"
-      case "treatments":
-        return "bg-purple-100 text-purple-800"
-      case "resources":
-        return "bg-orange-100 text-orange-800"
-      default:
-        return "bg-gray-100 text-gray-800"
-    }
+  const getSectionTitle = (section: string) => {
+    return section.charAt(0).toUpperCase() + section.slice(1)
   }
 
   return (
-    <div className="space-y-4">
-      <div className="mb-4">
-        <p className="text-sm text-muted-foreground">
-          Found {results.length} result{results.length !== 1 ? "s" : ""} for "{query}"
-        </p>
-      </div>
+    <div className="space-y-8">
+      <p className="text-sm text-muted-foreground">
+        Found {searchResults.length} results for "{searchQuery}"
+      </p>
 
-      {results.map((result) => (
-        <Card key={result.id} className="hover:shadow-md transition-shadow">
-          <CardHeader>
-            <div className="flex items-start justify-between">
-              <div className="flex-1">
-                <CardTitle className="text-lg">
-                  <Link href={result.url} className="hover:text-primary transition-colors">
-                    {result.title}
-                  </Link>
-                </CardTitle>
-                <CardDescription className="mt-1">{result.description}</CardDescription>
-              </div>
-              <Badge variant="secondary" className={`ml-2 ${getCategoryColor(result.category)}`}>
-                <span className="flex items-center gap-1">
-                  {getCategoryIcon(result.category)}
-                  {result.category}
-                </span>
-              </Badge>
-            </div>
-          </CardHeader>
-          <CardContent>
-            <Link href={result.url} className="text-sm text-primary hover:underline">
-              View details →
-            </Link>
-          </CardContent>
-        </Card>
+      {Object.entries(groupedResults).map(([section, results]) => (
+        <div key={section} className="space-y-4">
+          <div className="flex items-center gap-2">
+            {getSectionIcon(section)}
+            <h2 className="text-lg font-semibold">{getSectionTitle(section)}</h2>
+            <Badge variant="outline">{results.length}</Badge>
+          </div>
+
+          <div className="space-y-3">
+            {results.map((result) => (
+              <Link key={result.id} href={result.url} className="block">
+                <Card className="transition-all hover:shadow-md hover:border-primary/50">
+                  <CardContent className="p-4">
+                    <h3 className="font-medium mb-1">{result.title}</h3>
+                    <p className="text-sm text-muted-foreground line-clamp-2">{result.content}</p>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        </div>
       ))}
     </div>
   )
