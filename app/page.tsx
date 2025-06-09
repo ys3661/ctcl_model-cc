@@ -7,7 +7,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col bg-gradient-to-br from-blue-50 via-white to-indigo-50">
       <div className="flex-1 flex flex-col items-center justify-center p-6 md:p-24 text-center">
         <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-          CTCL Risk Assessment Tool
+          CTCL Insight
         </h1>
         <p className="text-xl text-muted-foreground mb-12 max-w-3xl">
           A clinical decision support tool to help dermatologists identify patients at risk for cutaneous T-cell
