@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ArrowLeft, ExternalLink, BookOpen, MapPin, FileDown, ArrowUp, Building, Bookmark, Printer } from "lucide-react"
+import Link from "next/link"
 
 export default function ResourcesPage() {
   const [activeCategory, setActiveCategory] = useState("all")
@@ -328,8 +329,9 @@ export default function ResourcesPage() {
                 <div className="p-4 bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 rounded-md mt-6 shadow-lg">
                   <h3 className="text-lg font-medium mb-2 text-amber-800">Additional Patient Resources</h3>
                   <p className="text-amber-700 mb-2">For more educational materials and resources:</p>
-                  <Button className="bg-amber-600 hover:bg-amber-700">View Clinical Documentation Templates</Button>
-                   <Link href="/documentation">View Clinical Documentation Templates</Link>
+                  <Button className="bg-amber-600 hover:bg-amber-700" asChild>
+                    <Link href="/documentation">View Clinical Documentation Templates</Link>
+                  </Button>
                 </div>
               </section>
             )}
