@@ -69,25 +69,17 @@ const questions: Question[] = [
 ]
 
 function getRiskInterpretation(riskScore: number) {
-  if (riskScore < 0.5) {
+  if (riskScore < 0.3) {
     return {
-      risk: "Low",
+      risk: "Low Risk",
       color: "text-green-600 border-green-600",
       description: "Low probability of CTCL. Continue routine monitoring.",
       recommendation: "Standard dermatological follow-up as needed.",
       showNextSteps: false,
     }
-  } else if (riskScore < 0.8) {
-    return {
-      risk: "Moderate",
-      color: "text-yellow-600 border-yellow-600",
-      description: "Moderate risk warrants closer evaluation.",
-      recommendation: "Consider additional testing and specialist consultation.",
-      showNextSteps: false,
-    }
   } else {
     return {
-      risk: "High",
+      risk: "High Risk",
       color: "text-red-600 border-red-600",
       description: "High risk of CTCL.",
       recommendation: "Immediate specialist evaluation and comprehensive workup needed.",
@@ -236,7 +228,7 @@ export default function RiskCalculator() {
           {/* Score Display */}
           <Card className="xl:sticky xl:top-4">
             <CardHeader className="text-center">
-              <CardTitle>ML Risk Score</CardTitle>
+              <CardTitle>ML Risk Assessment</CardTitle>
             </CardHeader>
             <CardContent className="text-center space-y-4">
               {loading ? (
@@ -246,7 +238,7 @@ export default function RiskCalculator() {
                 </div>
               ) : selectedCount === 0 ? (
                 <div className="text-muted-foreground text-sm py-8">
-                  Select clinical features to calculate risk score
+                  Select clinical features to calculate risk assessment
                 </div>
               ) : error ? (
                 <div className="text-red-600 text-sm py-4">
@@ -255,16 +247,19 @@ export default function RiskCalculator() {
                 </div>
               ) : riskScore !== null ? (
                 <>
-                  <div className="text-4xl sm:text-6xl font-bold text-primary">{(riskScore * 100).toFixed(1)}%</div>
-                  <div className="text-sm text-muted-foreground">Risk Probability</div>
+                  <div className="py-4">
+                    <Badge 
+                      className={`${riskInterpretation?.color} px-4 py-2 text-lg font-medium`} 
+                      variant="outline"
+                    >
+                      {riskInterpretation?.risk}
+                    </Badge>
+                  </div>
 
                   <Separator />
 
                   {riskInterpretation && (
                     <div className="space-y-3">
-                      <Badge className={`${riskInterpretation.color} px-3 py-1 text-sm font-medium`} variant="outline">
-                        {riskInterpretation.risk} Risk
-                      </Badge>
                       <div className="text-sm space-y-2">
                         <p className="font-medium">Interpretation:</p>
                         <p className="text-muted-foreground">{riskInterpretation.description}</p>
@@ -303,25 +298,21 @@ export default function RiskCalculator() {
         </div>
       </div>
 
-      {/* Risk Guide - always visible below the grid */}
+      {/* Risk Guide - simplified to two categories */}
       <Card className="mt-6">
         <CardHeader>
           <CardTitle className="flex items-center text-lg">
             <Info className="mr-2 h-4 w-4" />
-            Risk Guide
+            Risk Categories
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm">
           <div className="flex justify-between">
-            <span>0-50%:</span>
+            <span>Less than 30%:</span>
             <span className="font-medium text-green-600">Low Risk</span>
           </div>
           <div className="flex justify-between">
-            <span>50-80%:</span>
-            <span className="font-medium text-yellow-600">Moderate Risk</span>
-          </div>
-          <div className="flex justify-between">
-            <span>80-100%:</span>
+            <span>30% and above:</span>
             <span className="font-medium text-red-600">High Risk</span>
           </div>
         </CardContent>
