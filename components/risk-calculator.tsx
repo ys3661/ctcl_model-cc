@@ -81,8 +81,6 @@ function getRiskInterpretation(riskScore: number) {
     return {
       risk: "High Risk",
       color: "text-red-600 border-red-600",
-      description: "High risk of CTCL.",
-      recommendation: "Immediate specialist evaluation and comprehensive workup needed.",
       showNextSteps: true,
     }
   }
