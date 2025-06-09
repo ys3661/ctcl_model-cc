@@ -4,7 +4,6 @@ import { useState, useRef, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import Link from "next/link"
 import { ArrowLeft, ExternalLink, BookOpen, MapPin, FileDown, ArrowUp, Building, Bookmark, Printer } from "lucide-react"
 
 export default function ResourcesPage() {
@@ -50,11 +49,9 @@ export default function ResourcesPage() {
     <main className="container mx-auto py-6 px-4 md:px-6 lg:py-12">
       <div ref={topRef} className="max-w-5xl mx-auto">
         <div className="mb-6 flex justify-between items-center">
-          <Link href="/">
-            <Button variant="outline" size="sm">
-              <ArrowLeft className="mr-2 h-4 w-4" /> Back to Home
-            </Button>
-          </Link>
+          <Button variant="outline" size="sm">
+            <ArrowLeft className="mr-2 h-4 w-4" /> Back to Home
+          </Button>
         </div>
 
         <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-lg mb-8 border border-blue-100">
@@ -261,26 +258,31 @@ export default function ResourcesPage() {
                     title: "CTCL vs. Other Skin Conditions",
                     description: "How CTCL differs from eczema, psoriasis, and other common skin conditions",
                     category: "Diagnosis",
+                    url: "#",
                   },
                   {
                     title: "CTCL Treatment Options Overview",
                     description: "Comprehensive guide to available treatments for different stages of CTCL",
                     category: "Treatment",
+                    url: "#",
                   },
                   {
                     title: "Managing Itching and Discomfort",
                     description: "Strategies for relieving pruritus and other symptoms",
                     category: "Symptom Management",
+                    url: "#",
                   },
                   {
-                    title: "GeSkin Care Routine for Xerosis",
+                    title: "Gentle Skin Care Routine for Xerosis",
                     description: "Recommended skin care practices for CTCL patients",
                     category: "Self-Care",
+                    url: "#",
                   },
                   {
                     title: "Emotional Well-being with CTCL",
                     description: "Coping strategies and resources for emotional support",
                     category: "Support",
+                    url: "#",
                   },
                 ]
                   .filter(
@@ -298,7 +300,7 @@ export default function ResourcesPage() {
                         </div>
                         <p className="text-sm text-muted-foreground mb-3">{handout.description}</p>
                         <Button variant="outline" size="sm" asChild>
-                          <a href="#" target="_blank" rel="noopener noreferrer">
+                          <a href={handout.url} target="_blank" rel="noopener noreferrer">
                             <FileDown className="mr-1 h-4 w-4" />
                             <span>Download PDF</span>
                           </a>
@@ -311,8 +313,8 @@ export default function ResourcesPage() {
               <div className="p-4 bg-amber-50 border border-amber-200 rounded-md mt-6">
                 <h3 className="text-lg font-medium mb-2 text-amber-800">Additional Patient Resources</h3>
                 <p className="text-amber-700 mb-2">For more educational materials and resources:</p>
-                <Button className="bg-amber-600 hover:bg-amber-700" asChild>
-                  <Link href="/documentation">View Clinical Documentation Templates</Link>
+                <Button className="bg-amber-600 hover:bg-amber-700">
+                  View Clinical Documentation Templates
                 </Button>
               </div>
             </section>
