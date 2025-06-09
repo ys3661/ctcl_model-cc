@@ -273,7 +273,7 @@ export default function ResourcesPage() {
                     url: "#",
                   },
                   {
-                    title: "Gentle Skin Care Routine for Xerosis",
+                    title: "GeSkin Care Routine for Xerosis",
                     description: "Recommended skin care practices for CTCL patients",
                     category: "Self-Care",
                     url: "#",
