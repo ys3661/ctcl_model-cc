@@ -68,6 +68,34 @@ const questions: Question[] = [
   },
 ]
 
+// Simulated ML model - assigns weights to different features
+const featureWeights = {
+  multiple_biopsies: 0.25,
+  failed_steroids: 0.20,
+  other_failed_therapies: 0.18,
+  scaly_patch_plaque: 0.15,
+  erythema: 0.12,
+  pruritus: 0.10,
+  xerosis: 0.08,
+  otherrash: 0.05
+}
+
+function calculateRiskScore(features: MLFeatures): number {
+  let score = 0
+  Object.entries(features).forEach(([key, value]) => {
+    if (value && key in featureWeights) {
+      score += featureWeights[key as keyof typeof featureWeights]
+    }
+  })
+  
+  // Add some variability and ensure it's between 0 and 1
+  const baseScore = Math.min(score, 0.95)
+  
+  // Add slight random variation to simulate real ML model uncertainty
+  const variation = (Math.random() - 0.5) * 0.05
+  return Math.max(0.05, Math.min(0.95, baseScore + variation))
+}
+
 function getRiskInterpretation(riskScore: number) {
   if (riskScore < 0.3) {
     return {
@@ -122,25 +150,11 @@ export default function RiskCalculator() {
     setError(null)
 
     try {
-      const response = await fetch("/api/predict", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(features),
-      })
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
-      }
-
-      const data = await response.json()
-
-      if (data.error) {
-        throw new Error(data.error)
-      }
-
-      setRiskScore(data.risk_score)
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 500))
+      
+      const score = calculateRiskScore(features)
+      setRiskScore(score)
     } catch (err) {
       console.error("Error calculating risk:", err)
       setError(err instanceof Error ? err.message : "Failed to calculate risk score")
@@ -172,11 +186,15 @@ export default function RiskCalculator() {
     setError(null)
   }
 
+  const handleNextSteps = () => {
+    alert("In a real application, this would navigate to detailed next steps for high-risk patients, including specialist referral guidelines, additional testing recommendations, and monitoring protocols.")
+  }
+
   const selectedCount = Object.values(features).filter((value) => value === true).length
   const riskInterpretation = riskScore !== null ? getRiskInterpretation(riskScore) : null
 
   return (
-    <div className="max-w-4xl mx-auto space-y-6">
+    <div className="max-w-4xl mx-auto space-y-6 p-4">
       {/* Header */}
       <Card>
         <CardHeader>
@@ -248,6 +266,9 @@ export default function RiskCalculator() {
               ) : riskScore !== null ? (
                 <>
                   <div className="py-4">
+                    <div className="text-3xl font-bold mb-2">
+                      {(riskScore * 100).toFixed(1)}%
+                    </div>
                     <Badge className={`${riskInterpretation?.color} px-4 py-2 text-lg font-medium`} variant="outline">
                       {riskInterpretation?.risk}
                     </Badge>
@@ -269,7 +290,7 @@ export default function RiskCalculator() {
                       {riskInterpretation.showNextSteps && (
                         <div className="mt-4">
                           <Button
-                            onClick={() => (window.location.href = "/next-steps")}
+                            onClick={handleNextSteps}
                             className="w-full bg-blue-600 hover:bg-blue-700 text-white"
                           >
                             Next Steps
@@ -295,25 +316,7 @@ export default function RiskCalculator() {
         </div>
       </div>
 
-      {/* Risk Guide - simplified to two categories */}
-      <Card className="mt-6">
-        <CardHeader>
-          <CardTitle className="flex items-center text-lg">
-            <Info className="mr-2 h-4 w-4" />
-            Risk Categories
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-2 text-sm">
-          <div className="flex justify-between">
-            <span>Less than 30%:</span>
-            <span className="font-medium text-green-600">Low Risk</span>
-          </div>
-          <div className="flex justify-between">
-            <span>30% and above:</span>
-            <span className="font-medium text-red-600">High Risk</span>
-          </div>
-        </CardContent>
-      </Card>
+
     </div>
   )
 }
