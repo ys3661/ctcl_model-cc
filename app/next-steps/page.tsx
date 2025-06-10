@@ -30,7 +30,7 @@ export default function NextSteps() {
             <CardContent className="space-y-4">
               <div className="space-y-2">
                 <h3 className="font-medium">Skin Biopsy</h3>
-                <p className="text-sm text-muted-foreground">A 4mm punch biopsy is recommended for diagnosing CTCL.</p>
+                <p className="text-sm text-muted-foreground">A 4mm punch biopsy is recommended for diagnosing CTCL. Ensure that the patient has been off steroids for 2 weeks.</p>
 
                 <div className="mt-4">
                   <Link href="/biopsy-results">
