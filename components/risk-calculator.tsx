@@ -133,6 +133,15 @@ export default function RiskCalculator() {
         body: JSON.stringify(features),
       })
 
+      if (!response.ok) {
+        // If response is not ok, use fallback calculation
+        console.warn(`API returned ${response.status}, using fallback calculation`)
+        const fallbackScore = calculateFallbackRiskScore(features)
+        setRiskScore(fallbackScore)
+        setError("API temporarily unavailable. Using offline calculation.")
+        return
+      }
+
       // Get response text for better error logging
       const responseText = await response.text()
 
@@ -141,28 +150,31 @@ export default function RiskCalculator() {
       try {
         data = JSON.parse(responseText)
       } catch (parseError) {
-        console.error("Failed to parse response as JSON:", responseText)
-        throw new Error(`Invalid response format: ${responseText.substring(0, 100)}...`)
-      }
-
-      if (!response.ok) {
-        console.error("API error response:", data)
-        throw new Error(`Server error: ${response.status} - ${data.error || "Unknown error"}`)
+        console.warn("Failed to parse API response, using fallback calculation")
+        const fallbackScore = calculateFallbackRiskScore(features)
+        setRiskScore(fallbackScore)
+        setError("API response error. Using offline calculation.")
+        return
       }
 
       if (data.error) {
-        throw new Error(data.error)
+        console.warn("API returned error, using fallback calculation")
+        const fallbackScore = calculateFallbackRiskScore(features)
+        setRiskScore(fallbackScore)
+        setError("API error. Using offline calculation.")
+        return
       }
 
+      // Success case
       setRiskScore(data.risk_score)
+      setError(null)
     } catch (err) {
-      console.error("Error calculating risk:", err)
+      console.warn("Network error, using fallback calculation:", err)
 
-      // Implement fallback calculation when API fails
+      // Always use fallback calculation when there's any error
       const fallbackScore = calculateFallbackRiskScore(features)
       setRiskScore(fallbackScore)
-
-      setError(`API unavailable. Using fallback calculation. (${err instanceof Error ? err.message : "Unknown error"})`)
+      setError("Network unavailable. Using offline calculation.")
     } finally {
       setLoading(false)
     }
@@ -192,16 +204,16 @@ export default function RiskCalculator() {
 
   // Fallback calculation when API is unavailable
   const calculateFallbackRiskScore = (features: MLFeatures): number => {
-    // Simple weighted calculation based on feature importance
+    // Use the exact same weights as the API for consistency
     const weights = {
-      multiple_biopsies: 0.23,
-      failed_steroids: 0.21,
-      otherrash: 0.13,
-      scaly_patch_plaque: 0.11,
-      erythema: 0.08,
-      xerosis: 0.08,
-      pruritus: 0.08,
-      other_failed_therapies: 0.07,
+      multiple_biopsies: 0.230368,
+      failed_steroids: 0.210547,
+      otherrash: 0.130172,
+      scaly_patch_plaque: 0.11293,
+      erythema: 0.083891,
+      xerosis: 0.082167,
+      pruritus: 0.079507,
+      other_failed_therapies: 0.070418,
     }
 
     let score = 0
