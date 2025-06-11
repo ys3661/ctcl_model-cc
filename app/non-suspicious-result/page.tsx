@@ -20,7 +20,7 @@ export default function NonSuspiciousResult() {
           <div>
             <h2 className="text-lg font-semibold text-green-800">Not Suspicious for CTCL</h2>
             <p className="text-sm text-green-700">
-              The biopsy results do not show features consistent with Cutaneous T-Cell Lymphoma. However, there is no substitute for clinical intuition, if you feel that the patient is at high risk for CTCL consult a specialist.
+              The biopsy results do not show features consistent with Cutaneous T-Cell Lymphoma. However, there is no substitute for clinical intuition, if you feel that the patient is at high risk for CTCL, consult a specialist.
             </p>
           </div>
         </div>
