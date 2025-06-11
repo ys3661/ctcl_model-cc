@@ -23,9 +23,6 @@ export default function NextSteps() {
               <CardTitle className="flex items-center">
                 <FileText className="mr-2 h-5 w-5" /> Recommended Diagnostic Procedures
               </CardTitle>
-              <CardDescription>
-                For questions about biopsy procedures and dermatopathology, please consult the department of dermatopathology at the nearest academic center. 
-              </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
