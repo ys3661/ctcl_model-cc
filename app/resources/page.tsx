@@ -318,7 +318,12 @@ export default function ResourcesPage() {
                           </div>
                           <p className="text-sm text-muted-foreground mb-3">{handout.description}</p>
                           <Button variant="outline" size="sm" asChild>
-                            <a href={handout.url} target="_blank" rel="noopener noreferrer">
+                            <a 
+                              href={handout.url} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              download={handout.url.startsWith('/pdfs/') ? `${handout.title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '')}.pdf` : undefined}
+                            >
                               <FileDown className="mr-1 h-4 w-4" />
                               <span>Download PDF</span>
                             </a>
