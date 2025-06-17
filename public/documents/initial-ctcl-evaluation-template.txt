@@ -1,184 +1,231 @@
-Division of Cutaneous Oncology 
-Initial Visit  
- 
-History of Present Illness: @NAME@ is a @AGE@ @SEX@ who presents for initial 
-consultation for suspected ***(CTCL type suspected), referred by ***.  
- 
-Narrative HPI: *** 
- 
-Registry: 
-Date of initial visit with CTCL specialist  
-Date of onset of skin lesions  
-(month/year) 
- 
-Initial symptoms at presentation  
-(itching 1-10, flaking/scaling, color change) 
- 
-Initial lesion type  
-(patch, plaque, tumor, erythroderma) 
- 
-Initial quantity of lesions  
-(single, multiple, unknown) 
- 
-Initial location of lesions 
-(where anatomically located) 
- 
-Prior diagnosis for CTCL lesions  
-(psoriasis, eczema, etc.) 
- 
-Prior treatments for CTCL lesions 
-(name, date started/stopped, reason for 
-stopping, dose, response) 
- 
-Prior skin biopsies  
-(dates / result) 
- 
-Disease course since lesion onset 
-(clearance, progression, relapse) 
- 
-Medication changes prior to lesion onset  
-(If yes, specify) 
- 
-Exposures from travel, recreation, occupation, 
-or environment prior to lesions 
-(industrial, pesticides, pollution, etc.) 
- 
-Current symptoms 
-(itching 1-10, flaking/scaling, color change) 
- 
-Current treatments 
-(date started, dose, response) 
- 
-Current location of lesions 
-(where anatomically located) 
- 
- 
-Patient History 
-@ALLERGIES@  
-@PASTMEDICAL@ 
-@PASTSURGICAL@  
-@FAMILYHISTORY@  
-@SOCIALHISTORY@ 
- 
-@ROS@ 
+"use client"
 
-As noted in the HPI. 
- 
-Physical Exam  
-@VITALSALL@  
-General: the patient is overall well appearing 
-Neuro: the patient is alert and oriented 
-Mood: appropriate 
- 
-TBSE including mucosal surfaces was performed. Notable findings:  
- 
-Scalp/Hair: No lesions suspicious for malignancy. 
-Head/Face: No lesions suspicious for malignancy. 
-Conjunctiva/Lids: No lesions suspicious for malignancy. 
-Lips: No lesions suspicious for malignancy. 
-Oral mucosa: No lesions suspicious for malignancy. 
-Teeth: No lesions suspicious for malignancy. 
-Neck: No lesions suspicious for malignancy. 
-Chest: No lesions suspicious for malignancy. 
-Breasts/Axillae: No lesions suspicious for malignancy. 
-Abdomen: No lesions suspicious for malignancy. 
-Genitalia: No lesions suspicious for malignancy. 
-Back: No lesions suspicious for malignancy. 
-Buttocks: No lesions suspicious for malignancy. 
-RUE: No lesions suspicious for malignancy. 
-LUE: No lesions suspicious for malignancy. 
-RLE: No lesions suspicious for malignancy. 
-LLE: No lesions suspicious for malignancy. 
-Digits/Nails: No lesions suspicious for malignancy. 
- 
-General Exam 
-Lymph: no palpable lymph nodes*** 
-Peripheral vascular: warm and well perfused 
-Edema/Varicosities: no peripheral edema  
-Eccrine, apocrine glands: unremarkable 
- 
-TBSA  ***,  mSWAT *** 
-Body Region  % BSA for 
-this 
-Region 
-% BSA as Patch % BSA as 
-Plaque 
-% BSA as 
-Tumor 
-Head 7%    
-Neck 2%    
-Anterior trunk 13%    
-Arms 8%    
-Forearms 6%    
-Hands 5%    
-Posterior trunk 13%    
-Buttocks 5%    
-Thighs 19%    
-Legs 14%    
-Feet 7%    
-Groin 1%    
-% BSA by 
-category 
-100%    
-Severity 
-Weighting 
-Factor 
- x1 x2 x4 
-Skin Score 
-Total 
-    
-mSWAT   
- 
-PATHOLOGY, IMAGING AND LABORATORY DATA: 
-All internal, external data were directly reviewed and summarized below. 
- 
-LABORATORY: 
- 
-FLOW CYTOMETRY:  
- 
-PATHOLOGY:  
- 
-IMAGING:  
- 
-ASSESSMENT: 
- 
-PLAN: 
-@NAME@ is a @AGE@ @SEX@ with stage ***. Today patient with *** TBSA involvement, 
-mSWAT *** with *** 
-@CTCLEXPLANATION@ 
-@TREATMENTPLAN@ 
- 
-Prognostic index (Choose Early versus Late) 
- 
-Early CLIPI Prognostic Index  
-  Points (1 each) 
-Male  
-Age > 60  
-Plaques  
-Folliculotropic  
-N1/Nx  
-Total Points ***/5 
-Risk Group: *** 
-Group 1 (1 risk factor); Group 2 (2 risk factors); Group 3 (3+ risk factors) 
-Reference: Benton EC, Crichton S, Talpur R, et al. A cutaneous lymphoma international 
-prognostic index (CLIPi) for mycosis fungoides and Sezary syndrome. Eur J Cancer. 
-2013;49(13):2859-2868. doi:10.1016/j.ejca.2013.04.018 
- 
- 
-Late CLIPI Prognostic Index  
-  Points (1 each) 
-Male  
-Age > 60  
-B1/B2  
-N2/3  
-Visceral involvement  
-Total Points ***/5 
-Risk Group: *** 
-Group 1 (1 risk factor); Group 2 (2 risk factors); Group 3 (3+ risk factors) 
-Reference: Benton EC, Crichton S, Talpur R, et al. A cutaneous lymphoma international 
-prognostic index (CLIPi) for mycosis fungoides and Sezary syndrome. Eur J Cancer. 
-2013;49(13):2859-2868. doi:10.1016/j.ejca.2013.04.018 
- 
- 
- 
-@FOLLOWUP@
+import React, { useState } from "react"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { ArrowLeft, FileDown, FileText, Download } from "lucide-react"
+
+export default function NoteTemplatesSection() {
+  const [downloadingTemplate, setDownloadingTemplate] = useState<string | null>(null)
+
+  // Function to download note templates
+  const downloadTemplate = async (templateId: string, title: string) => {
+    setDownloadingTemplate(templateId)
+    try {
+      const link = document.createElement('a')
+      link.href = `/templates/${templateId}.docx`
+      link.download = `${title}.docx`
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+    } catch (error) {
+      console.error('Error downloading template:', error)
+      alert('Error downloading template. Please try again.')
+    } finally {
+      setDownloadingTemplate(null)
+    }
+  }
+
+  return (
+    <main className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+      <div className="container mx-auto py-6 px-4 md:px-6 lg:py-12">
+        <div className="mb-6">
+          <Button variant="outline" size="sm">
+            <ArrowLeft className="mr-2 h-4 w-4" /> Back to Home
+          </Button>
+        </div>
+
+        <h1 className="text-4xl font-bold mb-8 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
+          Documentation & Resources
+        </h1>
+
+        <div className="space-y-8">
+          {/* CTCL Note Templates Section */}
+          <Card className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-blue-50/50 border-blue-200">
+            <CardHeader>
+              <CardTitle className="flex items-center">
+                <FileText className="mr-2 h-5 w-5" /> CTCL Note Templates
+              </CardTitle>
+              <CardDescription>Standardized templates for CTCL clinical documentation</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="grid gap-4 md:grid-cols-2">
+                <Card className="p-4 border border-muted hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-slate-50">
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <h3 className="font-medium mb-1">Initial CTCL Evaluation Note Template</h3>
+                      <p className="text-sm text-muted-foreground mb-3">
+                        Comprehensive template for documenting first-time CTCL evaluations
+                      </p>
+                    </div>
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="flex items-center"
+                      onClick={() => downloadTemplate('initial-evaluation', 'Initial CTCL Evaluation Note Template')}
+                      disabled={downloadingTemplate === 'initial-evaluation'}
+                    >
+                      {downloadingTemplate === 'initial-evaluation' ? (
+                        <Download className="mr-1 h-4 w-4 animate-spin" />
+                      ) : (
+                        <FileDown className="mr-1 h-4 w-4" />
+                      )}
+                      <span>Download</span>
+                    </Button>
+                  </div>
+                </Card>
+
+                <Card className="p-4 border border-muted hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-slate-50">
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <h3 className="font-medium mb-1">CTCL Follow-up Visit Template</h3>
+                      <p className="text-sm text-muted-foreground mb-3">
+                        Structured template for routine follow-up visits for CTCL patients
+                      </p>
+                    </div>
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="flex items-center"
+                      onClick={() => downloadTemplate('follow-up-visit', 'CTCL Follow-up Visit Template')}
+                      disabled={downloadingTemplate === 'follow-up-visit'}
+                    >
+                      {downloadingTemplate === 'follow-up-visit' ? (
+                        <Download className="mr-1 h-4 w-4 animate-spin" />
+                      ) : (
+                        <FileDown className="mr-1 h-4 w-4" />
+                      )}
+                      <span>Download</span>
+                    </Button>
+                  </div>
+                </Card>
+
+                <Card className="p-4 border border-muted hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-slate-50">
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <h3 className="font-medium mb-1">CTCL Treatment Response Assessment</h3>
+                      <p className="text-sm text-muted-foreground mb-3">
+                        Template for documenting treatment response and disease progression
+                      </p>
+                    </div>
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="flex items-center"
+                      onClick={() => downloadTemplate('treatment-response', 'CTCL Treatment Response Assessment Template')}
+                      disabled={downloadingTemplate === 'treatment-response'}
+                    >
+                      {downloadingTemplate === 'treatment-response' ? (
+                        <Download className="mr-1 h-4 w-4 animate-spin" />
+                      ) : (
+                        <FileDown className="mr-1 h-4 w-4" />
+                      )}
+                      <span>Download</span>
+                    </Button>
+                  </div>
+                </Card>
+
+                <Card className="p-4 border border-muted hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-slate-50">
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <h3 className="font-medium mb-1">CTCL Staging Documentation</h3>
+                      <p className="text-sm text-muted-foreground mb-3">
+                        Template for comprehensive TNMB staging and disease assessment
+                      </p>
+                    </div>
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="flex items-center"
+                      onClick={() => downloadTemplate('staging-documentation', 'CTCL Staging Documentation Template')}
+                      disabled={downloadingTemplate === 'staging-documentation'}
+                    >
+                      {downloadingTemplate === 'staging-documentation' ? (
+                        <Download className="mr-1 h-4 w-4 animate-spin" />
+                      ) : (
+                        <FileDown className="mr-1 h-4 w-4" />
+                      )}
+                      <span>Download</span>
+                    </Button>
+                  </div>
+                </Card>
+              </div>
+
+              <div className="mt-6">
+                <h3 className="text-lg font-medium mb-4">Sample CTCL Clinical Note Structure</h3>
+                <div className="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="font-medium">Chief Complaint / Reason for Visit:</h4>
+                      <p className="text-sm text-muted-foreground">
+                        [Patient name] is a [age]-year-old [gender] presenting for [initial evaluation/follow-up] of
+                        suspected/confirmed cutaneous T-cell lymphoma.
+                      </p>
+                    </div>
+
+                    <div>
+                      <h4 className="font-medium">History of Present Illness:</h4>
+                      <p className="text-sm text-muted-foreground">
+                        - Duration of skin lesions: [X months/years]
+                        <br />- Distribution: [describe areas affected]
+                        <br />- Morphology: [patches/plaques/tumors/erythroderma]
+                        <br />- Associated symptoms: [pruritus, pain, burning]
+                        <br />- Previous treatments: [list with responses]
+                        <br />- Previous biopsies: [dates and results]
+                        <br />- Recent changes: [progression, new lesions, etc.]
+                      </p>
+                    </div>
+
+                    <div>
+                      <h4 className="font-medium">Physical Examination:</h4>
+                      <p className="text-sm text-muted-foreground">
+                        - Body surface area affected: [% BSA]
+                        <br />- Lesion types: [patches/plaques/tumors]
+                        <br />- Distribution pattern: [sun-exposed vs protected areas]
+                        <br />- Lymph node examination: [normal/enlarged - describe]
+                        <br />- Hepatosplenomegaly: [present/absent]
+                      </p>
+                    </div>
+
+                    <div>
+                      <h4 className="font-medium">Assessment:</h4>
+                      <p className="text-sm text-muted-foreground">
+                        - Diagnosis: [MF/SS/other CTCL variant]
+                        <br />- TNMB staging: [T_, N_, M_, B_]
+                        <br />- Clinical stage: [IA, IB, IIA, IIB, III, IVA, IVB]
+                        <br />- Disease burden: [mSWAT score if available]
+                        <br />- Risk stratification: [low/intermediate/high risk]
+                      </p>
+                    </div>
+
+                    <div>
+                      <h4 className="font-medium">Plan:</h4>
+                      <p className="text-sm text-muted-foreground">
+                        - Diagnostic workup: [additional biopsies, blood tests, imaging]
+                        <br />- Treatment plan: [specific therapies with dosing and schedule]
+                        <br />- Monitoring plan: [laboratory studies, imaging frequency]
+                        <br />- Patient education: [materials provided, counseling topics]
+                        <br />- Follow-up: [timing and parameters to monitor]
+                        <br />- Supportive care: [symptom management, skin care]
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                <h4 className="font-medium text-blue-900 mb-2">📋 Usage Instructions:</h4>
+                <ul className="text-sm text-blue-800 space-y-1">
+                  <li>• Place DOCX files in <code className="bg-blue-100 px-1 rounded">public/templates/</code> folder</li>
+                  <li>• File names should match the template IDs (e.g., <code className="bg-blue-100 px-1 rounded">initial-evaluation.docx</code>)</li>
+                  <li>• Templates include structured sections with fill-in fields</li>
+                  <li>• Customize templates based on your practice requirements</li>
+                </ul>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    </main>
+  )
+}
