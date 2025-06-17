@@ -212,16 +212,6 @@ export default function NoteTemplatesSection() {
                   </div>
                 </div>
               </div>
-
-              <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
-                <h4 className="font-medium text-blue-900 mb-2">📋 Usage Instructions:</h4>
-                <ul className="text-sm text-blue-800 space-y-1">
-                  <li>• Place DOCX files in <code className="bg-blue-100 px-1 rounded">public/templates/</code> folder</li>
-                  <li>• File names should match the template IDs (e.g., <code className="bg-blue-100 px-1 rounded">initial-evaluation.docx</code>)</li>
-                  <li>• Templates include structured sections with fill-in fields</li>
-                  <li>• Customize templates based on your practice requirements</li>
-                </ul>
-              </div>
             </CardContent>
           </Card>
         </div>
