@@ -291,7 +291,7 @@ export default function ResourcesPage() {
                       title: "GeSkin Care Routine for Xerosis",
                       description: "Recommended skin care practices for CTCL patients",
                       category: "Self-Care",
-                      url: "/public/pdfs/GeSkin_Regimen.pdf",
+                      url: "/pdfs/GeSkin_Regimen.pdf",
                     },
                     {
                       title: "Emotional Well-being with CTCL",
