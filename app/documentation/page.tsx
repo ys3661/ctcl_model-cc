@@ -74,56 +74,6 @@ export default function NoteTemplatesSection() {
                     </Button>
                   </div>
                 </Card>
-
-                <Card className="p-4 border border-muted hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-slate-50">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <h3 className="font-medium mb-1">CTCL Follow-up Visit Template</h3>
-                      <p className="text-sm text-muted-foreground mb-3">
-                        Structured template for routine follow-up visits for CTCL patients
-                      </p>
-                    </div>
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
-                      className="flex items-center"
-                      onClick={() => downloadTemplate('follow-up-visit', 'CTCL Follow-up Visit Template')}
-                      disabled={downloadingTemplate === 'follow-up-visit'}
-                    >
-                      {downloadingTemplate === 'follow-up-visit' ? (
-                        <Download className="mr-1 h-4 w-4 animate-spin" />
-                      ) : (
-                        <FileDown className="mr-1 h-4 w-4" />
-                      )}
-                      <span>Download</span>
-                    </Button>
-                  </div>
-                </Card>
-
-                <Card className="p-4 border border-muted hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-slate-50">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <h3 className="font-medium mb-1">CTCL Staging Documentation</h3>
-                      <p className="text-sm text-muted-foreground mb-3">
-                        Template for comprehensive TNMB staging and disease assessment
-                      </p>
-                    </div>
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
-                      className="flex items-center"
-                      onClick={() => downloadTemplate('staging-documentation', 'CTCL Staging Documentation Template')}
-                      disabled={downloadingTemplate === 'staging-documentation'}
-                    >
-                      {downloadingTemplate === 'staging-documentation' ? (
-                        <Download className="mr-1 h-4 w-4 animate-spin" />
-                      ) : (
-                        <FileDown className="mr-1 h-4 w-4" />
-                      )}
-                      <span>Download</span>
-                    </Button>
-                  </div>
-                </Card>
               </div>
 
               <div className="mt-6">
