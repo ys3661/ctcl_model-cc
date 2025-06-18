@@ -270,34 +270,10 @@ export default function ResourcesPage() {
                       url: "https://www.clfoundation.org/sites/default/files/2017-08/2013_guide.pdf",
                     },
                     {
-                      title: "CTCL vs. Other Skin Conditions",
-                      description: "How CTCL differs from eczema, psoriasis, and other common skin conditions",
-                      category: "Diagnosis",
-                      url: "#",
-                    },
-                    {
-                      title: "CTCL Treatment Options Overview",
-                      description: "Comprehensive guide to available treatments for different stages of CTCL",
-                      category: "Treatment",
-                      url: "#",
-                    },
-                    {
-                      title: "Managing Itching and Discomfort",
-                      description: "Strategies for relieving pruritus and other symptoms",
-                      category: "Symptom Management",
-                      url: "#",
-                    },
-                    {
                       title: "GeSkin Care Routine for Xerosis",
                       description: "Recommended skin care practices for CTCL patients",
                       category: "Self-Care",
                       url: "/pdfs/GeSkin_Regimen.pdf",
-                    },
-                    {
-                      title: "Emotional Well-being with CTCL",
-                      description: "Coping strategies and resources for emotional support",
-                      category: "Support",
-                      url: "#",
                     },
                   ]
                     .filter(
