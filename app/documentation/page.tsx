@@ -28,7 +28,7 @@ export default function NoteTemplatesSection() {
   // Function to navigate to automation tool
   const navigateToAutomationTool = () => {
     // Replace with your actual route/URL to the Medical Form Automation Tool
-    window.location.href = "/ctcl_model-cc/app/documentation/medical-form-automation"
+    window.location.href = "/medical-form-automation"
   }
 
   return (
@@ -51,7 +51,7 @@ export default function NoteTemplatesSection() {
               <CardTitle className="flex items-center">
                 <Bot className="mr-2 h-5 w-5 text-green-600" /> Medical Form Automation Tool
               </CardTitle>
-              <CardDescription> Tool for automated medical form generation and processing</CardDescription>
+              <CardDescription>AI-powered tool for automated medical form generation and processing</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg border border-green-200">
@@ -71,7 +71,6 @@ export default function NoteTemplatesSection() {
                   className="bg-green-600 hover:bg-green-700 text-white flex items-center whitespace-nowrap"
                 >
                   Launch Tool
-                  <ExternalLink className="ml-2 h-4 w-4" />
                 </Button>
               </div>
             </CardContent>
