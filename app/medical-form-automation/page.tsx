@@ -660,7 +660,7 @@ ${formData.followUp}`;
                       checked={formData.clipiFactors.ageOver60}
                       onCheckedChange={(checked) => handleNestedChange('clipiFactors', 'ageOver60', checked)}
                     />
-                    <Label htmlFor="clipi-age">Age > 60 years</Label>
+                    <Label htmlFor="clipi-age">Age &gt; 60 years</Label>
                   </div>
 
                   {formData.clipiStage === 'early' ? (
