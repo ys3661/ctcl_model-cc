@@ -2,7 +2,7 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { ArrowLeft, FileDown, FileText, Download, Bot, ExternalLink } from "lucide-react"
+import { ArrowLeft, FileDown, FileText, Download, Bot } from "lucide-react"
 
 export default function NoteTemplatesSection() {
   const [downloadingTemplate, setDownloadingTemplate] = useState<string | null>(null)
