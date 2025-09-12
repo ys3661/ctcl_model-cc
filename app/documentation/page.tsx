@@ -6,7 +6,7 @@ import { ArrowLeft, FileDown, FileText, Download, Bot } from "lucide-react"
 
 export default function NoteTemplatesSection() {
   const [downloadingTemplate, setDownloadingTemplate] = useState<string | null>(null)
-  
+
   // Function to download note templates
   const downloadTemplate = async (templateId: string, title: string) => {
     setDownloadingTemplate(templateId)
@@ -39,11 +39,11 @@ export default function NoteTemplatesSection() {
             <ArrowLeft className="mr-2 h-4 w-4" /> Back to Home
           </Button>
         </div>
-        
+
         <h1 className="text-4xl font-bold mb-8 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
           Documentation & Resources
         </h1>
-        
+
         <div className="space-y-8">
           {/* Medical Form Automation Tool Section */}
           <Card className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-green-50/50 border-green-200">
