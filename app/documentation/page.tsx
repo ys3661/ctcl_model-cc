@@ -28,7 +28,7 @@ export default function NoteTemplatesSection() {
   // Function to navigate to automation tool
   const navigateToAutomationTool = () => {
     // Replace with your actual route/URL to the Medical Form Automation Tool
-    window.location.href = "/medical-form-automation"
+    window.location.href = "/medical-form-automation/page.tsx"
   }
 
   return (
