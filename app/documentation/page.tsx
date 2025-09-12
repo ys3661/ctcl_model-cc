@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { ArrowLeft, FileDown, FileText, Download } from "lucide-react"
@@ -12,15 +12,15 @@ export default function NoteTemplatesSection() {
   const downloadTemplate = async (templateId: string, title: string) => {
     setDownloadingTemplate(templateId)
     try {
-      const link = document.createElement('a')
+      const link = document.createElement("a")
       link.href = `/templates/${templateId}.docx`
       link.download = `${title}.docx`
       document.body.appendChild(link)
       link.click()
       document.body.removeChild(link)
     } catch (error) {
-      console.error('Error downloading template:', error)
-      alert('Error downloading template. Please try again.')
+      console.error("Error downloading template:", error)
+      alert("Error downloading template. Please try again.")
     } finally {
       setDownloadingTemplate(null)
     }
@@ -40,5 +40,45 @@ export default function NoteTemplatesSection() {
         </h1>
 
         <div className="space-y-8">
+          {/* CTCL Note Templates Section */}
+          <Card className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-blue-50/50 border-blue-200">
+            <CardHeader>
+              <CardTitle className="flex items-center">
+                <FileText className="mr-2 h-5 w-5" /> CTCL Note Templates
+              </CardTitle>
+              <CardDescription>Standardized templates for CTCL clinical documentation</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="grid gap-4 md:grid-cols-2">
+                <Card className="p-4 border border-muted hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-slate-50">
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <h3 className="font-medium mb-1">Initial CTCL Evaluation Note Template</h3>
+                      <p className="text-sm text-muted-foreground mb-3">
+                        Comprehensive template for documenting first-time CTCL evaluations
+                      </p>
+                    </div>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="flex items-center bg-transparent"
+                      onClick={() => downloadTemplate("initial-evaluation", "Initial CTCL Evaluation Note Template")}
+                      disabled={downloadingTemplate === "initial-evaluation"}
+                    >
+                      {downloadingTemplate === "initial-evaluation" ? (
+                        <Download className="mr-1 h-4 w-4 animate-spin" />
+                      ) : (
+                        <FileDown className="mr-1 h-4 w-4" />
+                      )}
+                      <span>Download</span>
+                    </Button>
+                  </div>
+                </Card>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    </main>
   )
 }
