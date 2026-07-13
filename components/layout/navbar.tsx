@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { Home, Calculator, BookOpen, Pill, FileText, InfoIcon } from "lucide-react"
+import { Home, Calculator, BookOpen, Pill, FileText, InfoIcon, Stethoscope } from "lucide-react"
 import { SearchInput } from "@/components/search/search-input"
 
 export function Navbar() {
@@ -32,6 +32,15 @@ export function Navbar() {
             >
               <Calculator className="mr-1 h-4 w-4" />
               <span>Calculator</span>
+            </Link>
+            <Link
+              href="/tools"
+              className={`flex items-center text-sm font-medium transition-colors hover:text-primary ${
+                pathname.includes("/tools") ? "text-primary" : "text-muted-foreground"
+              }`}
+            >
+              <Stethoscope className="mr-1 h-4 w-4" />
+              <span>Tools</span>
             </Link>
             <Link
               href="/information"

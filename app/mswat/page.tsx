@@ -1,14 +1,14 @@
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
-import { ReferralRouter } from "@/components/referral-router"
+import { MswatCalculator } from "@/components/mswat-calculator"
 
 export const metadata = {
-  title: "Referral Routing | CTCL Insight",
-  description: "Decide which suspected-CTCL patients need urgent specialist referral versus observation.",
+  title: "mSWAT / BSA Calculator | CTCL Insight",
+  description: "Modified Severity-Weighted Assessment Tool and body-surface-area calculator for MF/SS skin burden.",
 }
 
-export default function SpecialistReferralPage() {
+export default function MswatPage() {
   return (
     <main className="container mx-auto py-6 px-4 md:px-6 lg:py-10">
       <div className="max-w-6xl mx-auto">
@@ -21,13 +21,13 @@ export default function SpecialistReferralPage() {
         </div>
 
         <div className="mb-6">
-          <h1 className="text-2xl md:text-3xl font-bold">Referral Routing</h1>
+          <h1 className="text-2xl md:text-3xl font-bold">mSWAT / BSA Calculator</h1>
           <p className="text-muted-foreground mt-1">
-            Match clinical red flags to an urgency tier and know what to send with the patient.
+            Quantify skin burden at diagnosis and track response at follow-up visits.
           </p>
         </div>
 
-        <ReferralRouter />
+        <MswatCalculator />
       </div>
     </main>
   )

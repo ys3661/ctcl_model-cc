@@ -1,30 +1,24 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect } from "react"
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { useSearch } from "@/context/search-context"
-import { Calculator, FileText, BookOpen, Pill, InfoIcon } from "lucide-react"
+import { Calculator, FileText, BookOpen, Pill, InfoIcon, Stethoscope } from "lucide-react"
 
 export function SearchResults() {
   const { searchQuery, searchResults, setSearchQuery, performSearch } = useSearch()
   const searchParams = useSearchParams()
-  const initialSearchDone = useRef(false)
+  const query = searchParams.get("q") ?? ""
 
+  // Re-run whenever the ?q= param changes so searching again from any page
+  // (including while already on /search) refreshes the results.
   useEffect(() => {
-    // Only run this effect once when the component mounts
-    if (!initialSearchDone.current) {
-      const query = searchParams.get("q")
-      if (query) {
-        setSearchQuery(query)
-        // Pass the query directly to performSearch to avoid dependency on searchQuery
-        performSearch(query)
-      }
-      initialSearchDone.current = true
-    }
-  }, [searchParams, setSearchQuery, performSearch])
+    setSearchQuery(query)
+    performSearch(query)
+  }, [query, setSearchQuery, performSearch])
 
   if (!searchQuery) {
     return (
@@ -59,6 +53,8 @@ export function SearchResults() {
     switch (section) {
       case "calculator":
         return <Calculator className="h-4 w-4" />
+      case "tools":
+        return <Stethoscope className="h-4 w-4" />
       case "information":
         return <InfoIcon className="h-4 w-4" />
       case "resources":

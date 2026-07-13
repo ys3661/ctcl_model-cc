@@ -107,6 +107,14 @@ interface CTCLFormData {
   }
 }
 
+interface EpicConfig {
+  configured: boolean
+  serverUrl: string
+  clientId: string
+  clientSecret: string
+  organizationName: string
+}
+
 export default function MedicalFormAutomation() {
   const [formData, setFormData] = useState<CTCLFormData>({
     name: "",
@@ -178,11 +186,11 @@ export default function MedicalFormAutomation() {
   })
 
   // EPIC Configuration
-  const [epicConfig, setEpicConfig] = useState(() => {
+  const [epicConfig, setEpicConfig] = useState<EpicConfig>(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('epicConfig')
       if (saved) {
-        return JSON.parse(saved)
+        return JSON.parse(saved) as EpicConfig
       }
     }
     return {
@@ -344,7 +352,7 @@ Date: ${new Date().toLocaleString()}`
   }
 
   // Save EPIC configuration
-  const saveEpicConfig = (config) => {
+  const saveEpicConfig = (config: Omit<EpicConfig, "configured">) => {
     const updatedConfig = { ...config, configured: true }
     setEpicConfig(updatedConfig)
     localStorage.setItem('epicConfig', JSON.stringify(updatedConfig))
@@ -433,7 +441,7 @@ Date: ${new Date().toLocaleString()}`
       
     } catch (error) {
       console.error('EPIC Export Error:', error)
-      alert(`Export failed: ${error.message}`)
+      alert(`Export failed: ${error instanceof Error ? error.message : String(error)}`)
     }
   }
 

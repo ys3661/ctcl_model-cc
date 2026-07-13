@@ -2,7 +2,15 @@ export interface SearchResult {
   id: string
   title: string
   content: string
-  section: "calculator" | "information" | "resources" | "treatments" | "about" | "documentation" | "clinical-support"
+  section:
+    | "calculator"
+    | "information"
+    | "resources"
+    | "treatments"
+    | "about"
+    | "documentation"
+    | "clinical-support"
+    | "tools"
   url: string
 }
 
@@ -12,9 +20,59 @@ export const searchData: SearchResult[] = [
     id: "calculator-1",
     title: "CTCL Risk Calculator",
     content:
-      "Answer 7 clinical questions to assess CTCL risk for your patients. The calculator helps determine the likelihood of Cutaneous T-Cell Lymphoma based on clinical presentation.",
+      "Assess CTCL risk from clinical features. The calculator helps determine the likelihood of Cutaneous T-Cell Lymphoma based on clinical presentation and generates an assessment and plan note.",
     section: "calculator",
     url: "/calculator",
+  },
+
+  // Clinical tools
+  {
+    id: "tools-1",
+    title: "Clinical Tools",
+    content:
+      "Point-of-care tools for CTCL: biopsy requisition builder, referral routing, TNMB stager, mSWAT/BSA calculator, and lesion tracker.",
+    section: "tools",
+    url: "/tools",
+  },
+  {
+    id: "tools-2",
+    title: "Biopsy Requisition Builder",
+    content:
+      "Build a pathology requisition for suspected mycosis fungoides / CTCL: rule-out-MF clinical history, immunohistochemistry panel (CD3, CD4, CD8, CD7, CD30, CD20), and TCR gene rearrangement clonality studies, plus biopsy technique pearls.",
+    section: "tools",
+    url: "/biopsy-requisition",
+  },
+  {
+    id: "tools-3",
+    title: "Referral Routing",
+    content:
+      "Decide which suspected CTCL patients need urgent cutaneous lymphoma clinic referral versus routine referral or observation, and what to send with the patient.",
+    section: "tools",
+    url: "/specialist-referral",
+  },
+  {
+    id: "tools-4",
+    title: "mSWAT / BSA Calculator",
+    content:
+      "Modified Severity-Weighted Assessment Tool and body surface area calculator to quantify skin burden at baseline and track treatment response over time.",
+    section: "tools",
+    url: "/mswat",
+  },
+  {
+    id: "tools-5",
+    title: "Lesion Tracker",
+    content:
+      "Map lesions on a body diagram and follow them with serial photographs over time for longitudinal mycosis fungoides monitoring. Data stays on your device.",
+    section: "tools",
+    url: "/lesion-tracker",
+  },
+  {
+    id: "tools-6",
+    title: "Patient Handouts",
+    content:
+      "Printable, reassuring handouts explaining why a skin biopsy or specialist referral is a precautionary step.",
+    section: "tools",
+    url: "/patient-handout",
   },
   {
     id: "calculator-2",

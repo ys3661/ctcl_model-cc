@@ -1,14 +1,137 @@
 "use client"
 
+import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Button } from "@/components/ui/button"
+import { Label } from "@/components/ui/label"
+import { Card, CardContent } from "@/components/ui/card"
+import { Calculator, ArrowRight } from "lucide-react"
+import {
+  T_CATEGORIES,
+  N_CATEGORIES,
+  M_CATEGORIES,
+  B_CATEGORIES,
+  computeStage,
+  STAGE_PROGNOSIS,
+  type TnmbCategory,
+} from "@/lib/ctcl-staging"
+
+function CategorySelect({
+  id,
+  label,
+  options,
+  value,
+  onChange,
+}: {
+  id: string
+  label: string
+  options: TnmbCategory[]
+  value: string
+  onChange: (value: string) => void
+}) {
+  return (
+    <div className="space-y-1.5">
+      <Label htmlFor={id} className="text-sm font-medium">
+        {label}
+      </Label>
+      <Select value={value} onValueChange={onChange}>
+        <SelectTrigger id={id}>
+          <SelectValue placeholder="Select..." />
+        </SelectTrigger>
+        <SelectContent>
+          {options.map((opt) => (
+            <SelectItem key={opt.value} value={opt.value}>
+              {opt.label} — {opt.description}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
+  )
+}
+
+function StageCalculator() {
+  const router = useRouter()
+  const [t, setT] = useState("")
+  const [n, setN] = useState("")
+  const [m, setM] = useState("")
+  const [b, setB] = useState("")
+
+  const complete = t && n && m && b
+  const result = complete ? computeStage(t, n, m, b) : null
+
+  const handleViewResults = () => {
+    if (!result) return
+    const params = new URLSearchParams({
+      stage: result.stage,
+      t,
+      n,
+      m,
+      b,
+      description: result.description,
+      recommendations: JSON.stringify(result.recommendations),
+    })
+    router.push(`/staging-results?${params.toString()}`)
+  }
+
+  return (
+    <div className="space-y-6 pt-4">
+      <p className="text-sm text-muted-foreground">
+        Select the T, N, M, and B categories to compute the ISCL/EORTC clinical stage.
+      </p>
+
+      <div className="grid gap-4 sm:grid-cols-2">
+        <CategorySelect id="t-cat" label="T — Skin" options={T_CATEGORIES} value={t} onChange={setT} />
+        <CategorySelect id="n-cat" label="N — Lymph Nodes" options={N_CATEGORIES} value={n} onChange={setN} />
+        <CategorySelect id="m-cat" label="M — Visceral" options={M_CATEGORIES} value={m} onChange={setM} />
+        <CategorySelect id="b-cat" label="B — Blood" options={B_CATEGORIES} value={b} onChange={setB} />
+      </div>
+
+      {result ? (
+        <Card className="border-2 border-blue-200 bg-blue-50/60">
+          <CardContent className="space-y-4 p-6">
+            <div className="text-center">
+              <div className="text-sm font-medium text-blue-700">Computed Stage</div>
+              <div className="text-3xl font-bold text-blue-800">Stage {result.stage}</div>
+              <p className="mt-1 text-blue-700">{result.description}</p>
+            </div>
+            {STAGE_PROGNOSIS[result.stage] && (
+              <p className="rounded-md bg-white/70 p-3 text-center text-sm text-blue-800">
+                {STAGE_PROGNOSIS[result.stage]}
+              </p>
+            )}
+            <div className="flex justify-center">
+              <Button onClick={handleViewResults}>
+                View full results &amp; management <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      ) : (
+        <div className="rounded-md border border-dashed p-6 text-center text-sm text-muted-foreground">
+          Select all four categories to compute a stage.
+        </div>
+      )}
+    </div>
+  )
+}
 
 export function StagingTool() {
   return (
     <div className="space-y-6">
-      <Tabs defaultValue="reference" className="w-full">
-        <TabsList className="grid w-full grid-cols-1">
+      <Tabs defaultValue="calculator" className="w-full">
+        <TabsList className="grid w-full grid-cols-2">
+          <TabsTrigger value="calculator">
+            <Calculator className="mr-2 h-4 w-4" /> Stage Calculator
+          </TabsTrigger>
           <TabsTrigger value="reference">TNMB Reference</TabsTrigger>
         </TabsList>
+
+        <TabsContent value="calculator">
+          <StageCalculator />
+        </TabsContent>
 
         <TabsContent value="reference" className="space-y-6 pt-4">
           <div className="p-6">
@@ -34,17 +157,6 @@ export function StagingTool() {
                             <span className="font-medium">T1a:</span> Patch only
                             <br />
                             <span className="font-medium">T1b:</span> Plaque ± patch
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="border p-2 font-medium">T2</td>
-                        <td className="border p-2">
-                          Patches, papules, and/or plaques covering ≥10% of the skin surface
-                          <div className="mt-1 text-xs">
-                            <span className="font-medium">T2a:</span> Patch only
-                            <br />
-                            <span className="font-medium">T2b:</span> Plaque ± patch
                           </div>
                         </td>
                       </tr>

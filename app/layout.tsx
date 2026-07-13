@@ -1,18 +1,26 @@
 import type React from "react"
+import type { Metadata, Viewport } from "next"
 import "@/app/globals.css"
 import { Inter } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Navbar } from "@/components/layout/navbar"
 import { MobileLayout } from "@/components/layout/mobile-layout"
 import { SearchProvider } from "@/context/search-context"
+import { PwaRegister } from "@/components/pwa-register"
 import { Suspense } from "react"
 
 const inter = Inter({ subsets: ["latin"] })
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "CTCL Insight",
   description: "A comprehensive tool for dermatologists to assess CTCL risk",
-    generator: 'v0.dev'
+  manifest: "/manifest.webmanifest",
+  icons: { icon: "/icon.svg", apple: "/icon.svg" },
+  appleWebApp: { capable: true, title: "CTCL Insight", statusBarStyle: "default" },
+}
+
+export const viewport: Viewport = {
+  themeColor: "#2563eb",
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -29,6 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </Suspense>
           </SearchProvider>
         </ThemeProvider>
+        <PwaRegister />
       </body>
     </html>
   )

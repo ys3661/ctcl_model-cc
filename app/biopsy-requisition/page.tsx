@@ -1,14 +1,14 @@
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
-import { ReferralRouter } from "@/components/referral-router"
+import { BiopsyRequisitionBuilder } from "@/components/biopsy-requisition-builder"
 
 export const metadata = {
-  title: "Referral Routing | CTCL Insight",
-  description: "Decide which suspected-CTCL patients need urgent specialist referral versus observation.",
+  title: "Biopsy Requisition Builder | CTCL Insight",
+  description: "Build a pathology requisition for suspected CTCL with the right stains and clonality studies.",
 }
 
-export default function SpecialistReferralPage() {
+export default function BiopsyRequisitionPage() {
   return (
     <main className="container mx-auto py-6 px-4 md:px-6 lg:py-10">
       <div className="max-w-6xl mx-auto">
@@ -21,13 +21,13 @@ export default function SpecialistReferralPage() {
         </div>
 
         <div className="mb-6">
-          <h1 className="text-2xl md:text-3xl font-bold">Referral Routing</h1>
+          <h1 className="text-2xl md:text-3xl font-bold">Biopsy Requisition Builder</h1>
           <p className="text-muted-foreground mt-1">
-            Match clinical red flags to an urgency tier and know what to send with the patient.
+            Tell dermatopathology to rule out mycosis fungoides and request the right workup.
           </p>
         </div>
 
-        <ReferralRouter />
+        <BiopsyRequisitionBuilder />
       </div>
     </main>
   )

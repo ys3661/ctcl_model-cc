@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card"
 import Link from "next/link"
-import { Calculator, BookOpen, Pill, InfoIcon, User, Mail, ArrowRight } from "lucide-react"
+import { Calculator, BookOpen, Pill, InfoIcon, User, Mail, ArrowRight, Stethoscope } from "lucide-react"
 
 export default function Home() {
   return (
@@ -26,6 +26,21 @@ export default function Home() {
                   <p className="text-sm text-muted-foreground">Assess CTCL risk based on clinical features</p>
                 </div>
                 <ArrowRight className="h-4 w-4 text-blue-600 group-hover:translate-x-1 transition-transform" />
+              </CardContent>
+            </Card>
+          </Link>
+
+          <Link href="/tools" className="w-full group">
+            <Card className="w-full h-full border-0 shadow-lg hover:shadow-2xl transition-all duration-300 group-hover:-translate-y-2 bg-gradient-to-br from-rose-50 to-rose-100 hover:from-rose-100 hover:to-rose-200">
+              <CardContent className="p-6 flex flex-col items-center justify-center gap-4 h-full">
+                <div className="w-12 h-12 bg-rose-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Stethoscope className="h-6 w-6 text-white" />
+                </div>
+                <div>
+                  <h2 className="text-lg font-medium mb-2">Clinical Tools</h2>
+                  <p className="text-sm text-muted-foreground">Requisition, referral, staging, mSWAT, lesion tracking</p>
+                </div>
+                <ArrowRight className="h-4 w-4 text-rose-600 group-hover:translate-x-1 transition-transform" />
               </CardContent>
             </Card>
           </Link>
@@ -113,11 +128,8 @@ export default function Home() {
             <Link href="/about" className="text-sm text-muted-foreground hover:underline">
               About
             </Link>
-            <Link href="/privacy" className="text-sm text-muted-foreground hover:underline">
-              Privacy
-            </Link>
-            <Link href="/terms" className="text-sm text-muted-foreground hover:underline">
-              Terms
+            <Link href="/feedback" className="text-sm text-muted-foreground hover:underline">
+              Feedback
             </Link>
           </div>
         </div>

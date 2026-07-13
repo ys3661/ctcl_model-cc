@@ -29,8 +29,9 @@ export async function submitFeedback(prevState: any, formData: FormData) {
       }
     }
 
-    // Use environment variable or fallback to provided key for testing
-    const apiKey = process.env.RESEND_API_KEY || "re_Ydf47o6D_LkJXJrF4xzBy3zwuuZs1svj3"
+    // Resend API key. When unset, the code below falls back to logging the
+    // submission to the server console instead of sending an email.
+    const apiKey = process.env.RESEND_API_KEY
 
     if (!apiKey) {
       // Fallback logging if no key available
