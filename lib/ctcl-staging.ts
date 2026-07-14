@@ -3,8 +3,12 @@
  * syndrome. Single source of truth for the reference table, the interactive
  * stage calculator, and the /staging-results page.
  *
- * Reference: Olsen EA, et al. Revisions to the staging and classification of
- * MF/SS (ISCL/EORTC). Blood. 2007;110(6):1713-1722.
+ * Reference: Olsen EA, et al. Primary cutaneous lymphoma: recommendations for
+ * clinical trial design and staging update from the ISCL, USCLC, and EORTC.
+ * Blood. 2022;140(5):419-437 (updates the 2007 ISCL/EORTC revision,
+ * Blood 2007;110:1713). The 2022 update keeps the MF/SS stage groupings but
+ * redefines blood (B) staging by flow-cytometry counts of CD4+CD26-/CD4+CD7-
+ * cells rather than morphologic Sézary-cell percentages.
  */
 
 export interface TnmbCategory {
@@ -22,9 +26,9 @@ export const T_CATEGORIES: TnmbCategory[] = [
 
 export const N_CATEGORIES: TnmbCategory[] = [
   { value: "N0", label: "N0", description: "No clinically abnormal peripheral lymph nodes" },
-  { value: "N1", label: "N1", description: "Clinically abnormal nodes; histologically negative" },
-  { value: "N2", label: "N2", description: "Clinically normal nodes; histologically positive" },
-  { value: "N3", label: "N3", description: "Clinically abnormal nodes; histologically positive" },
+  { value: "N1", label: "N1", description: "Clinically abnormal nodes; Dutch grade 1 (NCI LN0-2)" },
+  { value: "N2", label: "N2", description: "Clinically abnormal nodes; Dutch grade 2 (NCI LN3)" },
+  { value: "N3", label: "N3", description: "Clinically abnormal nodes; Dutch grade 3-4 (NCI LN4)" },
 ]
 
 export const M_CATEGORIES: TnmbCategory[] = [
@@ -33,9 +37,9 @@ export const M_CATEGORIES: TnmbCategory[] = [
 ]
 
 export const B_CATEGORIES: TnmbCategory[] = [
-  { value: "B0", label: "B0", description: "≤5% of peripheral blood lymphocytes are Sézary cells" },
-  { value: "B1", label: "B1", description: "Low blood tumor burden (>5% Sézary cells, not meeting B2)" },
-  { value: "B2", label: "B2", description: "High blood tumor burden (≥1000/μL Sézary cells with clone)" },
+  { value: "B0", label: "B0", description: "<250/μL CD4+CD26− (or CD4+CD7−) cells; no significant blood involvement" },
+  { value: "B1", label: "B1", description: "Low blood tumor burden; does not meet criteria for B0 or B2 (~250–1000/μL)" },
+  { value: "B2", label: "B2", description: "High blood tumor burden; ≥1000/μL CD4+CD26− (or CD4+CD7−) cells with a clone" },
 ]
 
 export interface StageResult {
@@ -71,9 +75,10 @@ const ADVANCED_STAGE_RECS = [
 ]
 
 /**
- * Compute ISCL/EORTC clinical stage from TNMB categories (Olsen 2007).
+ * Compute ISCL/USCLC/EORTC clinical stage from TNMB categories (Olsen 2022;
+ * MF/SS stage groupings are unchanged from the 2007 revision).
  * Precedence: M1 (IVB) > N3 (IVA2) > B2 (IVA1) > T4 (III) > T3 (IIB) > N1-2 (IIA) > T2 (IB) > T1 (IA).
- * Blood is B0–B2 (there is no B3 in the 2007 classification).
+ * Blood is B0–B2 (there is no B3).
  */
 export function computeStage(t: string, n: string, m: string, b: string): StageResult {
   let stage = "Undetermined"

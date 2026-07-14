@@ -135,7 +135,12 @@ export function StagingTool() {
 
         <TabsContent value="reference" className="space-y-6 pt-4">
           <div className="p-6">
-            <h3 className="text-lg font-medium mb-4">ISCL/EORTC TNMB Classification for MF/SS</h3>
+            <h3 className="text-lg font-medium mb-1">ISCL/EORTC TNMB Classification for MF/SS</h3>
+            <p className="mb-4 text-xs text-muted-foreground">
+              Per the ISCL/USCLC/EORTC 2022 staging update (Olsen et al., Blood 2022;140:419). Stage groupings are
+              unchanged from the 2007 revision; blood (B) staging is defined by flow-cytometry counts of CD4+CD26−/CD7−
+              cells.
+            </p>
 
             <div className="space-y-6">
               <div>
@@ -204,7 +209,7 @@ export function StagingTool() {
                       <tr>
                         <td className="border p-2 font-medium">N1</td>
                         <td className="border p-2">
-                          Clinically abnormal peripheral lymph nodes; histopathologically negative for CTCL
+                          Clinically abnormal peripheral lymph nodes; histopathology Dutch grade 1 (NCI LN0-2)
                           <div className="mt-1 text-xs">
                             <span className="font-medium">N1a:</span> Clone negative
                             <br />
@@ -215,7 +220,7 @@ export function StagingTool() {
                       <tr>
                         <td className="border p-2 font-medium">N2</td>
                         <td className="border p-2">
-                          Clinically normal lymph nodes; histopathologically positive for CTCL
+                          Clinically abnormal peripheral lymph nodes; histopathology Dutch grade 2 (NCI LN3)
                           <div className="mt-1 text-xs">
                             <span className="font-medium">N2a:</span> Clone negative
                             <br />
@@ -226,7 +231,7 @@ export function StagingTool() {
                       <tr>
                         <td className="border p-2 font-medium">N3</td>
                         <td className="border p-2">
-                          Clinically abnormal lymph nodes; histopathologically positive for CTCL
+                          Clinically abnormal peripheral lymph nodes; histopathology Dutch grade 3-4 (NCI LN4)
                           <div className="mt-1 text-xs">
                             <span className="font-medium">N3a:</span> Clone negative
                             <br />
@@ -280,7 +285,7 @@ export function StagingTool() {
                       <tr>
                         <td className="border p-2 font-medium">B0</td>
                         <td className="border p-2">
-                          Absence of significant blood involvement: ≤5% of peripheral blood lymphocytes are Sézary cells
+                          No significant blood involvement: &lt;250/μL CD4+CD26− (or CD4+CD7−) cells
                           <div className="mt-1 text-xs">
                             <span className="font-medium">B0a:</span> Clone negative
                             <br />
@@ -291,8 +296,8 @@ export function StagingTool() {
                       <tr>
                         <td className="border p-2 font-medium">B1</td>
                         <td className="border p-2">
-                          Low blood tumor burden: &gt;5% of peripheral blood lymphocytes are Sézary cells but does not
-                          meet the criteria of B2
+                          Low blood tumor burden: does not meet the criteria for B0 or B2 (~250–1000/μL CD4+CD26− or
+                          CD4+CD7− cells)
                           <div className="mt-1 text-xs">
                             <span className="font-medium">B1a:</span> Clone negative
                             <br />
@@ -303,9 +308,8 @@ export function StagingTool() {
                       <tr>
                         <td className="border p-2 font-medium">B2</td>
                         <td className="border p-2">
-                          High blood tumor burden: ≥1000/μL Sézary cells with positive clone or one of the following:
-                          (1) expanded CD4+ or CD3+ cells with CD4/CD8 ratio ≥10, (2) expanded CD4+ cells with abnormal
-                          immunophenotype
+                          High blood tumor burden: ≥1000/μL CD4+CD26− (or CD4+CD7−) cells (or another aberrant clonal
+                          population identified by flow cytometry), with a T-cell clone in the blood
                         </td>
                       </tr>
                     </tbody>

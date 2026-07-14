@@ -814,10 +814,9 @@ export default function TreatmentsPage() {
                 the treatment of mycosis fungoides/Sézary syndrome. Eur J Cancer. 2018;77:57-74.
               </li>
               <li id="ref4">
-                Olsen E, Vonderheid E, Pimpinelli N, et al. Revisions to the staging and classification of mycosis
-                fungoides and Sezary syndrome: a proposal of the International Society for Cutaneous Lymphomas (ISCL)
-                and the cutaneous lymphoma task force of the European Organization of Research and Treatment of Cancer
-                (EORTC). Blood. 2007;110(6):1713-1722.
+                Olsen EA, Whittaker S, Willemze R, et al. Primary cutaneous lymphoma: recommendations for clinical trial
+                design and staging update from the ISCL, USCLC, and EORTC. Blood. 2022;140(5):419-437. (Updates the 2007
+                ISCL/EORTC revision, Blood. 2007;110(6):1713-1722.)
               </li>
               <li id="ref5">
                 Knobler R. Topical therapeutic options for cutaneous T-cell lymphoma. Semin Cutan Med Surg.
