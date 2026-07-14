@@ -65,6 +65,26 @@ pnpm dev                     # http://localhost:3000
 - `pnpm start` — serve the production build
 - `pnpm lint` — run ESLint
 
+## Deploying (Vercel)
+
+The app is a standard Next.js 15 project with no special configuration, so it deploys
+on [Vercel](https://vercel.com/) out of the box.
+
+1. Push to the connected GitHub repo (`ys3661/ctcl_model-cc`). If the repo is already
+   linked to a Vercel project, every push to `main` triggers a production deploy.
+   Otherwise, in Vercel choose **Add New… → Project → Import** this repo. Vercel
+   auto-detects Next.js and pnpm (from `pnpm-lock.yaml` / the `packageManager` field);
+   leave the build command and output directory at their defaults.
+2. **Environment variables** (Project → Settings → Environment Variables): set
+   `RESEND_API_KEY` if you want the feedback form to email submissions. It is optional
+   — without it, submissions are logged to the server console and the form still works.
+   Do **not** commit real keys; use `.env.local` locally and Vercel's env settings in
+   production.
+3. Vercel builds with `pnpm build` and serves the result; the `/api/predict` route runs
+   as a serverless function automatically.
+
+To deploy from the CLI instead, run `npx vercel` (preview) or `npx vercel --prod`.
+
 ## The risk model
 
 Feature weights, labels, thresholds, and the scoring/interpretation logic live in a
