@@ -1,0 +1,29 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "dev server",
+      "detail": "Run the Next.js dev server (http://localhost:3000)",
+      "type": "shell",
+      "command": "pnpm dev",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated" },
+      "group": { "kind": "build", "isDefault": true }
+    },
+    {
+      "label": "build",
+      "detail": "Production build (type-check + lint)",
+      "type": "shell",
+      "command": "pnpm build",
+      "problemMatcher": []
+    },
+    {
+      "label": "install deps",
+      "detail": "Install dependencies with pnpm",
+      "type": "shell",
+      "command": "pnpm install",
+      "problemMatcher": []
+    }
+  ]
+}
