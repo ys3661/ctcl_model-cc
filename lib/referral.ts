@@ -32,7 +32,7 @@ export const REFERRAL_FLAGS: { id: keyof ReferralInput; label: string; descripti
   { id: "lymphadenopathy", label: "Lymphadenopathy", description: "Clinically enlarged or firm lymph nodes" },
   { id: "rapidProgression", label: "Rapid progression", description: "Rapidly enlarging, ulcerating, or spreading lesions" },
   { id: "bloodInvolvement", label: "Blood involvement", description: "Circulating Sézary cells / abnormal flow cytometry" },
-  { id: "largeCellTransformation", label: "Large-cell transformation", description: "CD30+ large-cell transformation on pathology" },
+  { id: "largeCellTransformation", label: "Large-cell transformation", description: "Large cells >25% of the infiltrate on pathology (CD30 positive or negative)" },
   { id: "biopsyProvenCtcl", label: "Biopsy-proven CTCL", description: "Histologically confirmed cutaneous T-cell lymphoma" },
   { id: "refractoryPersistent", label: "Refractory / persistent", description: "Persistent lesions refractory to appropriate therapy" },
 ]

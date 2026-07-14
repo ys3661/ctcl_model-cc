@@ -51,14 +51,16 @@ export default function AboutPage() {
           </CardHeader>
           <CardContent className="space-y-4">
             <p>
-              The risk assessment is calculated based on a study in the Geskin lab which created a supervised machine
-              learning classifier based on a Random Forest algorithm, trained on structured clinical data extracted from
-              electronic health records prior to diagnosis. This model used key binary historical variables—including
+              The risk assessment is a transparent weighted score derived from a study in the Geskin lab, which trained
+              a supervised machine-learning classifier (Random Forest) on structured clinical data extracted from
+              electronic health records prior to diagnosis. That study used key binary historical variables—including
               history of multiple biopsies, failed topical steroids, other failed therapies, scaly patches or plaques,
               erythema, xerosis, pruritus, and presence of other rashes—to distinguish patients with cutaneous T-cell
               lymphoma (CTCL) from those with benign inflammatory skin conditions. Prioritizing sensitivity to minimize
-              false negatives, the final model achieved an accuracy of 72%, with a sensitivity of 87% and a specificity
-              of 55%.
+              false negatives, that research model reported approximately 72% accuracy, 87% sensitivity, and 55%
+              specificity in its development cohort. This calculator is a simplified weighted score based on those
+              relative feature weightings; the reported figures reflect the original research model and have not been
+              prospectively validated for this tool.
             </p>
             <p>
               It's important to note that this tool provides a risk assessment, not a diagnosis. A high-risk result

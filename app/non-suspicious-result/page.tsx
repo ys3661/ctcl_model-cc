@@ -20,7 +20,9 @@ export default function NonSuspiciousResult() {
           <div>
             <h2 className="text-lg font-semibold text-green-800">Not Suspicious for CTCL</h2>
             <p className="text-sm text-green-700">
-              The biopsy results do not show features consistent with Cutaneous T-Cell Lymphoma. However, if you still suspect CTCL, consult a specialist.
+              The biopsy results do not show definitive features of Cutaneous T-Cell Lymphoma. Note that a single
+              non-diagnostic biopsy does not exclude early MF, which often requires repeat biopsies over time. If
+              clinical suspicion persists, re-biopsy (off topical steroids) and consult a specialist.
             </p>
           </div>
         </div>

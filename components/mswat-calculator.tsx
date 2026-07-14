@@ -33,9 +33,10 @@ export function MswatCalculator() {
   }
 
   const mswat = computeMswat(regions)
+  const mswatDisplay = mswat.toFixed(1)
   const tbsa = computeTbsa(regions)
 
-  const summary = `mSWAT: ${mswat} | Estimated TBSA: ${tbsa.toFixed(1)}% (${mswatSeverityBand(mswat)})`
+  const summary = `mSWAT: ${mswatDisplay} | Estimated TBSA: ${tbsa.toFixed(1)}% (${mswatSeverityBand(mswat)})`
 
   return (
     <div className="grid gap-6 lg:grid-cols-3">
@@ -96,7 +97,7 @@ export function MswatCalculator() {
         <CardContent className="space-y-4">
           <div className="text-center">
             <div className="text-sm text-muted-foreground">mSWAT</div>
-            <div className="text-4xl font-bold text-blue-700">{mswat}</div>
+            <div className="text-4xl font-bold text-blue-700">{mswatDisplay}</div>
             <div className="text-xs text-muted-foreground">range 0–400</div>
           </div>
           <Separator />
@@ -106,6 +107,9 @@ export function MswatCalculator() {
           </div>
           <Separator />
           <p className="text-center text-sm font-medium text-muted-foreground">{mswatSeverityBand(mswat)}</p>
+          <p className="text-center text-xs text-muted-foreground">
+            Illustrative band only — mSWAT has no validated severity cutoffs; interpret in clinical context.
+          </p>
           <div className="flex flex-col gap-2">
             <CopyButton value={summary} label="Copy scores" className="w-full" />
             <Button variant="outline" className="w-full" onClick={() => setRegions(emptyRegions())}>
@@ -113,7 +117,8 @@ export function MswatCalculator() {
             </Button>
           </div>
           <p className="text-xs text-muted-foreground">
-            mSWAT = Σ (%patch×1 + %plaque×2 + %tumor×4). TBSA weights each region by its share of body surface area.
+            mSWAT weights each region&apos;s involved area by the region&apos;s share of body surface area and by lesion
+            type (patch ×1, plaque ×2, tumor ×4).
           </p>
         </CardContent>
       </Card>

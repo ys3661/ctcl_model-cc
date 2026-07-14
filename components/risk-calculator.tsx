@@ -130,8 +130,8 @@ export default function RiskCalculator() {
             <CardHeader className="pb-3">
               <CardTitle className="text-lg">Clinical Features Assessment</CardTitle>
               <p className="text-sm text-muted-foreground">
-                Check all clinical features that apply to this patient. The model will analyze these features to provide
-                a risk assessment.
+                Check all clinical features that apply to this patient. Selected features are combined into a
+                transparent weighted risk score.
               </p>
             </CardHeader>
             <CardContent className="space-y-4">

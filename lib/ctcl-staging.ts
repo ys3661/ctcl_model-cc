@@ -49,10 +49,10 @@ const STAGE_DESCRIPTIONS: Record<string, string> = {
   IB: "Early-stage, extensive skin involvement",
   IIA: "Early-stage with lymph node enlargement",
   IIB: "Tumor-stage disease",
-  IIIA: "Erythrodermic, low blood burden",
-  IIIB: "Erythrodermic, high blood burden",
-  IVA1: "Sézary syndrome / high blood burden",
-  IVA2: "Advanced nodal involvement",
+  IIIA: "Erythrodermic, no significant blood involvement (B0)",
+  IIIB: "Erythrodermic, low blood tumor burden (B1)",
+  IVA1: "High blood tumor burden (B2), e.g. Sézary syndrome",
+  IVA2: "High-grade nodal involvement (N3)",
   IVB: "Visceral involvement",
 }
 
@@ -71,23 +71,25 @@ const ADVANCED_STAGE_RECS = [
 ]
 
 /**
- * Compute ISCL/EORTC clinical stage from TNMB categories.
- * B3 is not represented in the app's B category set; blood is handled via B0–B2.
+ * Compute ISCL/EORTC clinical stage from TNMB categories (Olsen 2007).
+ * Precedence: M1 (IVB) > N3 (IVA2) > B2 (IVA1) > T4 (III) > T3 (IIB) > N1-2 (IIA) > T2 (IB) > T1 (IA).
+ * Blood is B0–B2 (there is no B3 in the 2007 classification).
  */
 export function computeStage(t: string, n: string, m: string, b: string): StageResult {
   let stage = "Undetermined"
 
   if (m === "M1") {
     stage = "IVB"
-  } else if (n === "N2" || n === "N3") {
+  } else if (n === "N3") {
     stage = "IVA2"
-  } else if (b === "B2" && t === "T4") {
-    stage = "IIIB"
+  } else if (b === "B2") {
+    stage = "IVA1"
   } else if (t === "T4") {
-    stage = b === "B2" ? "IIIB" : "IIIA"
+    // Erythroderma with M0, N0-2, B0-1: IIIA (B0) vs IIIB (B1)
+    stage = b === "B1" ? "IIIB" : "IIIA"
   } else if (t === "T3") {
     stage = "IIB"
-  } else if (n === "N1") {
+  } else if (n === "N1" || n === "N2") {
     stage = "IIA"
   } else if (t === "T2") {
     stage = "IB"

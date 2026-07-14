@@ -210,13 +210,15 @@ export default function MedicalFormAutomation() {
     posteriorTrunk: 13, buttocks: 5, thighs: 19, legs: 14, feet: 7, groin: 1
   }
 
-  // Calculate mSWAT score
+  // Calculate mSWAT score (standard: weight each region's involvement by the
+  // region's share of total BSA, then by lesion type). Range 0-400.
   const calculateMSWAT = () => {
     let total = 0
-    Object.values(formData.bsaRegions).forEach(region => {
-      total += (region.patch * 1) + (region.plaque * 2) + (region.tumor * 4)
+    Object.entries(formData.bsaRegions).forEach(([regionKey, region]) => {
+      const regionBSA = bsaPercentages[regionKey as keyof typeof bsaPercentages]
+      total += (regionBSA / 100) * ((region.patch * 1) + (region.plaque * 2) + (region.tumor * 4))
     })
-    return total
+    return Math.round(total * 10) / 10
   }
 
   // Calculate total BSA

@@ -128,6 +128,11 @@ export default function StagingResultsPage() {
                 "Poor prognosis with 5-year survival of 20-40%. Requires aggressive systemic therapy."}
               {stage === "IVB" &&
                 "Poor prognosis with 5-year survival <20%. Visceral involvement indicates advanced disease requiring aggressive management."}
+              <span className="mt-2 block text-xs text-blue-600">
+                Survival figures are approximate, cohort-dependent population estimates and do not predict an individual
+                patient&apos;s outcome. This tool supports but does not replace pathologic staging, biopsy, and
+                specialist clinical judgment.
+              </span>
             </AlertDescription>
           </Alert>
 

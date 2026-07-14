@@ -58,7 +58,7 @@ export default function TreatmentsPage() {
                   <h3 className="text-lg font-medium mb-2">Treatment Philosophy</h3>
                   <p className="text-muted-foreground">
                     CTCL is often a chronic condition that may not be curable in its advanced stages, but can be
-                    effectively managed to control symptoms, improve quality of life, and extend survival. Treatment
+                    effectively managed to control symptoms, reduce disease burden, and improve quality of life. Treatment
                     approaches are typically stage-based and individualized.
                     <sup className="text-xs ml-0.5">[1-3]</sup>
                   </p>
@@ -79,7 +79,7 @@ export default function TreatmentsPage() {
                   <h3 className="text-lg font-medium mb-2">Treatment Selection Factors</h3>
                   <ul className="list-disc pl-6 space-y-1 text-muted-foreground">
                     <li>
-                      Disease stage (IA, IB, IIA, IIB, III, IVA, IVB)
+                      Disease stage (IA, IB, IIA, IIB, IIIA, IIIB, IVA1, IVA2, IVB)
                       <sup className="text-xs ml-0.5">[4]</sup>
                     </li>
                     <li>CTCL subtype (Mycosis Fungoides, Sézary Syndrome, etc.)</li>
@@ -610,13 +610,15 @@ export default function TreatmentsPage() {
                   </p>
                   <ul className="list-disc pl-6 space-y-1 text-muted-foreground">
                     <li>
-                      <strong>Types:</strong> Autologous (using patient's own cells) or allogeneic (using donor cells)
+                      <strong>Type:</strong> Allogeneic (donor) HSCT is the only potentially curative transplant option
+                      in CTCL; autologous HSCT is generally not recommended because responses are typically short-lived
                     </li>
                     <li>
                       <strong>Best for:</strong> Young, fit patients with advanced, refractory disease
                     </li>
                     <li>
-                      <strong>Efficacy:</strong> Potential for long-term remission or cure in some patients
+                      <strong>Efficacy:</strong> Allogeneic HSCT offers potential for durable remission, and possible
+                      cure, in selected patients
                     </li>
                     <li>
                       <strong>Risks:</strong> Significant treatment-related mortality, graft-versus-host disease

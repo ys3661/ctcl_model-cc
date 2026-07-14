@@ -130,16 +130,19 @@ export function interpretRisk(score: number): RiskInterpretation {
     return {
       level: "Low Risk",
       colorClass: "text-green-600 border-green-600",
-      description: "Low probability of CTCL. Continue routine monitoring.",
-      recommendation: "Standard dermatological follow-up as needed.",
+      description:
+        "Lower calculated risk score based on the selected features. A low score does not rule out CTCL — pursue biopsy if clinical suspicion persists.",
+      recommendation: "Standard dermatologic follow-up as clinically indicated.",
       showNextSteps: false,
     }
   }
   return {
     level: "High Risk",
     colorClass: "text-red-600 border-red-600",
-    description: "High risk of CTCL.",
-    recommendation: "Immediate specialist evaluation and comprehensive workup needed.",
+    description:
+      "Elevated risk score. Clinical correlation with skin biopsy is recommended to establish or exclude the diagnosis.",
+    recommendation:
+      "Prompt dermatologic evaluation recommended; consider skin biopsy with histopathology and TCR clonality studies.",
     showNextSteps: true,
   }
 }

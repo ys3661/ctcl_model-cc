@@ -46,10 +46,14 @@ export function emptyRegions(): RegionMap {
 }
 
 export function computeMswat(regions: RegionMap): number {
-  return Object.values(regions).reduce(
-    (total, r) => total + r.patch * 1 + r.plaque * 2 + r.tumor * 4,
-    0,
-  )
+  // Standard mSWAT: for each region, the percentage of that region involved by
+  // each lesion type is weighted by the region's share of total BSA, then by
+  // lesion severity (patch ×1, plaque ×2, tumor ×4), and summed. Range 0–400.
+  return BODY_REGIONS.reduce((total, region) => {
+    const r = regions[region.key]
+    if (!r) return total
+    return total + (region.bsa / 100) * (r.patch * 1 + r.plaque * 2 + r.tumor * 4)
+  }, 0)
 }
 
 export function computeTbsa(regions: RegionMap): number {

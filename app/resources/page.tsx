@@ -90,7 +90,7 @@ export default function ResourcesPage() {
                           : category.id === "specialists"
                             ? "1"
                             : category.id === "handouts"
-                              ? "6"
+                              ? "2"
                               : ""}
                     </Badge>
                   )}

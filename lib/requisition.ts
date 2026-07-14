@@ -16,7 +16,7 @@ export const IHC_PANEL: IhcMarker[] = [
   { marker: "CD3", rationale: "Pan–T-cell marker; establishes T-cell lineage of the infiltrate." },
   { marker: "CD4", rationale: "Helper T-cell marker; MF is typically CD4-predominant." },
   { marker: "CD8", rationale: "Cytotoxic T-cell marker; assesses the CD4:CD8 ratio and CD8+ variants." },
-  { marker: "CD7", rationale: "Frequently lost in MF; antigen loss (CD7−) supports the diagnosis." },
+  { marker: "CD7", rationale: "Frequently reduced or lost in MF; a supporting feature but not specific (CD7 loss also occurs in benign dermatoses)." },
   { marker: "CD30", rationale: "Marks large-cell transformation and lymphomatoid papulosis / pcALCL." },
   { marker: "CD20", rationale: "B-cell marker; helps exclude a B-cell lymphoid process." },
 ]

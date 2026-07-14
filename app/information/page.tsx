@@ -31,9 +31,9 @@ export default function InformationPage() {
                 skin. They develop when T-lymphocytes (a type of white blood cell) become malignant and affect the skin.
               </p>
               <p>
-                The two most common types of CTCL are mycosis fungoides (MF) and Sézary syndrome (SS). Other less common
-                types include primary cutaneous anaplastic large cell lymphoma, lymphomatoid papulosis, and subcutaneous
-                panniculitis-like T-cell lymphoma.
+                The most common type of CTCL is mycosis fungoides (MF); Sézary syndrome (SS) is a rare, leukemic,
+                erythrodermic variant. Other types include primary cutaneous anaplastic large cell lymphoma,
+                lymphomatoid papulosis, and subcutaneous panniculitis-like T-cell lymphoma.
               </p>
               <p>
                 CTCL typically presents with persistent, scaly patches or plaques on the skin that may resemble eczema
@@ -176,17 +176,18 @@ export default function InformationPage() {
                   <strong>Stage IB:</strong> Patches/plaques covering ≥10% of skin surface
                 </li>
                 <li>
-                  <strong>Stage IIA:</strong> Skin involvement plus palpable lymphadenopathy without histologic
-                  involvement
+                  <strong>Stage IIA:</strong> Skin patches/plaques plus clinically abnormal lymph nodes that are not
+                  effaced (N1-N2), without skin tumors or visceral disease
                 </li>
                 <li>
                   <strong>Stage IIB:</strong> One or more skin tumors
                 </li>
                 <li>
-                  <strong>Stage IIIA/B:</strong> Erythroderma with varying degrees of blood involvement
+                  <strong>Stage IIIA/B:</strong> Erythroderma with no (IIIA, B0) or low (IIIB, B1) blood tumor burden
                 </li>
                 <li>
-                  <strong>Stage IVA:</strong> Lymph node involvement with or without erythroderma
+                  <strong>Stage IVA:</strong> Includes IVA1 (high blood tumor burden, B2) and IVA2 (high-grade/effaced
+                  lymph node involvement, N3), without visceral involvement
                 </li>
                 <li>
                   <strong>Stage IVB:</strong> Visceral organ involvement
@@ -196,8 +197,10 @@ export default function InformationPage() {
               <h3 className="text-lg font-medium mt-4">Prognosis</h3>
               <p>
                 Prognosis varies significantly based on disease stage, type, and patient factors. Early-stage disease
-                (IA-IIA) generally has an excellent prognosis with a normal life expectancy. Advanced stages have a less
-                favorable prognosis, though new therapies continue to improve outcomes.
+                (IA-IIA) generally carries a favorable prognosis; stage IA in particular is associated with a life
+                expectancy approaching that of the general population, while outcomes are somewhat less favorable as skin
+                and nodal involvement increase. Advanced stages have a less favorable prognosis, though new therapies
+                continue to improve outcomes.
               </p>
 
               <p className="mt-4">

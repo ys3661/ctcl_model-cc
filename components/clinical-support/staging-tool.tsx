@@ -344,51 +344,51 @@ export function StagingTool() {
                       <tr>
                         <td className="border p-2 font-medium">IIA</td>
                         <td className="border p-2">T1-2</td>
-                        <td className="border p-2">N1</td>
+                        <td className="border p-2">N1-2</td>
                         <td className="border p-2">M0</td>
                         <td className="border p-2">B0, B1</td>
                       </tr>
                       <tr>
                         <td className="border p-2 font-medium">IIB</td>
                         <td className="border p-2">T3</td>
-                        <td className="border p-2">N0-1</td>
+                        <td className="border p-2">N0-2</td>
                         <td className="border p-2">M0</td>
                         <td className="border p-2">B0, B1</td>
                       </tr>
                       <tr>
                         <td className="border p-2 font-medium">IIIA</td>
                         <td className="border p-2">T4</td>
-                        <td className="border p-2">N0-1</td>
+                        <td className="border p-2">N0-2</td>
                         <td className="border p-2">M0</td>
-                        <td className="border p-2">B0, B1</td>
+                        <td className="border p-2">B0</td>
                       </tr>
                       <tr>
                         <td className="border p-2 font-medium">IIIB</td>
                         <td className="border p-2">T4</td>
-                        <td className="border p-2">N0-1</td>
+                        <td className="border p-2">N0-2</td>
                         <td className="border p-2">M0</td>
-                        <td className="border p-2">B2</td>
+                        <td className="border p-2">B1</td>
                       </tr>
                       <tr>
                         <td className="border p-2 font-medium">IVA1</td>
                         <td className="border p-2">T1-4</td>
-                        <td className="border p-2">N2-3</td>
+                        <td className="border p-2">N0-2</td>
                         <td className="border p-2">M0</td>
-                        <td className="border p-2">B0-2</td>
+                        <td className="border p-2">B2</td>
                       </tr>
                       <tr>
                         <td className="border p-2 font-medium">IVA2</td>
                         <td className="border p-2">T1-4</td>
-                        <td className="border p-2">N0-3</td>
+                        <td className="border p-2">N3</td>
                         <td className="border p-2">M0</td>
-                        <td className="border p-2">B3</td>
+                        <td className="border p-2">B0-2</td>
                       </tr>
                       <tr>
                         <td className="border p-2 font-medium">IVB</td>
                         <td className="border p-2">T1-4</td>
                         <td className="border p-2">N0-3</td>
-                        <td className="border p-2">M0-1</td>
-                        <td className="border p-2">B0-3</td>
+                        <td className="border p-2">M1</td>
+                        <td className="border p-2">B0-2</td>
                       </tr>
                     </tbody>
                   </table>
