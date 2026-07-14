@@ -27,13 +27,19 @@ export default function DiagnosticResult() {
         <h1 className="text-3xl font-bold mb-6">Recommended Next Steps</h1>
 
         <p className="text-lg text-muted-foreground mb-8">
-          An equivocal biopsy result requires careful follow-up and specialist consultation to determine the best course
-          of action.
+          A definitive CTCL diagnosis warrants clinical staging (TNMB) and prompt referral to a cutaneous-lymphoma or
+          hematology-oncology specialist to plan treatment.
         </p>
 
-        <div className="mt-8">
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Link href="/clinical-support">
+            <Button>Stage the disease (TNMB)</Button>
+          </Link>
+          <Link href="/specialist-referral">
+            <Button variant="outline">Referral routing</Button>
+          </Link>
           <Link href="/resources">
-            <Button>View Resources & Specialists</Button>
+            <Button variant="outline">Resources &amp; specialists</Button>
           </Link>
         </div>
       </div>

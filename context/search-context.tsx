@@ -30,10 +30,16 @@ export function SearchProvider({ children }: { children: ReactNode }) {
 
       setIsSearching(true)
 
-      // Simple search implementation
-      const queryLower = searchTerm.toLowerCase().trim()
+      // Diacritic-insensitive search so e.g. "sezary" matches "Sézary".
+      const fold = (s: string) =>
+        s
+          .normalize("NFD")
+          .replace(/\p{Diacritic}/gu, "")
+          .toLowerCase()
+          .trim()
+      const queryFolded = fold(searchTerm)
       const results = searchData.filter((item) => {
-        return item.title.toLowerCase().includes(queryLower) || item.content.toLowerCase().includes(queryLower)
+        return fold(item.title).includes(queryFolded) || fold(item.content).includes(queryFolded)
       })
 
       setSearchResults(results)

@@ -87,32 +87,26 @@ export const searchData: SearchResult[] = [
   {
     id: "clinical-support-1",
     title: "TNMB Staging Tool",
-    content: "Interactive form with auto-generated stage based on ISCL/EORTC criteria for CTCL staging.",
+    content:
+      "Interactive ISCL/EORTC TNMB stage calculator with an auto-generated stage, plus a full TNMB reference table for MF/SS.",
     section: "clinical-support",
-    url: "/clinical-support?tab=staging",
+    url: "/clinical-support",
   },
   {
     id: "clinical-support-2",
     title: "Referral Guide",
     content:
-      "When to refer to dermatologic oncology, hematology-oncology, or multidisciplinary cutaneous lymphoma clinics.",
-    section: "clinical-support",
-    url: "/clinical-support?tab=referral",
+      "When to refer to dermatologic oncology, hematology-oncology, or a cutaneous lymphoma clinic — urgent vs. routine vs. observe, and what to send with the patient.",
+    section: "tools",
+    url: "/specialist-referral",
   },
   {
     id: "clinical-support-3",
-    title: "Biopsy Guidelines",
+    title: "Biopsy & Stain Selection Guide",
     content:
-      "Best practices for obtaining diagnostic biopsies in suspected CTCL, including site selection and technique.",
-    section: "clinical-support",
-    url: "/clinical-support",
-  },
-  {
-    id: "clinical-support-4",
-    title: "Stain Selection Guide",
-    content: "Comprehensive guide to selecting appropriate immunohistochemical stains for CTCL diagnosis.",
-    section: "clinical-support",
-    url: "/clinical-support",
+      "How to biopsy suspected CTCL and which immunohistochemical stains (CD3, CD4, CD8, CD7, CD30, CD20) and TCR clonality studies to request from pathology.",
+    section: "tools",
+    url: "/biopsy-requisition",
   },
 
   // Information section
@@ -168,51 +162,27 @@ export const searchData: SearchResult[] = [
   // Documentation section
   {
     id: "documentation-1",
-    title: "Biopsy Documentation Templates",
+    title: "Clinical Note Templates",
     content:
-      'Standardized templates for CTCL biopsy requests and reports, including biopsy request forms, site "Standardized templates for CTCL biopsy requests and reports, including biopsy request forms, site selection guides, and pathology request templates.',
+      "Downloadable CTCL clinical documentation — an initial evaluation note template — plus the EPIC medical-form automation helper.",
     section: "documentation",
     url: "/documentation",
   },
   {
     id: "documentation-2",
-    title: "Staging Documentation Templates",
+    title: "mSWAT / BSA Assessment",
     content:
-      "Templates for CTCL staging and assessment, including TNMB staging worksheets, mSWAT assessment forms, and disease progression trackers.",
-    section: "documentation",
-    url: "/documentation",
+      "Quantify skin burden with the modified Severity-Weighted Assessment Tool (mSWAT) and body surface area calculator; track response over time.",
+    section: "tools",
+    url: "/mswat",
   },
   {
     id: "documentation-3",
-    title: "Patient Education Documentation",
+    title: "Assessment & Plan Note Generator",
     content:
-      "Templates for patient education and counseling, including diagnosis discussion guides, treatment options checklists, and skin care instructions.",
-    section: "documentation",
-    url: "/documentation",
-  },
-  {
-    id: "documentation-4",
-    title: "Patient Handouts",
-    content:
-      "Printable PDFs for patients on CTCL diagnosis, treatment options, and living with CTCL, designed to be patient-friendly and informative.",
-    section: "documentation",
-    url: "/documentation?tab=handouts",
-  },
-  {
-    id: "documentation-5",
-    title: "CME Credit Opportunities",
-    content:
-      "Continuing Medical Education resources for CTCL, including courses, webinars, workshops, and self-assessment resources.",
-    section: "documentation",
-    url: "/documentation?tab=cme",
-  },
-  {
-    id: "documentation-6",
-    title: "Clinical Note Templates",
-    content:
-      "Standardized templates for CTCL clinical documentation, including initial evaluation notes, follow-up visit templates, and referral notes.",
-    section: "documentation",
-    url: "/documentation?tab=notes",
+      "Generate a copy-paste assessment and plan documenting that CTCL was considered, with the recommended biopsy and referral workup, from the risk calculator.",
+    section: "tools",
+    url: "/calculator",
   },
 
   // Resources section

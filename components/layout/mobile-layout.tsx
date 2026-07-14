@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useState, useEffect } from "react"
-import { Home, Calculator, HelpCircle, Info, Stethoscope } from "lucide-react"
+import { Home, Calculator, Layers, Info, Stethoscope } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
@@ -95,8 +95,8 @@ export function MobileLayout({ children }: MobileLayoutProps) {
               pathname === "/clinical-support" ? "text-primary" : "text-muted-foreground",
             )}
           >
-            <HelpCircle className="h-5 w-5 mb-1" />
-            Support
+            <Layers className="h-5 w-5 mb-1" />
+            Staging
           </Link>
           <Link
             href="/information"
